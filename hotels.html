@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>合作酒店 · 云旅肆芳</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<header class="header"><div class="container header-inner">
+  <div class="logo">云旅肆芳</div>
+  <nav class="nav"><a href="index.html">首页</a><a href="packages.html">旅居套餐</a><a href="destinations.html">目的地</a><a href="whyus.html">为什么选我们</a><a href="hotels.html">合作酒店</a><a href="contact.html">联系管家</a></nav>
+</div></header>
+
+<section class="section container">
+  <h2 class="title">合作酒店</h2>
+  <p class="subtitle">全程精选 · 对应入住档位</p>
+  <div class="grid-2">
+    <div class="card"><div class="dest-img" style="background:url('img/dest-dali.jpg') center/cover"></div><h3>石头纪酒店</h3><p style="font-size:14px;color:var(--muted)">腾冲/大理 · 野奢温泉<br>对应：高端档位入住</p></div>
+    <div class="card"><div class="dest-img" style="background:url('img/dest-dali.jpg') center/cover"></div><h3>洲际酒店</h3><p style="font-size:14px;color:var(--muted)">昆明/大理 · 国际品质<br>对应：中端/高端均可</p></div>
+    <div class="card"><div class="dest-img" style="background:url('img/dest-dali.jpg') center/cover"></div><h3>安纳塔拉</h3><p style="font-size:14px;color:var(--muted)">普洱/西双版纳 · 度假风<br>对应：高端档位入住</p></div>
+    <div class="card"><div class="dest-img" style="background:url('img/dest-dali.jpg') center/cover"></div><h3>松赞系列</h3><p style="font-size:14px;color:var(--muted)">大理/香格里拉/梅里 · 藏地美学<br>对应：高端/顶配档位核心入住</p></div>
+  </div>
+  <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:24px">每档位套餐卡已明示住宿品牌清单，避免预期落差</p>
+</section>
+
+<div class="contact-bar"><div class="contact-bar-inner">
+  <span>咨询管家</span><a href="tel:13208888618">王先生 13208888618</a><a href="tel:17787288800">白先生 177872888
+cat > contact.html << 'EOF'
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>联系管家 · 云旅肆芳</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<header class="header"><div class="container header-inner">
+  <div class="logo">云旅肆芳</div>
+  <nav class="nav"><a href="index.html">首页</a><a href="packages.html">旅居套餐</a><a href="destinations.html">目的地</a><a href="whyus.html">为什么选我们</a><a href="hotels.html">合作酒店</a><a href="contact.html">联系管家</a></nav>
+</div></header>
+
+<section class="section container">
+  <h2 class="title">联系管家</h2>
+  <p class="subtitle">出发前两周就开始聊 · 全程在线</p>
+
+  <div class="grid-2" style="margin-bottom:40px">
+    <div class="card" style="text-align:center;padding:32px">
+      <h3 style="font-family:var(--font-serif);font-size:22px;margin-bottom:8px">王先生</h3>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:16px">资深定制师 · 10年云南经验</p>
+      <p style="font-size:18px;margin-bottom:12px"><a href="tel:13208888618" style="color:var(--gold-dark)">132 0888 8618</a></p>
+      <a href="tel:13208888618" class="btn btn-gold">一键拨打</a>
+    </div>
+    <div class="card" style="text-align:center;padding:32px">
+      <h3 style="font-family:var(--font-serif);font-size:22px;margin-bottom:8px">白先生</h3>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:16px">资深定制师 · 8年云南经验</p>
+      <p style="font-size:18px;margin-bottom:12px"><a href="tel:17787288800" style="color:var(--gold-dark)">177 8728 8800</a></p>
+      <a href="tel:17787288800" class="btn btn-gold">一键拨打</a>
+    </div>
+  </div>
+
+  <div class="card" style="max-width:600px;margin:0 auto">
+    <h3 style="font-family:var(--font-serif);font-size:20px;text-align:center;margin-bottom:24px">在线留言</h3>
+    <form id="consultForm">
+      <div class="form-group"><label>姓名</label><input name="name" required placeholder="您的称呼"></div>
+      <div class="form-group"><label>电话</label><input name="phone" required placeholder="您的手机号"></div>
+      <div class="form-group"><label>意向档位</label>
+        <select name="tier">
+          <option value="">请选择</option>
+          <option>中端 · 肆芳旅居 ¥8K-12K</option>
+          <option>高端 · 云旅私享 ¥20K+</option>
+        </select>
+      </div>
+      <div class="form-group"><label>出行人数</label><input name="people" placeholder="几人出行"></div>
+      <div class="form-group"><label>出行日期</label><input name="date" placeholder="预计出发月份"></div>
+      <div class="form-group"><label>特殊需求</label><textarea name="note" placeholder="老人/小孩/忌口/拍照/越野/其他"></textarea></div>
+      <button type="submit" class="btn" style="width:100%">提交咨询</button>
+    </form>
+  </div>
+</section>
+
+<div class="contact-bar"><div class="contact-bar-inner">
+  <span>咨询管家</span><a href="tel:13208888618">王先生 13208888618</a><a href="tel:17787288800">白先生 17787288800</a><a href="contact.html">在线留言</a>
+</div></div>
+<footer><div class="container"><span class="logo">云旅肆芳</span><p>云南深度旅居定制 · 2012-2026</p></div></footer>
+<script src="js/main.js"></script>
+</body>
+</html>
