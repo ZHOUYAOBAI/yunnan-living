@@ -1,48 +1,39 @@
-'use client';
+import styles from './page.module.css';
+
 export default function Home() {
-  const styles = {
-    body: { margin: 0, fontFamily: '-apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif', color: '#2d3748', background: '#fdfef8', lineHeight: 1.6 },
-    nav: { display: 'flex', justifyContent: 'space-between', padding: '20px 40px', alignItems: 'center', maxWidth: 1200, margin: '0 auto' },
-    logo: { fontSize: 20, fontWeight: 600, letterSpacing: '1px' },
-    hero: { textAlign: 'center', padding: '100px 20px 80px', maxWidth: 800, margin: '0 auto' },
-    heroTitle: { fontSize: 48, fontWeight: 700, marginBottom: 20, color: '#1a202c', lineHeight: 1.2 },
-    btn: { padding: '12px 32px', background: '#2d3748', color: '#fff', border: 'none', borderRadius: 30, fontSize: 16, cursor: 'pointer' },
-    section: { padding: '60px 40px', maxWidth: 1200, margin: '0 auto' },
-    sectionAlt: { background: '#f7fafc', padding: '60px 40px', textAlign: 'center' },
-    card: { background: '#fff', borderRadius: 12, overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', paddingBottom: 20 },
-    footer: { textAlign: 'center', padding: 40, color: '#a0aec0', fontSize: 13 }
-  };
   return (
-    <div style={styles.body}>
-      <nav style={styles.nav}>
-        <div style={styles.logo}>Yunnan Living</div>
-        <div style={{fontSize: 13, color: '#718096', border: '1px solid #e2e8f0', padding: '4px 10px', borderRadius: 20}}>EN / 中</div>
-      </nav>
-      <header style={styles.hero}>
-        <h1 style={styles.heroTitle}>让云“难”游变得不难</h1>
-        <p style={{fontSize: 18, color: '#718096', marginBottom: 40}}>外网高端定制 · 旅居换住 · 必备极简站</p>
-        <button style={styles.btn}>查看定制方案</button>
+    <div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", background: '#f5f5f7', color: '#1d1d1f', minHeight: '100vh' }}>
+      <header style={{ padding: '60px 20px 40px', textAlign: 'center', maxWidth: 800, margin: '0 auto' }}>
+        <h1 style={{ fontSize: 48, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 16 }}>云南旅居</h1>
+        <p style={{ fontSize: 21, color: '#86868b', fontWeight: 400 }}>让“云”难游变得不难 · 极简定制规划</p>
       </header>
-      <section style={styles.section}>
-        <h2 style={{fontSize: 28, fontWeight: 600, marginBottom: 40, textAlign: 'center'}}>核心服务</h2>
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 30}}>
-          <div style={styles.card}><div style={{height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, background: '#f7fafc'}}>🏔️</div><div style={{fontSize: 20, margin: '16px 20px 8px', fontWeight: 600}}>高端定制</div><div style={{fontSize: 14, color: '#718096', margin: '0 20px'}}>严选酒店，指定车型，真实信息流通。</div></div>
-          <div style={styles.card}><div style={{height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, background: '#f7fafc'}}>🏡</div><div style={{fontSize: 20, margin: '16px 20px 8px', fontWeight: 600}}>旅居换住</div><div style={{fontSize: 14, color: '#718096', margin: '0 20px'}}>多城市换住，适合长居及离退休干部。</div></div>
-          <div style={styles.card}><div style={{height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, background: '#f7fafc'}}>🌐</div><div style={{fontSize: 20, margin: '16px 20px 8px', fontWeight: 600}}>多语言引流</div><div style={{fontSize: 14, color: '#718096', margin: '0 20px'}}>面向全球，导私域（ChatsApp/微信）成交。</div></div>
+
+      <section style={{ maxWidth: 900, margin: '0 auto', padding: '0 20px 60px' }}>
+        <div style={{ background: '#fff', borderRadius: 24, overflow: 'hidden', boxShadow: '0 12px 48px rgba(0,0,0,0.04)', marginBottom: 40 }}>
+          <div style={{ aspectRatio: '16/9', background: 'url(https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80) center/cover', backgroundSize: 'cover' }} />
+          <div style={{ padding: 32 }}>
+            <h2 style={{ fontSize: 28, fontWeight: 600, marginBottom: 12 }}>5天经典路线</h2>
+            <p style={{ color: '#515154', fontSize: 17, lineHeight: 1.6 }}>可勾选生成专属行程，灵活延长旅居时间。</p>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gap: 16 }}>
+          {[
+            { day: 'Day 1', txt: '抵达昆明 · 适应气候' },
+            { day: 'Day 2', txt: '飞大理 · 洱海旅拍' },
+            { day: 'Day 3', txt: '丽江古城 · 玉龙雪山' },
+            { day: 'Day 4-5', txt: '普洱茶山 / 返程（旅居可延长）' }
+          ].map((it, i) => (
+            <div key={i} style={{ background: '#fff', borderRadius: 18, padding: '20px 24px', display: 'flex', alignItems: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+              <span style={{ fontSize: 15, color: '#86868b', width: 80, fontWeight: 600 }}>{it.day}</span>
+              <span style={{ fontSize: 18, fontWeight: 500 }}>{it.txt}</span>
+            </div>
+          ))}
         </div>
       </section>
-      <section style={styles.sectionAlt}>
-        <h2 style={{fontSize: 28, fontWeight: 600, marginBottom: 20}}>5天经典路线（可勾选生成）</h2>
-        <div style={{maxWidth: 600, margin: '0 auto', textAlign: 'left'}}>
-          <div style={{padding: '16px 0', borderBottom: '1px solid #e2e8f0'}}>Day 1: 抵达昆明 · 适应气候</div>
-          <div style={{padding: '16px 0', borderBottom: '1px solid #e2e8f0'}}>Day 2: 飞大理 · 洱海旅拍</div>
-          <div style={{padding: '16px 0', borderBottom: '1px solid #e2e8f0'}}>Day 3: 丽江古城 · 玉龙雪山</div>
-          <div style={{padding: '16px 0'}}>Day 4-5: 普洱茶山 / 返程（旅居可延长）</div>
-        </div>
-      </section>
-      <footer style={styles.footer}>
+
+      <footer style={{ textAlign: 'center', padding: '40px 20px', color: '#86868b', fontSize: 13 }}>
         <p>Yunnan Living · 云南旅游极简设计规划 © {new Date().getFullYear()}</p>
-        <p style={{fontSize: 12}}>让云“难”游变得不难 · 必备定制网站</p>
       </footer>
     </div>
   );
