@@ -220,10 +220,15 @@
           '<div class="plan-cta"><a class="btn btn--earthen" id="plan-send" href="./contact.html" data-nav>把这份方案发给管家</a>' +
           '<a class="btn btn--ink" href="tel:13208888618">直接拨打电话</a></div>' +
         '</div>';
-      // 把方案摘要塞到发给管家按钮的URL里
+      // 把方案摘要塞到发给管家按钮的URL里（含区县）
       var planBtn = document.getElementById("plan-send");
       if(planBtn){
-        var summary = ids.length + " 地州（" + ids.map(function(id){return STATE_META[id][0];}).join("、") + "）· 每地 " + per + " 天 · 共 " + total + " 天 · " + pax;
+        var placeNames = ids.map(function(id){
+          var sname = STATE_META[id][0];
+          var xs = xianPicks[id] ? Object.keys(xianPicks[id]) : [];
+          return xs.length ? sname + "（" + xs.join("、") + "）" : sname;
+        });
+        var summary = ids.length + " 个地方（" + placeNames.join("、") + "）· 每地 " + per + " 天 · 共 " + total + " 天 · " + pax;
         if(expList.length) summary += " · 体验：" + expList.join("、");
         if(svcList.length) summary += " · 服务：" + svcList.join("、");
         if(start) summary += " · 出发：" + start;
