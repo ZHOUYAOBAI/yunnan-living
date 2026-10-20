@@ -633,3 +633,15 @@ button{font-family:inherit;cursor:pointer;}
 
 /* Hero foot 服务说明——换一种字体 */
 .hero-foot { font-family: 'Noto Serif SC', serif !important; font-size: var(--fs-xs) !important; opacity: .75 !important; letter-spacing: .03em; }
+
+
+/* Hero 印章：读完文案后盖章 */
+.hero-stamp { animation: stamp-in 0.5s cubic-bezier(.2,1.4,.4,1) 3.5s forwards; }
+@keyframes stamp-in {
+  0% { opacity: 0; transform: rotate(-25deg) scale(2.2); }
+  60% { opacity: 1; transform: rotate(-5deg) scale(0.95); }
+  100% { opacity: 1; transform: rotate(-8deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-stamp { animation: none; opacity: 1; }
+}
