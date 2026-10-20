@@ -659,3 +659,14 @@ button{font-family:inherit;cursor:pointer;}
 @media (prefers-reduced-motion: reduce) {
   .hero-stamp { animation: none; opacity: 1; }
 }
+
+
+/* Hero 印章：厚重慢盖 */
+.hero-stamp { animation: stamp-in 1.4s cubic-bezier(.2,0,.3,1) 3.5s forwards; filter: blur(8px); }
+@keyframes stamp-in {
+  0% { opacity: 0; transform: rotate(-15deg) scale(2.5); filter: blur(12px); }
+  100% { opacity: 1; transform: rotate(-8deg) scale(1); filter: blur(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-stamp { animation: none; opacity: 1; filter: none; }
+}
