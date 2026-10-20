@@ -398,7 +398,7 @@
 
 /* way-card 图片轮播（淡入淡出，每张4秒） */
 (function(){
-  $$('[data-carousel]').forEach(function(car){
+  document.querySelectorAll('[data-carousel]').forEach(function(car){
     var imgs = car.querySelectorAll('.car-track img');
     if(imgs.length < 2) return;
     var i = 0;
