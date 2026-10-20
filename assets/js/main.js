@@ -52,12 +52,27 @@
         e.preventDefault();
         var name = leadForm.querySelector("[name=lead-name]").value.trim();
         var contact = leadForm.querySelector("[name=lead-contact]").value.trim();
+        var idea = leadForm.querySelector("[name=lead-idea]") ? leadForm.querySelector("[name=lead-idea]").value.trim() : "";
         if(!name || !contact) return;
-        var ok = $("#lead-ok");
-        if(ok){ ok.hidden = false; }
-        leadForm.querySelector("button[type=submit]").disabled = true;
+        // 不再假装成功——直接带参数跳到联系页，让用户在完整表单里补充
+        var q = "?name=" + encodeURIComponent(name) + "&contact=" + encodeURIComponent(contact);
+        if(idea) q += "&idea=" + encodeURIComponent(idea);
+        window.location.href = "./contact.html" + q;
       });
     }
+
+    // ---------- 读取URL参数，自动填入联系表单 ----------
+    (function(){
+      var params = new URLSearchParams(window.location.search);
+      if(!params.toString()) return;
+      var fn = document.getElementById("f-name");
+      var fc = document.getElementById("f-contact");
+      var fm = document.getElementById("f-more");
+      if(fn && params.get("name")) fn.value = params.get("name");
+      if(fc && params.get("contact")) fc.value = params.get("contact");
+      if(fm && params.get("idea")) fm.value = params.get("idea");
+      if(fm && params.get("plan")) fm.value = params.get("plan");
+    })();
   }
 
   /* ---------- FAQ 手风琴 ---------- */
@@ -182,9 +197,18 @@
             '<li>每日行程为节奏示意，管家按季节、天气与体力调整；</li>' +
             '<li>服务频率与交付标准以合同逐项约定、可勾选可验收。</li>' +
           '</ul></div>' +
-          '<div class="plan-cta"><a class="btn btn--earthen" href="./contact.html" data-nav>把这份方案发给管家</a>' +
+          '<div class="plan-cta"><a class="btn btn--earthen" id="plan-send" href="./contact.html" data-nav>把这份方案发给管家</a>' +
           '<a class="btn btn--ink" href="tel:13208888618">直接拨打电话</a></div>' +
         '</div>';
+      // 把方案摘要塞到发给管家按钮的URL里
+      var planBtn = document.getElementById("plan-send");
+      if(planBtn){
+        var summary = ids.length + " 地州（" + ids.map(function(id){return STATE_META[id][0];}).join("、") + "）· 每地 " + per + " 天 · 共 " + total + " 天 · " + pax;
+        if(expList.length) summary += " · 体验：" + expList.join("、");
+        if(svcList.length) summary += " · 服务：" + svcList.join("、");
+        if(start) summary += " · 出发：" + start;
+        planBtn.href = "./contact.html?plan=" + encodeURIComponent(summary);
+      }
     }
     pickTags.addEventListener("click", function(e){
       var btn = e.target.closest(".tag-btn"); if(!btn) return;

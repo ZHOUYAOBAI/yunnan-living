@@ -670,3 +670,14 @@ button{font-family:inherit;cursor:pointer;}
 @media (prefers-reduced-motion: reduce) {
   .hero-stamp { animation: none; opacity: 1; filter: none; }
 }
+
+/* 移动端印章缩小，避免遮挡标题 */
+@media (max-width: 768px) {
+  .hero-stamp {
+    right: 1rem !important;
+    top: 3.5rem !important;
+    font-size: 1.8rem !important;
+    padding: .6rem 1.2rem !important;
+    border-width: 3px !important;
+  }
+}
