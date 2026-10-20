@@ -9,6 +9,18 @@
   var $ = function(s, el){ return (el || document).querySelector(s); };
   var $$ = function(s, el){ return Array.prototype.slice.call((el||document).querySelectorAll(s)); };
 
+  /* ---------- 飞书 webhook：留言实时推送 ---------- */
+  var FEISHU_WEBHOOK = "https://open.feishu.cn/open-apis/bot/v2/hook/5a2cd03e-c269-49c6-83c9-51fd46ce0f07";
+  function sendFeishu(title, lines){
+    // 所有消息必须包含"云暖"关键词（飞书安全设置）
+    var text = "【云暖·旅居】" + title + "\n" + lines.join("\n");
+    return fetch(FEISHU_WEBHOOK, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({msg_type: "text", content: {text: text}})
+    }).catch(function(e){ return {ok:false}; });
+  }
+
   /* ---------- 平滑滚动 ---------- */
   document.documentElement.style.scrollBehavior = "smooth";
 
@@ -54,10 +66,18 @@
         var contact = leadForm.querySelector("[name=lead-contact]").value.trim();
         var idea = leadForm.querySelector("[name=lead-idea]") ? leadForm.querySelector("[name=lead-idea]").value.trim() : "";
         if(!name || !contact) return;
-        // 不再假装成功——直接带参数跳到联系页，让用户在完整表单里补充
-        var q = "?name=" + encodeURIComponent(name) + "&contact=" + encodeURIComponent(contact);
-        if(idea) q += "&idea=" + encodeURIComponent(idea);
-        window.location.href = "./contact.html" + q;
+        var btn = leadForm.querySelector("button[type=submit]");
+        if(btn){ btn.disabled = true; btn.textContent = "发送中…"; }
+        sendFeishu("新留言（快捷弹窗）", [
+          "称呼：" + name,
+          "联系方式：" + contact,
+          idea ? "想住哪/住多久：" + idea : "（未填）",
+          "来源页面：" + location.href
+        ]).then(function(){
+          var ok = $("#lead-ok");
+          if(ok){ ok.hidden = false; }
+          if(btn){ btn.textContent = "已提交"; }
+        });
       });
     }
 
@@ -318,11 +338,28 @@
       var name = ($("#f-name") || {}).value || "";
       var contact = ($("#f-contact") || {}).value || "";
       if(!name.trim() || !contact.trim()) return;
-      var sent = $("#form-sent");
-      if(sent){ sent.classList.add("is-show"); }
       var btn = form.querySelector("button[type=submit]");
-      if(btn){ btn.disabled = true; btn.textContent = "已提交"; }
-      try{ form.reset(); }catch(_){}
+      if(btn){ btn.disabled = true; btn.textContent = "发送中…"; }
+      var kind = ($("#f-kind") || {}).value || "";
+      var count = ($("#f-count") || {}).value || "";
+      var date = ($("#f-date") || {}).value || "";
+      var need = ($("#f-need") || {}).value || "";
+      var more = ($("#f-more") || {}).value || "";
+      var lines = [
+        "称呼：" + name,
+        "联系方式：" + contact
+      ];
+      if(kind) lines.push("意向住法：" + kind);
+      if(count) lines.push("出行人数：" + count);
+      if(date) lines.push("意向日期：" + date);
+      if(need) lines.push("特殊需求：" + need);
+      if(more) lines.push("想过的日子：" + more);
+      sendFeishu("新留言（联系页）", lines).then(function(){
+        var sent = $("#form-sent");
+        if(sent){ sent.classList.add("is-show"); }
+        if(btn){ btn.textContent = "已提交"; }
+        try{ form.reset(); }catch(_){}
+      });
     });
   }
 })();
