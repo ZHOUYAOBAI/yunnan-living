@@ -174,7 +174,7 @@ var SETTLED_CITY = {
 };
 
 var chart = echarts.init(document.getElementById("partner-map"));
-var path = []; // [{adcode, name}]
+var path = [];
 
 function renderGeo(geo, mapName, showLabels){
   echarts.registerMap(mapName, geo);
@@ -184,34 +184,39 @@ function renderGeo(geo, mapName, showLabels){
   chart.setOption({
     backgroundColor:"transparent",
     tooltip:{trigger:"item", formatter:function(p){
-      if(p.seriesType==="scatter") return "★ "+p.name;
+      if(p.seriesType==="scatter") return "★ "+p.name+"（已有伙伴）";
       return p.name;
     }},
     geo:{
-      map:mapName, roam:true, zoom:1.1,
-      label:{show:showLabels, fontSize:10, color:"#3a5a3a"},
+      map:mapName, roam:true, zoom:1.05,
+      label:{show:showLabels, fontSize:11, color:"#3a5a3a"},
       itemStyle:{areaColor:"#E8EFD8", borderColor:"#fff", borderWidth:1},
-      emphasis:{itemStyle:{areaColor:"#C6D9B8"}, label:{show:true, color:"#333"}}
+      emphasis:{itemStyle:{areaColor:"#C6D9B8"}, label:{show:true, color:"#333", fontWeight:"bold"}}
     },
     series:[{
       name:"已入驻", type:"scatter", coordinateSystem:"geo",
-      data:scatterData, symbolSize:9,
-      itemStyle:{color:"#C66B3D", shadowBlur:8, shadowColor:"rgba(198,107,61,.6)"},
-      label:{show:true, position:"right", formatter:"{b}", fontSize:10, color:"#3a5a3a"}
+      data:scatterData, symbolSize:10,
+      itemStyle:{color:"#C66B3D", shadowBlur:6, shadowColor:"rgba(198,107,61,.5)"},
+      label:{show:false},
+      emphasis:{label:{show:true, position:"right", formatter:"{b}", fontSize:11, color:"#333"}}
     }]
   }, true);
-  // 面包屑
   var bc = document.getElementById("map-breadcrumb");
-  var html = '<a href="javascript:;" style="color:var(--earthen-deep);cursor:pointer;" onclick="goLevel(-1)">全国</a>';
+  var html = '<a href="javascript:;" style="color:var(--earthen-deep);cursor:pointer;" onclick="goNational()">⌂ 全国</a>';
   path.forEach(function(p, i){
-    html += ' › <a href="javascript:;" style="color:var(--earthen-deep);cursor:pointer;" onclick="goLevel('+i+')">'+p.name+'</a>';
+    html += ' › <a href="javascript:;" style="color:var(--earthen-deep);cursor:pointer;" onclick="goTo('+i+')">'+p.name+'</a>';
   });
   bc.innerHTML = html;
 }
 
-window.goLevel = function(idx){
-  if(idx === -1){ path = []; loadGeo("100000","全国"); }
-  else { path = path.slice(0, idx+1); var p = path[path.length-1]; loadGeo(p.adcode, p.name, true); }
+window.goNational = function(){
+  path = [];
+  loadGeo("100000","全国");
+};
+window.goTo = function(i){
+  var target = path[i];
+  path = path.slice(0, i+1);
+  loadGeo(target.adcode, target.name, true);
 };
 
 function loadGeo(adcode, name, isReplay){
@@ -222,10 +227,9 @@ function loadGeo(adcode, name, isReplay){
     if(!r.ok) throw new Error("no subregion");
     return r.json();
   }).then(function(geo){
-    if(!isReplay){ path.push({adcode:adcode, name:name}); }
-    renderGeo(geo, "map_"+adcode, adcode !== "100000");
+    if(!isReplay && adcode !== "100000"){ path.push({adcode:adcode, name:name}); }
+    renderGeo(geo, "map_"+adcode, true);
   }).catch(function(){
-    // 没有下一级，只显示tip
     showTip(name);
   });
 }
@@ -246,17 +250,18 @@ function showTip(regionName){
 chart.on("click", function(p){
   if(!p || !p.name) return;
   if(p.seriesType === "scatter"){ showTip(p.name); return; }
-  // p.adcode 在 geo feature 里
-  var adcode = p.adcode || (p.data && p.data.adcode);
+  // 关键：从 p.data.properties 取 adcode
+  var adcode = null;
+  if(p.data && p.data.adcode) adcode = p.data.adcode;
+  else if(p.adcode) adcode = p.adcode;
   if(!adcode){ showTip(p.name); return; }
-  // 尝试下钻
   loadGeo(String(adcode), p.name, false);
 });
 
-// 初始
 loadGeo("100000","全国");
 window.addEventListener("resize", function(){chart.resize();});
 </script>
+
 
 
 </body>
