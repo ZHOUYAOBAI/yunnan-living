@@ -159,7 +159,6 @@
 <script src="./assets/js/search.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
-// 已入驻城市（省级下钻后用于高亮）
 var SETTLED_CITY = {
   "北京":[116.40,39.90],"天津":[117.20,39.13],"石家庄":[114.50,38.03],
   "沈阳":[123.43,41.80],"大连":[121.62,38.91],"长春":[125.32,43.82],"哈尔滨":[126.53,45.80],
@@ -170,16 +169,15 @@ var SETTLED_CITY = {
   "重庆":[106.55,29.56],"成都":[104.07,30.57],"贵阳":[106.63,26.65],
   "西安":[108.95,34.27],"兰州":[103.83,36.06],"乌鲁木齐":[87.62,43.83],
   "昆明":[102.83,24.88],"大理":[100.23,25.59],"丽江":[100.23,26.86],
-  "西双版纳":[100.80,22.01],"腾冲":[98.49,25.02],"楚雄":[101.55,25.04],
+  "景洪":[100.80,22.01],"腾冲":[98.49,25.02],"楚雄":[101.55,25.04],
   "曲靖":[103.80,25.49],"玉溪":[102.55,24.35],"保山":[99.16,25.11]
 };
-var SETTLED_PROV = ["北京","天津","上海","重庆","河北","辽宁","吉林","黑龙江","江苏","浙江","安徽","福建","江西","山东","河南","湖北","湖南","广东","广西","海南","四川","贵州","云南","西藏","陕西","甘肃","青海","宁夏","新疆","山西","内蒙古","云南"];
 
 var chart = echarts.init(document.getElementById("partner-map"));
-var breadcrumb = document.getElementById("map-breadcrumb");
+var path = []; // [{adcode, name}]
 
-function renderMap(geoJson, name, adcode){
-  echarts.registerMap(name, geoJson);
+function renderGeo(geo, mapName, showLabels){
+  echarts.registerMap(mapName, geo);
   var scatterData = Object.keys(SETTLED_CITY).map(function(k){
     return {name:k, value:SETTLED_CITY[k].concat([1])};
   });
@@ -190,8 +188,8 @@ function renderMap(geoJson, name, adcode){
       return p.name;
     }},
     geo:{
-      map:name, roam:true, zoom: adcode==="100000"?1.1:1.15,
-      label:{show: adcode!=="100000", fontSize:10, color:"#3a5a3a"},
+      map:mapName, roam:true, zoom:1.1,
+      label:{show:showLabels, fontSize:10, color:"#3a5a3a"},
       itemStyle:{areaColor:"#E8EFD8", borderColor:"#fff", borderWidth:1},
       emphasis:{itemStyle:{areaColor:"#C6D9B8"}, label:{show:true, color:"#333"}}
     },
@@ -202,62 +200,64 @@ function renderMap(geoJson, name, adcode){
       label:{show:true, position:"right", formatter:"{b}", fontSize:10, color:"#3a5a3a"}
     }]
   }, true);
+  // 面包屑
+  var bc = document.getElementById("map-breadcrumb");
+  var html = '<a href="javascript:;" style="color:var(--earthen-deep);cursor:pointer;" onclick="goLevel(-1)">全国</a>';
+  path.forEach(function(p, i){
+    html += ' › <a href="javascript:;" style="color:var(--earthen-deep);cursor:pointer;" onclick="goLevel('+i+')">'+p.name+'</a>';
+  });
+  bc.innerHTML = html;
+}
+
+window.goLevel = function(idx){
+  if(idx === -1){ path = []; loadGeo("100000","全国"); }
+  else { path = path.slice(0, idx+1); var p = path[path.length-1]; loadGeo(p.adcode, p.name, true); }
+};
+
+function loadGeo(adcode, name, isReplay){
+  var url = adcode === "100000"
+    ? "./assets/data/china.json"
+    : "https://geo.datav.aliyun.com/areas_v3/bound/"+adcode+"_full.json";
+  fetch(url).then(function(r){
+    if(!r.ok) throw new Error("no subregion");
+    return r.json();
+  }).then(function(geo){
+    if(!isReplay){ path.push({adcode:adcode, name:name}); }
+    renderGeo(geo, "map_"+adcode, adcode !== "100000");
+  }).catch(function(){
+    // 没有下一级，只显示tip
+    showTip(name);
+  });
 }
 
 function showTip(regionName){
   var tip = document.getElementById("map-tip");
   document.getElementById("tip-city").textContent = regionName;
-  var isSettled = SETTLED_CITY[regionName] || SETTLED_PROV.indexOf(regionName)>=0;
+  var isSettled = !!SETTLED_CITY[regionName];
   document.getElementById("tip-status").textContent = isSettled ? "✓ 已有伙伴" : "○ 可申请";
   document.getElementById("tip-desc").textContent = isSettled
-    ? "这里/这里已经有同行伙伴。你可以直接联系管家了解，也可以申请成为当地伙伴。"
+    ? "这里已经有一位同行伙伴。你可以直接联系管家，也可以申请成为这座城市的第二位。"
     : "这里还没有同行伙伴。提交申请后，云暖运营会在 3 个工作日内联系你。";
   tip.style.display = "block";
   document.querySelector('input[name="city"]').value = regionName;
+  tip.scrollIntoView({behavior:"smooth", block:"nearest"});
 }
-
-function loadLevel(adcode, name, parentAdcode){
-  var url;
-  if(adcode==="100000") url = "./assets/data/china.json";
-  else url = "https://geo.datav.aliyun.com/areas_v3/bound/"+adcode+"_full.json";
-  fetch(url).then(function(r){return r.json();})
-    .then(function(geo){
-      renderMap(geo, name, adcode);
-      // 面包屑
-      var crumbs = ['<a href="javascript:;" onclick="goNational()" style="color:var(--earthen-deep);">全国</a>'];
-      if(parentAdcode){
-        crumbs.push(" › "+parentAdcode.parentName);
-      }
-      crumbs.push(" › "+name);
-      breadcrumb.innerHTML = crumbs.join("");
-    });
-}
-
-window.goNational = function(){ loadLevel("100000","china",null); };
 
 chart.on("click", function(p){
-  if(!p.name) return;
-  // 散点：已入驻城市
-  if(p.seriesType==="scatter"){ showTip(p.name); return; }
-  // 地图区域
-  var adcode = p.adcode;
+  if(!p || !p.name) return;
+  if(p.seriesType === "scatter"){ showTip(p.name); return; }
+  // p.adcode 在 geo feature 里
+  var adcode = p.adcode || (p.data && p.data.adcode);
   if(!adcode){ showTip(p.name); return; }
-  // 全国视图：点省份下钻
-  if(String(adcode).endsWith("0000") && adcode!==100000){
-    loadLevel(String(adcode), p.name, {parentName:"全国"});
-  } else if(String(adcode).endsWith("00") && !String(adcode).endsWith("0000")){
-    // 市级视图：点城市
-    loadLevel(String(adcode), p.name, {parentName:p.name.replace(/市|省|自治区|壮族|回族|维吾尔|特别行政区/g,"")});
-  } else {
-    // 区县级：只显示tip
-    showTip(p.name);
-  }
+  // 尝试下钻
+  loadGeo(String(adcode), p.name, false);
 });
 
-// 初始加载全国
-loadLevel("100000","china",null);
+// 初始
+loadGeo("100000","全国");
 window.addEventListener("resize", function(){chart.resize();});
 </script>
+
 
 </body>
 </html>
