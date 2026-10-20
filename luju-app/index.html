@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>云暖・旅居 · 在云南，住进日子｜旅居体验包 · 16 州自选 · 旅居总管</title>
+<meta name="description" content="云暖・旅居——2012 年起的云南旅居（长住）品牌。不是来看云南，是住进云南的日子。旅居体验包一地一周起、16 州自由组合，一地一旅居总管，买菜、就医、水电、琐碎有人替你接住。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2210%22%20fill%3D%22%23B4603A%22/%3E%3Cpath%20d%3D%22M14%2047%20L27%2024%20L33%2035%20L39%2026%20L50%2047%20Z%22%20fill%3D%22%23EDE6D8%22/%3E%3Cpath%20d%3D%22M12%2051%20H52%22%20stroke%3D%22%23EDE6D8%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.9%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ============================================================
+   云暖・旅居 · 设计 token（继承自品牌站，全站唯一）
+   ============================================================ */
+:root{
+  --paper:#EDE6D8;      /* 纸米 主底 */
+  --paper-deep:#E1D8C4; /* 纸米深 分区/卡底 */
+  --paper-light:#F6F1E6;
+  --text:#3A3127;       /* 深棕褐 正文 */
+  --ink:#3A3127;
+  --text-soft:#5B4F40;  /* 次级文字 */
+  --moss:#40594C;       /* 松烟青 主强调 */
+  --moss-deep:#2F4A3E;  /* 深松烟青 深色区底 */
+  --earthen:#B4603A;    /* 陶土赤 唯一记忆点 */
+  --earthen-deep:#964E2B;
+  --mist:#E3E9E2;       /* 雾青 浅洗涤区 */
+  --indigo:#3B4E6E;     /* 靛蓝 扎染蓝 极少量 */
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --measure:34em;
+  --radius:3px;
+  --gutter:clamp(1.1rem,4vw,2.6rem);
+  --section-y:clamp(3.2rem,7vw,5.6rem);
+  --fs-xs:.78rem;
+  --fs-sm:.9rem;
+  --fs-body:1.02rem;
+  --fs-lg:1.22rem;
+  --fs-xl:1.6rem;
+  --fs-2xl:2rem;
+  --hair:1px solid rgba(58,49,39,.22);
+  --hair-soft:1px solid rgba(58,49,39,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:var(--fs-body);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--moss-deep);color:var(--paper);padding:.6rem 1rem;z-index:99;}
+.skip-link:focus{left:0;}
+::selection{background:var(--earthen);color:var(--paper-light);}
+
+/* ============ 布局基础 ============ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter);}
+.section{padding:var(--section-y) 0;}
+.section--deep{background:var(--paper-deep);}
+.section--mist{background:var(--mist);}
+.section--dark{background:var(--moss-deep);color:var(--paper);}
+
+/* ============ 眉标与标题 ============ */
+.eyebrow{
+  display:flex;align-items:center;gap:.55rem;
+  font-size:var(--fs-xs);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--earthen-deep);
+  font-weight:700;margin-bottom:.9rem;
+}
+.eyebrow::before{content:"";width:1.6rem;height:1px;background:currentColor;opacity:.6;}
+.eyebrow--on-dark{color:#D8B89C;}
+.h2{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(1.5rem,3.6vw,2.15rem);
+  line-height:1.35;letter-spacing:.02em;
+  text-wrap:balance;
+}
+.h2 em{font-style:normal;color:var(--earthen-deep);}
+.lede{
+  margin-top:1rem;max-width:var(--measure);
+  color:var(--text-soft);font-size:var(--fs-lg);
+  font-weight:300;
+}
+.section-head{margin-bottom:2.4rem;}
+.section-head--center{text-align:center;}
+.section-head--center .eyebrow{justify-content:center;}
+.section-head--center .lede{margin-inline:auto;}
+
+/* ============ 按钮 ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:48px;padding:.72rem 1.5rem;
+  border:1px solid transparent;border-radius:var(--radius);
+  font-size:var(--fs-sm);font-weight:500;letter-spacing:.04em;
+  transition:background .18s,border-color .18s,color .18s,transform .18s;
+  text-align:center;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;}
+.btn--earthen{background:var(--earthen-deep);color:var(--paper-light);}
+.btn--earthen:hover{background:#7f4122;}
+.btn--ghost{border-color:rgba(237,230,216,.55);color:var(--paper-light);background:transparent;}
+.btn--ghost:hover{border-color:var(--paper-light);background:rgba(237,230,216,.08);}
+.btn--ink{border-color:rgba(58,49,39,.4);color:var(--text);background:transparent;}
+.btn--ink:hover{border-color:var(--text);background:rgba(58,49,39,.05);}
+.btn--sm{min-height:44px;padding:.5rem 1.1rem;font-size:var(--fs-xs);}
+
+/* ============ 顶栏 ============ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(237,230,216,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:var(--hair-soft);
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:.7rem var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{display:inline-flex;align-items:center;gap:.6rem;min-height:44px;}
+.brand-seal{width:34px;height:34px;color:var(--earthen);flex:none;}
+.brand-name{font-family:var(--serif);font-weight:700;font-size:1.06rem;letter-spacing:.08em;color:var(--text);}
+.nav-toggle{
+  display:none;background:none;border:1px solid rgba(58,49,39,.3);
+  border-radius:var(--radius);width:44px;height:44px;
+  align-items:center;justify-content:center;color:var(--text);
+}
+.nav-toggle svg{width:22px;height:22px;}
+.icon-close{display:none;}
+.nav-toggle[aria-expanded="true"] .icon-menu{display:none;}
+.nav-toggle[aria-expanded="true"] .icon-close{display:block;}
+.site-nav ul{display:flex;gap:1.1rem;list-style:none;flex-wrap:wrap;}
+.site-nav a{
+  display:inline-flex;align-items:center;min-height:44px;
+  font-size:var(--fs-sm);color:var(--text-soft);letter-spacing:.04em;
+  border-bottom:2px solid transparent;padding:0 .15rem;
+}
+.site-nav a:hover{color:var(--text);}
+.site-nav a.is-active{color:var(--earthen-deep);border-bottom-color:var(--earthen);font-weight:600;}
+.nav-close{display:none;}
+
+/* ============ 视图容器 ============ */
+.view{display:none;}
+.view.is-active{display:block;animation:viewIn .4s ease both;}
+@keyframes viewIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* ============ Hero ============ */
+.hero{position:relative;min-height:min(86vh,760px);display:flex;align-items:center;overflow:hidden;}
+.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(47,74,62,.74),rgba(47,74,62,.46) 55%,rgba(47,74,62,.18));}
+.hero-seal{
+  position:absolute;right:7%;top:14%;width:92px;height:92px;color:rgba(237,230,216,.9);
+  opacity:.92;
+}
+.hero-seal svg{width:100%;height:100%;}
+.hero-content{position:relative;z-index:2;width:100%;padding:6rem var(--gutter) 7.5rem;}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.5rem;
+  color:#E7D9C2;font-size:var(--fs-xs);letter-spacing:.3em;font-weight:500;
+  margin-bottom:1.3rem;
+}
+.hero-kicker svg{width:15px;height:15px;stroke:#D8B89C;}
+.hero-title{
+  font-family:var(--serif);font-weight:900;color:var(--paper-light);
+  font-size:clamp(2.3rem,6.4vw,4.2rem);line-height:1.18;letter-spacing:.05em;
+}
+.hero-title .hl{display:block;}
+.hero-sub{
+  margin-top:1.1rem;font-size:clamp(1.15rem,2.6vw,1.6rem);
+  color:#F1E8D8;font-weight:300;letter-spacing:.1em;
+}
+.hero-foot{margin-top:.9rem;max-width:32em;color:#DCCFBA;font-size:var(--fs-sm);font-weight:300;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem;}
+.mountain-divider{display:block;width:100%;height:92px;margin-top:-92px;position:relative;z-index:3;pointer-events:none;}
+.mountain-divider .ridge-far{fill:var(--paper);}
+.mountain-divider .ridge-near{fill:var(--paper-deep);}
+.mountain-divider .mist-line{fill:none;stroke:rgba(58,49,39,.18);stroke-width:2;}
+
+/* ============ 四词说旅居 ============ */
+.words-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair-soft);border:var(--hair-soft);}
+.word-cell{background:var(--paper);padding:1.9rem 1.4rem;position:relative;}
+.word-char{
+  font-family:var(--serif);font-weight:900;font-size:3rem;line-height:1;
+  color:var(--earthen);display:block;margin-bottom:.8rem;
+}
+.word-cell h3{font-family:var(--serif);font-size:var(--fs-lg);margin-bottom:.5rem;}
+.word-cell p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+
+/* ============ 两种生活方式 ============ */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+.way-card{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  background:var(--paper-deep);border:var(--hair-soft);
+  display:flex;flex-direction:column;
+}
+.way-media{position:relative;height:280px;overflow:hidden;}
+.way-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.way-card:hover .way-media img{transform:scale(1.03);}
+.way-media .way-tag{
+  position:absolute;left:1rem;top:1rem;z-index:2;
+  background:rgba(47,74,62,.85);color:var(--paper-light);
+  font-size:var(--fs-xs);letter-spacing:.18em;padding:.35rem .8rem;border-radius:var(--radius);
+}
+.way-body{padding:1.7rem 1.7rem 1.9rem;display:flex;flex-direction:column;gap:.7rem;flex:1;}
+.way-body h3{font-family:var(--serif);font-size:var(--fs-xl);}
+.way-body .en{font-size:var(--fs-xs);letter-spacing:.2em;color:var(--earthen-deep);text-transform:uppercase;}
+.way-body p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+.way-body .btn{margin-top:auto;align-self:flex-start;}
+
+/* ============ 体验三步 ============ */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;counter-reset:step;}
+.step{
+  border:var(--hair-soft);border-radius:var(--radius);
+  background:var(--paper-light);padding:1.8rem 1.5rem;
+  position:relative;
+}
+.step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-family:var(--serif);font-weight:700;font-size:var(--fs-sm);
+  color:var(--earthen-deep);letter-spacing:.15em;
+}
+.step h3{font-family:var(--serif);font-size:var(--fs-lg);margin:.6rem 0 .5rem;}
+.step p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+
+/* ============ 生活主题 ============ */
+.topics{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.topic{border-top:2px solid var(--earthen);padding-top:1rem;}
+.topic .num{font-family:var(--serif);font-weight:700;color:var(--earthen-deep);font-size:var(--fs-xs);letter-spacing:.2em;}
+.topic h3{font-family:var(--serif);font-size:var(--fs-lg);margin:.45rem 0 .4rem;}
+.topic p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+
+/* ============ 州卡片 ============ */
+.state-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.state-card{
+  display:block;border-radius:var(--radius);overflow:hidden;
+  background:var(--paper-deep);border:var(--hair-soft);
+  transition:transform .22s,box-shadow .22s;
+}
+.state-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(58,49,39,.14);}
+.state-card .ph{position:relative;height:148px;overflow:hidden;}
+.state-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.state-card:hover .ph img{transform:scale(1.05);}
+.state-card .region-tag{
+  position:absolute;left:.55rem;top:.55rem;z-index:2;
+  background:rgba(47,74,62,.85);color:var(--paper-light);
+  font-size:.68rem;letter-spacing:.12em;padding:.22rem .55rem;border-radius:2px;
+}
+.state-card .body{display:flex;gap:1rem;padding:1rem 1.05rem;}
+.state-card .cn{
+  font-family:var(--serif);font-weight:700;font-size:1.24rem;line-height:1.28;
+  color:var(--text);
+  writing-mode:vertical-rl;text-orientation:upright;
+  letter-spacing:.14em;
+  min-height:5.9em;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.state-card .side{flex:1;min-width:0;display:flex;flex-direction:column;}
+.state-card .en{font-size:.68rem;color:var(--earthen-deep);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.state-card .desc{font-size:var(--fs-xs);color:var(--text-soft);margin-top:.34rem;font-weight:300;}
+.state-card .temp{font-size:.72rem;color:var(--moss);margin-top:auto;padding-top:.55rem;font-weight:500;}
+
+/* ============ 版块带 ============ */
+.belt{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:2.6rem 0 1.3rem;}
+.belt h3{font-family:var(--serif);font-size:var(--fs-xl);}
+.belt .sub{font-size:var(--fs-xs);letter-spacing:.2em;color:var(--text-soft);text-transform:uppercase;}
+
+/* ============ 目的地详情 ============ */
+.place-hero{position:relative;height:min(60vh,480px);display:flex;align-items:flex-end;overflow:hidden;}
+.place-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.place-hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(47,74,62,.25),rgba(47,74,62,.72));}
+.place-hero .inner{position:relative;z-index:2;padding:3rem 0 2.4rem;color:var(--paper-light);}
+.place-hero .crumb{font-size:var(--fs-xs);letter-spacing:.2em;color:#DCCFBA;margin-bottom:.8rem;display:inline-flex;align-items:center;gap:.4rem;min-height:44px;}
+.place-hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,4.6vw,3rem);}
+.place-hero .en{font-size:var(--fs-sm);letter-spacing:.22em;color:#E7D9C2;margin-top:.4rem;}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair-soft);border:var(--hair-soft);margin-top:-1px;}
+.fact{background:var(--paper);padding:1.3rem 1.4rem;}
+.fact .k{font-size:var(--fs-xs);letter-spacing:.16em;color:var(--earthen-deep);font-weight:600;}
+.fact .v{font-family:var(--serif);font-size:1.05rem;margin-top:.35rem;font-weight:600;}
+.fact .v small{font-weight:400;color:var(--text-soft);font-size:var(--fs-sm);}
+.place-food{border-left:3px solid var(--earthen);background:var(--paper-light);padding:1.3rem 1.5rem;border-radius:0 var(--radius) var(--radius) 0;}
+.place-food h3{font-family:var(--serif);font-size:var(--fs-lg);margin-bottom:.7rem;}
+.place-food dl{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.place-food dt{font-size:var(--fs-xs);color:var(--earthen-deep);letter-spacing:.14em;font-weight:600;margin-bottom:.25rem;}
+.place-food dd{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+
+/* ============ 体验包档位 ============ */
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+.tier{border:var(--hair);border-radius:var(--radius);background:var(--paper-light);padding:2rem 1.9rem;display:flex;flex-direction:column;gap:.65rem;}
+.tier--feature{border-color:var(--earthen);box-shadow:0 0 0 1px var(--earthen);}
+.tier .flag{font-size:var(--fs-xs);letter-spacing:.24em;color:var(--earthen-deep);font-weight:700;}
+.tier h3{font-family:var(--serif);font-size:var(--fs-xl);}
+.tier .tagline{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;padding-bottom:.6rem;border-bottom:var(--hair-soft);}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+.tier li{font-size:var(--fs-sm);color:var(--text-soft);display:flex;gap:.6rem;font-weight:300;}
+.tier li svg{width:16px;height:16px;flex:none;margin-top:.3rem;color:var(--moss);}
+.tier .price{font-family:var(--serif);font-weight:700;color:var(--moss-deep);font-size:1.08rem;}
+.tier .btn{margin-top:.6rem;align-self:flex-start;}
+
+/* ============ 时长 ============ */
+.durs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.dur{text-align:center;border:var(--hair-soft);border-radius:var(--radius);background:var(--paper-light);padding:1.5rem 1rem;}
+.dur .n{font-family:var(--serif);font-weight:900;font-size:2rem;color:var(--earthen);}
+.dur .unit{font-size:var(--fs-xs);color:var(--text-soft);letter-spacing:.2em;}
+.dur p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;margin-top:.5rem;}
+
+/* ============ 组合器 ============ */
+.composer{border:var(--hair);border-radius:var(--radius);background:var(--paper-light);overflow:hidden;}
+.composer-head{padding:1.5rem 1.8rem;background:var(--moss-deep);color:var(--paper-light);}
+.composer-head h3{font-family:var(--serif);font-size:var(--fs-xl);}
+.composer-head p{font-size:var(--fs-sm);color:#DCCFBA;font-weight:300;margin-top:.3rem;}
+.composer-body{padding:1.5rem 1.8rem;}
+.choose-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 1.4rem;}
+.tag-btn{
+  display:inline-flex;align-items:center;gap:.45rem;min-height:44px;
+  border:1px solid rgba(58,49,39,.3);border-radius:var(--radius);
+  background:transparent;color:var(--text-soft);padding:0 .9rem;
+  font-size:var(--fs-sm);transition:all .15s;
+}
+.tag-btn:hover{border-color:var(--earthen);}
+.tag-btn.is-on{background:var(--earthen-deep);border-color:var(--earthen-deep);color:var(--paper-light);}
+.composer-result{margin-top:1.2rem;border-top:var(--hair-soft);padding-top:1.2rem;display:none;}
+.composer-result.is-show{display:block;animation:viewIn .3s ease both;}
+.composer-result .sum{font-family:var(--serif);font-size:var(--fs-lg);margin-bottom:.8rem;}
+.composer-result .sum b{color:var(--earthen-deep);}
+.result-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem;}
+.result-list li{display:flex;justify-content:space-between;gap:1rem;font-size:var(--fs-sm);color:var(--text-soft);border-bottom:var(--hair-soft);padding:.45rem 0;}
+.result-list li b{color:var(--text);font-weight:600;}
+.composer-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;}
+.composer-note{font-size:var(--fs-xs);color:var(--text-soft);margin-top:.9rem;font-weight:300;}
+
+/* ============ 总管 ============ */
+.promise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-bottom:2.6rem;}
+.promise{border:var(--hair-soft);border-radius:var(--radius);background:var(--paper-light);padding:1.6rem 1.6rem;text-align:center;}
+.promise .n{font-family:var(--serif);font-weight:900;font-size:2.3rem;color:var(--earthen);line-height:1;}
+.promise .u{font-size:var(--fs-xs);letter-spacing:.2em;color:var(--text-soft);margin-top:.35rem;}
+.promise h3{font-family:var(--serif);font-size:var(--fs-lg);margin-top:.5rem;}
+.promise p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;margin-top:.35rem;}
+.svc{border:var(--hair-soft);border-radius:var(--radius);background:var(--paper-light);padding:1.4rem 1.5rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.1rem;align-items:start;margin-bottom:.9rem;}
+.svc .no{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--earthen-deep);padding-top:.15rem;}
+.svc h3{font-family:var(--serif);font-size:var(--fs-lg);}
+.svc .freq{font-size:var(--fs-xs);color:var(--moss);font-weight:600;letter-spacing:.08em;white-space:nowrap;border:1px solid rgba(64,89,76,.4);border-radius:2px;padding:.18rem .55rem;margin-left:.6rem;}
+.svc p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;margin-top:.3rem;max-width:46em;}
+.guards{border-left:3px solid var(--earthen);background:var(--paper-light);padding:1.3rem 1.5rem;border-radius:0 var(--radius) var(--radius) 0;}
+.guards h3{font-family:var(--serif);font-size:var(--fs-lg);margin-bottom:.7rem;}
+.guards ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.guards li{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;display:flex;gap:.6rem;}
+.guards li svg{width:16px;height:16px;flex:none;margin-top:.32rem;color:var(--earthen-deep);}
+.guard-note{margin-top:1rem;font-family:var(--serif);color:var(--moss-deep);font-size:1.02rem;}
+
+/* ============ 生活方式 ============ */
+.live-block{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border:var(--hair-soft);border-radius:var(--radius);overflow:hidden;background:var(--paper-light);margin-bottom:2.2rem;}
+.live-block .media{min-height:300px;}
+.live-block .media img{width:100%;height:100%;object-fit:cover;}
+.live-block .body{padding:2rem 2rem;display:flex;flex-direction:column;gap:.7rem;}
+.live-block .kicker{font-size:var(--fs-xs);letter-spacing:.26em;color:var(--earthen-deep);font-weight:700;text-transform:uppercase;}
+.live-block h3{font-family:var(--serif);font-size:var(--fs-xl);}
+.live-block .en{font-size:var(--fs-xs);letter-spacing:.2em;color:var(--text-soft);text-transform:uppercase;}
+.live-block p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+.live-block .btn{margin-top:.4rem;align-self:flex-start;}
+.live-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair-soft);border:var(--hair-soft);margin-top:1.2rem;}
+.live-meta .m{background:var(--paper);padding:1.1rem 1.2rem;}
+.live-meta .k{font-size:var(--fs-xs);color:var(--earthen-deep);letter-spacing:.14em;font-weight:600;}
+.live-meta .v{font-family:var(--serif);font-size:1.02rem;font-weight:700;margin-top:.3rem;}
+.live-meta .v small{display:block;font-family:var(--sans);font-weight:400;font-size:var(--fs-xs);color:var(--text-soft);margin-top:.15rem;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair-soft);border:var(--hair-soft);}
+.stat{background:var(--paper-light);padding:1.6rem 1.3rem;text-align:center;}
+.stat .n{font-family:var(--serif);font-weight:900;font-size:2.1rem;color:var(--moss-deep);line-height:1;}
+.stat .l{font-size:var(--fs-xs);letter-spacing:.16em;color:var(--text-soft);margin-top:.5rem;}
+
+/* ============ 味觉版图 ============ */
+.food-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;}
+.food-card{border:var(--hair-soft);border-radius:var(--radius);background:var(--paper-light);overflow:hidden;display:flex;flex-direction:column;}
+.food-card .top{padding:1.2rem 1.4rem 1rem;border-bottom:var(--hair-soft);}
+.food-card .name{display:flex;align-items:baseline;gap:.55rem;}
+.food-card .cn{font-family:var(--serif);font-weight:700;font-size:1.1rem;}
+.food-card .en{font-size:.66rem;color:var(--earthen-deep);letter-spacing:.08em;}
+.food-card .intro{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;margin-top:.5rem;}
+.food-card .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;padding:1.1rem 1.4rem 1.3rem;}
+.food-card .cell .k{font-size:.68rem;color:var(--earthen-deep);letter-spacing:.14em;font-weight:600;margin-bottom:.2rem;}
+.food-card .cell .v{font-size:var(--fs-xs);color:var(--text-soft);font-weight:300;line-height:1.6;}
+
+/* ============ 信任 ============ */
+.pledges{display:flex;flex-direction:column;gap:.8rem;}
+.pledge{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;border:var(--hair-soft);border-radius:var(--radius);background:var(--paper-light);padding:1.3rem 1.5rem;align-items:start;}
+.pledge .no{font-family:var(--serif);font-weight:700;color:var(--earthen-deep);font-size:1.1rem;padding-top:.1rem;}
+.pledge h3{font-family:var(--serif);font-size:1.06rem;}
+.pledge p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;margin-top:.25rem;}
+.insures{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.insure{border:var(--hair-soft);border-radius:var(--radius);background:var(--paper-light);padding:1.5rem 1.4rem;position:relative;}
+.insure .no{font-family:var(--serif);color:var(--earthen);font-size:var(--fs-xl);font-weight:900;}
+.insure h3{font-family:var(--serif);font-size:1.08rem;margin:.5rem 0 .3rem;}
+.insure p{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;}
+
+/* ============ 联系 ============ */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
+.contact-card{border:var(--hair);border-radius:var(--radius);background:var(--paper-light);padding:1.9rem 1.8rem;}
+.contact-card .who{font-size:var(--fs-xs);letter-spacing:.22em;color:var(--earthen-deep);font-weight:700;}
+.contact-card h3{font-family:var(--serif);font-size:var(--fs-xl);margin:.5rem 0 .4rem;}
+.contact-card .bio{font-size:var(--fs-sm);color:var(--text-soft);font-weight:300;margin-bottom:1.1rem;}
+.tel-line{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-top:var(--hair-soft);padding-top:1rem;flex-wrap:wrap;}
+.tel-line .num{font-family:var(--serif);font-weight:700;font-size:1.15rem;letter-spacing:.04em;}
+.form{border:var(--hair);border-radius:var(--radius);background:var(--paper-light);padding:2rem 1.9rem;margin-top:1.6rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.field{margin-bottom:1.05rem;}
+.field label{display:block;font-size:var(--fs-sm);font-weight:600;margin-bottom:.35rem;}
+.field label .req{color:var(--earthen-deep);}
+.field input,.field select,.field textarea{
+  width:100%;min-height:48px;padding:.6rem .8rem;
+  border:1px solid rgba(58,49,39,.32);border-radius:var(--radius);
+  background:var(--paper-light);color:var(--text);
+  font-family:inherit;font-size:var(--fs-sm);
+}
+.field textarea{min-height:110px;resize:vertical;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--indigo);outline-offset:1px;}
+.form-note{font-size:var(--fs-xs);color:var(--text-soft);font-weight:300;margin-top:.8rem;}
+.form-sent{display:none;margin-top:1rem;border-left:3px solid var(--moss);background:var(--mist);padding:1rem 1.2rem;font-size:var(--fs-sm);color:var(--moss-deep);}
+.form-sent.is-show{display:block;animation:viewIn .3s ease both;}
+
+/* ============ CTA 条 ============ */
+.cta-band{background:var(--moss-deep);color:var(--paper-light);padding:var(--section-y) 0;}
+.cta-band .h2{color:var(--paper-light);}
+.cta-band .lede{color:#DCCFBA;}
+.cta-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.8rem;}
+.cta-tels{display:flex;gap:2.4rem;flex-wrap:wrap;margin-top:2.2rem;border-top:1px solid rgba(237,230,216,.22);padding-top:1.5rem;}
+.cta-tels .t{font-size:var(--fs-xs);letter-spacing:.18em;color:#D8B89C;}
+.cta-tels .num{font-family:var(--serif);font-size:1.15rem;color:var(--paper-light);letter-spacing:.04em;}
+
+/* ============ 页脚 ============ */
+.site-footer{background:var(--paper-deep);border-top:var(--hair-soft);padding:3rem 0 2.2rem;font-size:var(--fs-sm);}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2rem;}
+.footer-grid h4{font-family:var(--serif);font-size:1rem;margin-bottom:.8rem;letter-spacing:.06em;}
+.footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.footer-grid a{color:var(--text-soft);font-size:var(--fs-sm);}
+.footer-grid a:hover{color:var(--text);}
+.footer-grid .brand-col p{color:var(--text-soft);font-weight:300;font-size:var(--fs-sm);max-width:20em;margin-top:.5rem;}
+.footer-grid .tel{color:var(--text-soft);font-family:var(--serif);letter-spacing:.03em;}
+.footer-bottom{margin-top:2.4rem;padding-top:1.4rem;border-top:var(--hair-soft);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--text-soft);font-size:var(--fs-xs);}
+.footer-bottom .credit{font-weight:300;}
+
+/* ============ 响应式 ============ */
+@media(max-width:960px){
+  .state-grid{grid-template-columns:repeat(3,1fr);}
+  .words-grid{grid-template-columns:repeat(2,1fr);}
+  .topics{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:760px){
+  .nav-toggle{display:flex;}
+  .site-nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    height:100vh;height:100dvh;
+    background:rgba(237,230,216,.98);backdrop-filter:blur(10px);
+    display:none;align-items:center;justify-content:center;
+  }
+  .site-nav.is-open{display:flex;}
+  .site-nav ul{flex-direction:column;align-items:center;gap:.4rem;text-align:center;}
+  .site-nav a{font-size:1.1rem;min-height:52px;border-bottom:none;}
+  .site-nav a.is-active{border-bottom:2px solid var(--earthen);}
+  .nav-close{
+    position:absolute;top:1rem;right:1.2rem;width:44px;height:44px;
+    background:none;border:1px solid rgba(58,49,39,.3);border-radius:var(--radius);
+    color:var(--text);font-size:1.2rem;
+  }
+  .ways,.tiers,.contacts{grid-template-columns:1fr;}
+  .steps,.durs,.promise-grid,.stats{grid-template-columns:1fr;}
+  .live-block{grid-template-columns:1fr;}
+  .live-block .media{min-height:220px;}
+  .food-grid{grid-template-columns:1fr;}
+  .state-grid{grid-template-columns:repeat(2,1fr);}
+  .insures{grid-template-columns:1fr;}
+  .food-card .grid{grid-template-columns:repeat(2,1fr);}
+  .place-food dl{grid-template-columns:repeat(2,1fr);}
+  .facts{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:1.6rem;}
+  .hero-seal{display:none;}
+  .hero{min-height:78vh;}
+  .cta-tels{flex-direction:column;gap:1rem;}
+}
+@media(max-width:480px){
+  .state-grid{grid-template-columns:1fr 1fr;}
+  .state-card .ph{height:118px;}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#/" data-nav aria-label="云暖旅居 · 返回首页">
+      <svg class="brand-seal" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="3" y="3" width="58" height="58" rx="10" fill="currentColor"/>
+        <path d="M14 47 L27 24 L33 35 L39 26 L50 47 Z" fill="#EDE6D8"/>
+        <path d="M12 51 H52" stroke="#EDE6D8" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+      </svg>
+      <span class="brand-name">云暖・旅居</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单">
+      <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="全站导航">
+      <button class="nav-close" type="button" aria-label="关闭菜单">×</button>
+      <ul>
+        <li><a href="#/" data-nav>首页</a></li>
+        <li><a href="#/destination" data-nav>目的地</a></li>
+        <li><a href="#/experience" data-nav>体验包</a></li>
+        <li><a href="#/concierge" data-nav>旅居总管</a></li>
+        <li><a href="#/living" data-nav>生活方式</a></li>
+        <li><a href="#/food" data-nav>美食</a></li>
+        <li><a href="#/trust" data-nav>信任</a></li>
+        <li><a href="#/contact" data-nav>联系</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div id="app" class="wrap" style="max-width:none;padding:0;"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="brand-col">
+        <a class="brand" href="#/" data-nav>
+          <svg class="brand-seal" viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="10" fill="currentColor"/><path d="M14 47 L27 24 L33 35 L39 26 L50 47 Z" fill="#EDE6D8"/><path d="M12 51 H52" stroke="#EDE6D8" stroke-width="3" stroke-linecap="round" opacity="0.9"/></svg>
+          <span class="brand-name">云暖・旅居</span>
+        </a>
+        <p>旅居（长住）品牌 · 2012 年起。不是来看云南，是住进云南的日子。服务清单与医疗边界写进合同。</p>
+      </div>
+      <div>
+        <h4>站点</h4>
+        <ul>
+          <li><a href="#/destination" data-nav>目的地 · 16 州版图</a></li>
+          <li><a href="#/experience" data-nav>旅居体验包</a></li>
+          <li><a href="#/concierge" data-nav>旅居总管</a></li>
+          <li><a href="#/living" data-nav>生活方式</a></li>
+          <li><a href="#/food" data-nav>味觉版图</a></li>
+          <li><a href="#/trust" data-nav>信任中心</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>说明</h4>
+        <ul>
+          <li><a href="#/trust" data-nav>医疗边界与服务清单</a></li>
+          <li><a href="#/contact" data-nav>联系管家</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>找到我们</h4>
+        <ul>
+          <li class="tel">王先生 · 132 0888 8618</li>
+          <li class="tel">白先生 · 177 8728 8800</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 云暖・旅居 · 在云南，住进日子</span>
+      <span class="credit">主视觉摄影：玉龙雪山群峰 · Wikimedia Commons（CC BY-SA 3.0）</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   数据：16 州 · 五类区域 · 味觉版图（源自品牌站内容）
+   ============================================================ */
+const IMG = {
+  yunnan: "https://aka.doubaocdn.com/s/rZE4CJJaIa",
+  dest: "https://aka.doubaocdn.com/s/Uvx5WReIQf",
+  food: "https://aka.doubaocdn.com/s/i0UQl8MMqw",
+  snowpeaks: "https://aka.doubaocdn.com/s/zMXuJUQO4X",
+  cormorants: "https://aka.doubaocdn.com/s/F0zgvJno4p",
+  pagoda: "https://aka.doubaocdn.com/s/EGOWEJFCNr",
+  terraces: "https://aka.doubaocdn.com/s/OaZaeHKML6",
+  monastery: "https://aka.doubaocdn.com/s/wCr629YTdC"
+};
+const REGIONS = [
+  { id:"nw", name:"滇西北", en:"Northwest Yunnan", note:"雪山 · 古城 · 高原牧场", states:["diqing","nujiang","lijiang"] },
+  { id:"w",  name:"滇西",   en:"West Yunnan",      note:"苍洱 · 温泉 · 古镇",    states:["dali","baoshan"] },
+  { id:"sw", name:"滇西南", en:"Southwest Yunnan", note:"傣乡 · 佤山 · 边城",    states:["dehong","lincang"] },
+  { id:"s",  name:"滇南",   en:"South Yunnan",     note:"茶山 · 雨林 · 傣乡",    states:["puer","xishuangbanna"] },
+  { id:"c",  name:"滇中",   en:"Central Yunnan",   note:"春城四季 · 高原慢生活", states:["chuxiong","kunming","yuxi"] },
+  { id:"ne", name:"滇东北", en:"Northeast Yunnan", note:"火腿之乡 · 乌蒙山",    states:["qujing","zhaotong"] },
+  { id:"se", name:"滇东南", en:"Southeast Yunnan", note:"梯田 · 古城 · 喀斯特",  states:["honghe","wenshan"] }
+];
+const STATES = [
+  { id:"diqing", cn:"迪庆", en:"Deqen · Land of Snow", desc:"香格里拉的静谧高处", temps:["年均 6.3 ℃","最热 13.9 ℃","最冷 -2.3 ℃"], dress:"夏长袖与薄外套 · 冬羽绒服", img:"https://aka.doubaocdn.com/s/YX3yqLWLXF",
+    foodIntro:"香格里拉的高原味道：酥油茶暖身，牦牛肉干巴越嚼越香，松茸在雨季上桌。", food:{dish:"酥油茶配糌粑 · 牦牛肉干巴 · 琵琶肉", bf:"酥油茶 · 青稞饼 · 藏式包子", season:"吉迪松茸 · 高山牦牛 · 尼西黑陶鸡", drink:"酥油茶 · 青稞酒 · 藏红花茶", street:"糌粑 · 奶渣 · 烤土豆"} },
+  { id:"nujiang", cn:"怒江", en:"Nujiang · The Deep Valley", desc:"三江并流的峡谷人家", temps:["年均 21 ℃","最热 26 ℃","最冷 15 ℃"], dress:"夏短袖 · 冬短袖", img:"https://aka.doubaocdn.com/s/Z7GxfStBZi",
+    foodIntro:"峡谷里的家宴：漆油鸡温热，傈僳手抓饭摆满一桌，日子贴着江声过。", food:{dish:"漆油鸡 · 傈僳手抓饭 · 怒江鱼", bf:"荞麦粑粑 · 包谷稀饭 · 石板粑粑", season:"高山老窝火腿 · 独龙牛 · 竹笋", drink:"杵酒 · 酥油茶 · 米酒", street:"琵琶肉 · 荞饼 · 烤玉米"} },
+  { id:"lijiang", cn:"丽江", en:"Lijiang · Old Town & Snow", desc:"古城与雪山的对望", temps:["年均 12.9 ℃","最热 18.6 ℃","最冷 6.0 ℃"], dress:"夏短袖加薄外套 · 冬羽绒服", img:"https://aka.doubaocdn.com/s/bnadSeOKtL",
+    foodIntro:"雪山下的古城，腊排骨在火塘边咕嘟，鸡豆凉粉配一碗酥油茶。", food:{dish:"腊排骨火锅 · 纳西烤鱼 · 黑山羊火锅", bf:"鸡豆凉粉 · 丽江粑粑 · 米灌肠", season:"丽江雪桃 · 高山牦牛 · 野生菌", drink:"酥油茶 · 青稞酒 · 木瓜酒", street:"丽江粑粑 · 纳西米糕 · 烤洋芋"} },
+  { id:"dali", cn:"大理", en:"Dali · Between Cangshan & Erhai", desc:"苍山洱海之间", temps:["年均 15.1 ℃","最热 20.1 ℃","最冷 8.7 ℃"], dress:"夏短袖薄衫 · 冬羽绒服", img:"https://aka.doubaocdn.com/s/1CtLTMu7tG",
+    foodIntro:"洱海边慢下来，乳扇的奶香配三道茶的苦甘，日子跟着苍山的云走。", food:{dish:"酸辣鱼 · 永平黄焖鸡 · 乳扇", bf:"扒肉饵丝 · 喜洲粑粑 · 凉鸡米线", season:"苍山松茸 · 洱海弓鱼 · 诺邓火腿", drink:"三道茶 · 梅子酒 · 木瓜醋", street:"烤乳扇 · 凉粉 · 雕梅"} },
+  { id:"baoshan", cn:"保山", en:"Baoshan · Volcanic Warmth", desc:"腾冲的温泉与古镇", temps:["年均 15.9 ℃","最热 21.3 ℃","最冷 8.5 ℃"], dress:"夏短袖薄衫 · 冬毛衣加外套", img:"https://aka.doubaocdn.com/s/KP6WGjHYsi",
+    foodIntro:"腾冲的温泉边城：稀豆粉配油条，火瓢牛肉一锅温热，银杏在秋日铺满巷。", food:{dish:"火瓢牛肉 · 大救驾 · 腾冲饵丝", bf:"稀豆粉 · 腾冲饵丝 · 烧肉米线", season:"银杏果 · 固东豆腐 · 界头土鸡", drink:"温泉茶 · 苏子粑粑 · 木瓜醋", street:"鲜花饼 · 荞糕 · 烤饵块"} },
+  { id:"dehong", cn:"德宏", en:"Dehong · Border Banyan Land", desc:"边境线上的傣乡", temps:["年均 19.6 ℃","最热 24.0 ℃","最冷 12.2 ℃"], dress:"夏短袖 · 冬薄外套", img:"https://aka.doubaocdn.com/s/qcs4Yl7Iws",
+    foodIntro:"瑞丽江畔的傣乡：撒撇开胃，泡鲁达清甜，芒市的烟火从烧烤摊升起。", food:{dish:"撒撇 · 傣味烤鸡 · 酸笋煮鱼", bf:"稀豆粉米线 · 泼水粑粑 · 竹筒饭", season:"火烧干巴 · 树番茄 · 鸡枞", drink:"泡鲁达 · 柠檬水 · 糯米香茶", street:"舂鸡脚 · 烤乳扇 · 撒苤"} },
+  { id:"lincang", cn:"临沧", en:"Lincang · Tea & Wa Land", desc:"佤乡与茶山", temps:["年均 17.3 ℃","最热 21.6 ℃","最冷 11.2 ℃"], dress:"夏短袖薄衫 · 冬薄外套", img:"https://aka.doubaocdn.com/s/h6Infs3rzQ",
+    foodIntro:"佤乡与茶山之间：鸡肉烂饭一锅浓稠，舂鸡脚酸辣，冰岛的茶汤回甘。", food:{dish:"佤族鸡肉烂饭 · 舂鸡脚 · 火腿木瓜鸡", bf:"糯米饭团 · 豆豉米干 · 米线", season:"冰岛茶鲜叶 · 佤山黑猪 · 鸡枞", drink:"冰岛茶 · 佤族水酒 · 米干汤", street:"舂鱼 · 佤味烤串 · 稀饭"} },
+  { id:"puer", cn:"普洱", en:"Puer · Forest Tea Mountains", desc:"茶山雾里的栖居", temps:["年均 19.3 ℃","最热 23.0 ℃","最冷 13.7 ℃"], dress:"夏短袖薄衫 · 冬薄外套", img:"https://aka.doubaocdn.com/s/6mAbzqVvg9",
+    foodIntro:"茶山雾里过日子：哈尼蘸水鸡开胃，墨江紫米香糯，普洱的茶比日子更长。", food:{dish:"哈尼蘸水鸡 · 酸笋鸡 · 普洱豆汤米干", bf:"紫米米线 · 豆汤米干 · 糯米饭", season:"普洱茶鲜叶 · 墨江紫米 · 小粒咖啡", drink:"普洱茶 · 小粒咖啡 · 酸角汁", street:"舂干巴 · 烤糯玉米 · 芭蕉叶粑粑"} },
+  { id:"xishuangbanna", cn:"西双版纳", en:"Xishuangbanna · Rainforest", desc:"北回归线的雨林", temps:["年均 21.8 ℃","最热 26.1 ℃","最冷 16.5 ℃"], dress:"夏短袖短裤 · 冬薄外套", img:"https://aka.doubaocdn.com/s/Bkh8GuRmSr",
+    foodIntro:"雨林里的傣味：香茅草烤鱼带着草木香，柠檬撒清酸，夜晚交给烧烤摊。", food:{dish:"香茅草烤鱼 · 傣味酸肉 · 菠萝紫米饭", bf:"糯米饭团 · 竹筒饭 · 舂米线", season:"热带水果 · 江鱼 · 野笋", drink:"柠檬撒 · 椰子水 · 傣家米酒", street:"傣味烧烤 · 舂木瓜 · 烤鸡"} },
+  { id:"chuxiong", cn:"楚雄", en:"Chuxiong · Yi Heartland", desc:"彝州的山川旧事", temps:["年均 15.6 ℃","最热 20.9 ℃","最冷 8.2 ℃"], dress:"夏短袖 · 冬厚外套", img:"https://aka.doubaocdn.com/s/S48roTU4Jf",
+    foodIntro:"彝家的火塘与菌子：菌子火锅一锅鲜掉眉毛，坨坨肉在彝家宴上端上桌。", food:{dish:"菌子火锅 · 彝家坨坨肉 · 牟定腐乳", bf:"苦荞粑粑 · 米线 · 稀豆粉", season:"野生菌 · 南华鸡枞 · 彝家腊肉", drink:"荞酒 · 米酒 · 普洱茶", street:"烤洋芋 · 荞糕 · 烧饵块"} },
+  { id:"kunming", cn:"昆明", en:"Kunming · City of Eternal Spring", desc:"春城的晨昏", temps:["年均 15.9 ℃","最热 20.7 ℃","最冷 9.3 ℃"], dress:"夏短袖 · 冬厚外套", img:"https://aka.doubaocdn.com/s/0qReRRqoTy",
+    foodIntro:"省会不急，一碗米线从早吃到晚，菌子的香气在菜市里飘一整天。", food:{dish:"过桥米线 · 汽锅鸡 · 牛肝菌炒饭", bf:"烧饵块 · 豆花米线 · 稀豆粉油条", season:"雨季见手青 · 松茸炖鸡 · 云南火腿", drink:"普洱茶 · 米凉虾 · 木瓜水", street:"官渡粑粑 · 鲜花饼 · 烤乳扇"} },
+  { id:"yuxi", cn:"玉溪", en:"Yuxi · Lakes & Light", desc:"高原湖群的光", temps:["年均 16.0 ℃","最热 20.8 ℃","最冷 8.5 ℃"], dress:"夏夏装 · 冬外套", img:"https://aka.doubaocdn.com/s/1ft1ODaNP9",
+    foodIntro:"抚仙湖边慢城：鳝鱼米线一碗鲜，铜锅煮鱼守着湖，豆末糖甜得克制。", food:{dish:"鳝鱼米线 · 澄江铜锅鱼 · 抚仙湖铜锅洋芋饭", bf:"鳝鱼米线 · 稀饭 · 豆末糖", season:"抚仙湖鱼 · 藕 · 青头菌", drink:"酸角汁 · 木瓜水 · 普洱茶", street:"豆末糖 · 凉米线 · 烤藕片"} },
+  { id:"qujing", cn:"曲靖", en:"Qujing · Gateway of the East", desc:"珠江源头的辽阔", temps:["年均 15.9 ℃","最热 19.9 ℃","最冷 7.1 ℃"], dress:"夏短袖 · 冬厚外套", img:"https://aka.doubaocdn.com/s/eM73aUIurM",
+    foodIntro:"宣威火腿的名乡：蒸饵丝油润，沾益辣子鸡辣得敞亮，火腿挂在老屋里。", food:{dish:"宣威火腿 · 沾益辣子鸡 · 蒸饵丝", bf:"蒸饵丝 · 稀豆粉 · 饵块", season:"宣威火腿 · 罗平油菜籽 · 野生菌", drink:"罗平蜂蜜水 · 普洱茶 · 米酒", street:"烤饵块 · 凉粉 · 麻花"} },
+  { id:"zhaotong", cn:"昭通", en:"Zhaotong · The Mighty Hills", desc:"乌蒙山的云上人家", temps:["年均 11.7 ℃","最热 19.8 ℃","最冷 2 ℃"], dress:"夏短袖加薄外套 · 冬羽绒服", img:"https://aka.doubaocdn.com/s/10OI5SkL0T",
+    foodIntro:"乌蒙山里的暖食：天麻炖鸡温补，昭通酱咸香，小肉串在夜市滋滋冒油。", food:{dish:"天麻炖鸡 · 昭通酱炒肉 · 坨坨肉", bf:"羊肉米线 · 稀豆粉 · 烧洋芋", season:"天麻 · 昭通苹果 · 荞麦", drink:"苦荞茶 · 蜂蜜水 · 米酒", street:"小肉串 · 烤洋芋 · 荞饼"} },
+  { id:"honghe", cn:"红河", en:"Honghe · Terraces of Light", desc:"元阳梯田的晨雾", temps:["年均 18.6 ℃","最热 23.2 ℃","最冷 12.3 ℃"], dress:"夏夏装 · 冬薄外套", img:"https://aka.doubaocdn.com/s/vKjdWIK2SQ",
+    foodIntro:"梯田与古城之间：蒙自过桥米线的汤头，建水烧豆腐的炭火，石屏豆腐一烤就香。", food:{dish:"蒙自过桥米线 · 建水汽锅鸡 · 石屏豆腐", bf:"过桥米线 · 烧豆腐 · 烤乳扇", season:"哈尼梯田红米 · 建水紫陶 · 石榴", drink:"酸梅汤 · 木瓜水 · 普洱茶", street:"建水烧豆腐 · 豆粉 · 草芽米线"} },
+  { id:"wenshan", cn:"文山", en:"Wenshan · Karst & Rivers", desc:"喀斯特的山水", temps:["年均 18.4 ℃","最热 23 ℃","最冷 11 ℃"], dress:"夏夏装 · 冬薄外套", img:"https://aka.doubaocdn.com/s/i1JrEJ4DCK",
+    foodIntro:"三七之乡的滋补：三七汽锅鸡温润，岜夯鸡酸香，八宝米粒粒饱满。", food:{dish:"三七汽锅鸡 · 岜夯鸡 · 广南八宝米", bf:"米线 · 稀豆粉 · 粽粑", season:"三七 · 丘北辣椒 · 八宝米", drink:"三七花茶 · 米酒 · 普洱茶", street:"烧豆腐 · 酸汤 · 糍粑"} }
+];
+const SVC = [
+  { no:"01", name:"迎接 · 安顿", freq:"每次入住当天", desc:"接站、入住办理、房屋家电讲解、本地生活地图（菜市 / 医院 / 药店 / 公交）。交付标准写入合同。" },
+  { no:"02", name:"日常 · 起居", freq:"每周 2–3 次", desc:"买菜（菜市代购或陪逛）、做饭协调（代请做饭阿姨或搭伙）、家政保洁调度；线上商城联动周边合作超市配送到门口。交付标准写入合同。" },
+  { no:"03", name:"健康 · 支持", freq:"按需", desc:"就医陪诊、挂号 / 预约协调、凭处方代取药、慢病提醒、体检预约；联动乡镇卫生院每周血压、血糖监测（不含任何诊疗）。交付标准写入合同。" },
+  { no:"04", name:"出行 · 调度", freq:"按需", desc:"用车调度（包车 / 拼车 / 司机）、活动预约、州际转场接送。交付标准写入合同。" },
+  { no:"05", name:"社交 · 活动", freq:"每周 1–2 次", desc:"市集 / 非遗工坊 / 茶会 / 徒步 / 社区活动组织、邻居介绍。交付标准写入合同。" },
+  { no:"06", name:"应急 · 响应", freq:"24 小时在线", desc:"水电报修、突发状况协调、应急联络。交付标准写入合同。" },
+  { no:"07", name:"家属 · 安心群", freq:"入住即建", desc:"把远方的儿女拉进家属安心群，邻里把爸妈的一天发进群——吃什么、去了哪、状态如何，一眼看得见。长期陪伴，无需每日提交简报。" }
+];
+const DUR = [
+  { name:"一周", n:"7", unit:"天起", desc:"一地一地起步，先住进一个地方的日子，认识它的菜市场与晨光。" },
+  { name:"半个月", n:"15", unit:"天", desc:"两三个地方慢慢串，节奏更从容，一地一生活。" },
+  { name:"一个月", n:"30", unit:"天", desc:"把几个地方过成一段完整的生活，像本地人一样住下来。" }
+];
+
+/* ============================================================
+   工具
+   ============================================================ */
+const $ = (s,el)=> (el||document).querySelector(s);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const regionOf = id => REGIONS.find(r=>r.states.includes(id));
+const stateOf = id => STATES.find(s=>s.id===id);
+
+function stateCard(s, withRegion){
+  const r = regionOf(s.id);
+  return `<a class="state-card" href="#/place/${s.id}" data-nav>
+    <div class="ph"><span class="region-tag">${r.name}</span><img src="${s.img}" alt="${s.cn}风光：${s.desc}" loading="lazy"></div>
+    <div class="body">
+      <span class="cn">${s.cn}</span>
+      <div class="side">
+        <span class="en">${s.en}</span>
+        <p class="desc">${s.desc}</p>
+        <p class="temp">${s.temps[0]} · ${s.temps[1]} · ${s.temps[2]}</p>
+      </div>
+    </div>
+  </a>`;
+}
+
+/* ============================================================
+   视图模板
+   ============================================================ */
+const views = {
+
+home(){
+  return `
+  <section class="hero">
+    <img class="hero-media" src="${IMG.yunnan}" alt="梅里雪山群峰全景：白雪覆盖的山脊在湛蓝天空下连绵起伏，山脚隐入深色剪影">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-seal" aria-hidden="true">
+      <svg viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="currentColor" stroke-width="3"/><rect x="9" y="9" width="46" height="46" rx="9" fill="currentColor"/><text x="32" y="40" text-anchor="middle" font-size="15" font-weight="900" fill="#FFF7EC" font-family="'Noto Serif SC',serif">云暖</text></svg>
+    </div>
+    <div class="hero-content wrap">
+      <p class="hero-kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>云暖・旅居 · 2012 年起</p>
+      <h1 class="hero-title"><span class="hl">在云南，</span><span class="hl">住进日子</span></h1>
+      <p class="hero-sub">不是来看云南，是住进云南的日子。</p>
+      <p class="hero-foot">旅居体验包一地一周起，一地一旅居总管——买菜、就医、水电、琐碎，有人替你接住。</p>
+      <div class="hero-actions">
+        <a class="btn btn--earthen" href="#/experience" data-nav>旅居体验包 · 一周起</a>
+        <a class="btn btn--ghost" href="#/living" data-nav>焕新居 · 给日子透口气</a>
+        <a class="btn btn--ghost" href="#/living" data-nav>安居 · 退休换地方住</a>
+      </div>
+    </div>
+  </section>
+  <svg class="mountain-divider" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ridge-far" d="M0 86 L220 38 L420 74 L660 20 L900 72 L1140 32 L1440 68 V120 H0 Z"/>
+    <path class="ridge-near" d="M0 104 L300 66 L560 92 L860 56 L1140 90 L1440 64 V120 H0 Z"/>
+    <path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/>
+  </svg>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">四个词，说清旅居</p>
+        <h2 class="h2">慢、住、吃、人</h2>
+        <p class="lede">旅居不是换一个地方旅游，是换一种方式过日子。</p>
+      </div>
+      <div class="words-grid">
+        <div class="word-cell"><span class="word-char">慢</span><h3>慢是设计出来的</h3><p>一天一件生活主题，剩下的时间还给晨光与风。</p></div>
+        <div class="word-cell"><span class="word-char">住</span><h3>住是筛出来的</h3><p>精品院落，认得你的早点摊，住成这里的日常。</p></div>
+        <div class="word-cell"><span class="word-char">吃</span><h3>吃是跟着本地人走的</h3><p>菜市场日、朋友家饭局日，不是菜单是生活。</p></div>
+        <div class="word-cell"><span class="word-char">人</span><h3>人是始终在的</h3><p>一地一管家，买菜就医琐碎全接住，家人每日看得见。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep">
+    <div class="wrap">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">两种生活方式</p>
+        <h2 class="h2">为追寻而来，为安住而来</h2>
+        <p class="lede">同样在云南住进日子，换一种过法。</p>
+      </div>
+      <div class="ways">
+        <article class="way-card">
+          <div class="way-media">
+            <span class="way-tag">REVIVE · 湖山边的院子</span>
+            <img src="${IMG.snowpeaks}" alt="雪山前的湖泊与院落" loading="lazy">
+          </div>
+          <div class="way-body">
+            <p class="en">焕新居</p>
+            <h3>给日子透口气</h3>
+            <p>生活卡在同一条轨道上太久，来云南给日子透口气。网络、住处、社群都安顿好，剩下的交给自由——不用辞职，也能换一口气。</p>
+            <a class="btn btn--ink btn--sm" href="#/living" data-nav>了解焕新居</a>
+          </div>
+        </article>
+        <article class="way-card">
+          <div class="way-media">
+            <span class="way-tag">SETTLE · 雨林里的日子</span>
+            <img src="${IMG.monastery}" alt="云南寺院檐角与远山" loading="lazy">
+          </div>
+          <div class="way-body">
+            <p class="en">安居</p>
+            <h3>退休换地方住</h3>
+            <p>家乡冬天冷、空气欠佳？退休了换个暖和、干净的地方住。16 个地州自由组合、不赶路，邻里接住买菜、就医，家属安心群让儿女每天看得见。</p>
+            <a class="btn btn--ink btn--sm" href="#/living" data-nav>了解安居</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">旅居体验包 · 自选组合</p>
+        <h2 class="h2">每个地方，<em>最少住一周</em></h2>
+        <p class="lede">以生活模式，真实体验当地的生活与温度——用生活感，而不是行程表。16 个地州自由选，串成你自己的线路。</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>安顿日</h3><p>管家完成「生活接入」：接站入住、家电讲解、办生活卡、认菜市 / 医院 / 药店的路，见管家与邻居——当天不安排任何景点。</p></div>
+        <div class="step"><h3>生活日</h3><p>每日 1 件生活主题（菜市场日 / 朋友家饭局日 / 温泉日 / 非遗工坊日），其余时间还给晨光与风；邻里把日常发进家属安心群。</p></div>
+        <div class="step"><h3>转场日</h3><p>上午动车，下午安顿。转场本身是景观路；下一站管家已备好入住与生活地图，行李与就医档案随行交接。</p></div>
+      </div>
+      <div class="belt"><h3>每天一件生活主题</h3><span class="sub">日子自己长出来</span></div>
+      <div class="topics">
+        <div class="topic"><span class="num">壹</span><h3>菜市场日</h3><p>跟管家认摊、买当季菜，回来做一顿家常饭。</p></div>
+        <div class="topic"><span class="num">贰</span><h3>朋友家饭局日</h3><p>去本地人家做客，吃一顿真正的家常饭。</p></div>
+        <div class="topic"><span class="num">叁</span><h3>温泉日</h3><p>把高原的风泡进身体里，慢慢待一下午。</p></div>
+        <div class="topic"><span class="num">肆</span><h3>非遗工坊日</h3><p>白族扎染、纳西东巴、藏地手作——学一样带回家。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">16 州 · 自由搭配</p>
+        <h2 class="h2">16 片土地，<em>16 种日子</em></h2>
+        <p class="lede">版图是身份，不是路线。它是连绵千里的群山，是分属不同季风的河谷与高原，是 16 片土地各自生长出来的呼吸与烟火。不必一次看完——先读懂它的每一面，再选择一处，安顿下来。</p>
+      </div>
+      <div class="state-grid">${STATES.map(stateCard).join("")}</div>
+      <div style="margin-top:1.8rem;">
+        <a class="btn btn--earthen" href="#/experience" data-nav>生成我的组合，发给管家</a>
+        <a class="btn btn--ink" href="#/destination" data-nav>看看 16 州版图</a>
+      </div>
+    </div>
+  </section>
+
+  ${ctaBand("先选一块地，住下来", "聊聊你想住的地方、住多久——剩下的，交给云南的院子。")}
+  `;
+},
+
+destination(){
+  let html = `
+  <section class="hero" style="min-height:52vh;">
+    <img class="hero-media" src="${IMG.dest}" alt="云南梯田与河谷风光">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content wrap">
+      <p class="hero-kicker">目的地 · 云南全境</p>
+      <h1 class="hero-title"><span class="hl">版图是身份，</span><span class="hl">不是路线</span></h1>
+      <p class="hero-sub">16 片土地，16 种日子。</p>
+    </div>
+  </section>
+  <svg class="mountain-divider" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ridge-far" d="M0 86 L220 38 L420 74 L660 20 L900 72 L1140 32 L1440 68 V120 H0 Z"/>
+    <path class="ridge-near" d="M0 104 L300 66 L560 92 L860 56 L1140 90 L1440 64 V120 H0 Z"/>
+    <path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/>
+  </svg>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">触摸山河</p>
+        <h2 class="h2">每一处，<em>都住得进日子</em></h2>
+        <p class="lede">按区域分组，各自生长。气候、穿衣，先看清楚，再慢慢选。</p>
+      </div>`;
+  REGIONS.forEach(r=>{
+    html += `<div class="belt"><h3>${r.name}</h3><span class="sub">${r.en} · ${r.note}</span></div>
+      <div class="state-grid">${r.states.map(id=>stateCard(stateOf(id))).join("")}</div>`;
+  });
+  html += `
+    </div>
+  </section>
+  ${ctaBand("不必一次看完，择一处，安顿下来", "16 州自由组合，一周起、天数自填。想去哪住、住多久，自己定。")}
+  `;
+  return html;
+},
+
+place(id){
+  const s = stateOf(id);
+  if(!s) return views.destination();
+  const r = regionOf(id);
+  return `
+  <section class="place-hero">
+    <img src="${s.img}" alt="${s.cn}风光：${s.desc}">
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="inner wrap">
+      <a class="crumb" href="#/destination" data-nav>← 返回 16 州版图</a>
+      <h1>${s.cn}</h1>
+      <p class="en">${s.en}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><div class="k">地区</div><div class="v">${r.name}</div></div>
+        <div class="fact"><div class="k">一句话</div><div class="v">${s.desc}</div></div>
+        <div class="fact"><div class="k">穿衣</div><div class="v">${s.dress}</div></div>
+      </div>
+      <div style="height:2.4rem;"></div>
+      <div class="place-food">
+        <h3>${s.cn} · 当地味道</h3>
+        <dl>
+          <div><dt>代表菜</dt><dd>${s.food.dish}</dd></div>
+          <div><dt>早点</dt><dd>${s.food.bf}</dd></div>
+          <div><dt>时鲜</dt><dd>${s.food.season}</dd></div>
+          <div><dt>一杯</dt><dd>${s.food.drink}</dd></div>
+          <div><dt>街头</dt><dd>${s.food.street}</dd></div>
+        </dl>
+      </div>
+      <div class="belt"><h3>旅居此地</h3><span class="sub">怎么住 · 谁接住日子</span></div>
+      <div class="ways">
+        <article class="way-card">
+          <div class="way-body">
+            <p class="en">怎么住</p>
+            <h3>在${s.cn}住进日子</h3>
+            <p>体验包一地一周起、16 州自由组合、天数自填。${s.cn}可以住很久，也可以串起相邻板块的温泉、古镇与茶山。</p>
+            <a class="btn btn--earthen btn--sm" href="#/experience" data-nav>看旅居体验包</a>
+          </div>
+        </article>
+        <article class="way-card">
+          <div class="way-body">
+            <p class="en">谁接住日子</p>
+            <h3>一地一旅居总管</h3>
+            <p>买菜、就医陪诊、水电报修、应急响应。日常 2 小时到场，应急 24 小时电话在线（以合同为准）。</p>
+            <a class="btn btn--ink btn--sm" href="#/concierge" data-nav>了解旅居总管</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  `;
+},
+
+experience(){
+  return `
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">旅居体验包</p>
+        <h2 class="h2">一地一周起，<em>自由组合</em></h2>
+        <p class="lede">以生活模式，真实体验当地的生活与温度——不是赶景点，是住进日子。一周 / 半个月 / 一个月，随选随叠 · 私人定制。</p>
+      </div>
+      <div class="tiers">
+        <article class="tier tier--feature">
+          <span class="flag">精品居 · 讲究之选</span>
+          <h3>把生活过成一件值得讲究的事</h3>
+          <p class="tagline">好院子、好管家、好细节——精品居一地一周起 · 自由叠加 · 板块内生活。</p>
+          <ul>
+            <li>${checkIcon()}精品院落 / 设计民宿，一处一地</li>
+            <li>${checkIcon()}一名贴身旅居总管（服务清单写入合同）</li>
+            <li>${checkIcon()}板块内短程转场与接驳</li>
+            <li>${checkIcon()}每日一件生活主题 + 定制生活接入</li>
+            <li>${checkIcon()}邻里把日常发进家属安心群</li>
+            <li>${checkIcon()}就医陪诊、用车、家政等七层管家服务</li>
+            <li>${checkIcon()}旅游意外险（含医疗），保险方案随合同确认</li>
+          </ul>
+          <p class="price">价格 · 私人定制</p>
+          <a class="btn btn--earthen" href="#/contact" data-nav>聊聊精品居</a>
+        </article>
+        <article class="tier">
+          <span class="flag">日常居 · 自在之选</span>
+          <h3>不摆排场，把日子过顺</h3>
+          <p class="tagline">日常居接住买菜、就医与琐碎，剩下的交给你——不便宜在豪华，便宜在有人替你过日子。</p>
+          <ul>
+            <li>${checkIcon()}在地民宿 / 院落住宿，一处一地</li>
+            <li>${checkIcon()}一名在地旅居总管（服务清单写入合同）</li>
+            <li>${checkIcon()}板块内短程转场与接驳</li>
+            <li>${checkIcon()}每日一件生活主题 + 在地生活接入</li>
+            <li>${checkIcon()}邻里把日常发进家属安心群</li>
+            <li>${checkIcon()}就医陪诊、用车、家政等七层管家服务</li>
+            <li>${checkIcon()}旅游意外险（含医疗），保险方案随合同确认</li>
+          </ul>
+          <p class="price">价格 · 因人因季而定</p>
+          <a class="btn btn--ink" href="#/contact" data-nav>聊聊日常居</a>
+        </article>
+      </div>
+      <div class="belt"><h3>三种节奏</h3><span class="sub">随选随叠 · 自由组合</span></div>
+      <div class="durs">
+        ${DUR.map(d=>`<div class="dur"><div class="n">${d.n}<span class="unit"> ${d.unit}</span></div><p>${d.name}</p><p style="margin-top:.2rem;font-size:var(--fs-xs);">${d.desc}</p></div>`).join("")}
+      </div>
+      ${composer()}
+    </div>
+  </section>
+  `;
+},
+
+concierge(){
+  return `
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">旅居总管 · 2012 年起</p>
+        <h2 class="h2">一地一管家，<em>接住日常琐碎</em></h2>
+        <p class="lede">不是酒店礼宾，是陪买菜认摊、代约挂号陪诊、水电报修、应急响应的在地人。本地生活熟手 + 服务清单交付标准培训 + 家属安心群制度；不上岗先考核。</p>
+      </div>
+      <div class="promise-grid">
+        <div class="promise"><div class="n">2 小时</div><div class="u">日常需求</div><h3>到场</h3><p>以合同为准</p></div>
+        <div class="promise"><div class="n">24 小时</div><div class="u">应急需求</div><h3>电话在线</h3><p>即刻响应 · 以合同为准</p></div>
+      </div>
+      <div class="belt"><h3>七层服务 · 一地一管家</h3><span class="sub">每一层，写明交付内容与频率</span></div>
+      ${SVC.map(s=>`
+        <div class="svc">
+          <span class="no">${s.no}</span>
+          <div><h3>${s.name}<span class="freq">${s.freq}</span></h3><p>${s.desc}</p></div>
+          <span aria-hidden="true"></span>
+        </div>`).join("")}
+      <p style="font-size:var(--fs-xs);color:var(--text-soft);font-weight:300;margin-top:.4rem;">服务项与交付标准以最终合同为准，逐项可勾选、可验收。</p>
+      <div class="belt"><h3>管家来自本地社区</h3><span class="sub">实名 · 培训记录 · 年度考核均可出示</span></div>
+      <div class="words-grid" style="grid-template-columns:repeat(4,1fr);">
+        <div class="word-cell"><h3 style="font-size:1.08rem;">大理 · 阿嬢</h3><p style="font-size:var(--fs-xs);">海西村落长大，认得每一家早点摊。</p></div>
+        <div class="word-cell"><h3 style="font-size:1.08rem;">丽江 · 小和</h3><p style="font-size:var(--fs-xs);">纳西族，古城里长大的本地人。</p></div>
+        <div class="word-cell"><h3 style="font-size:1.08rem;">迪庆 · 卓玛</h3><p style="font-size:var(--fs-xs);">香格里拉牧场人家的女儿。</p></div>
+        <div class="word-cell"><h3 style="font-size:1.08rem;">怒江 · 阿普</h3><p style="font-size:var(--fs-xs);">丙中洛峡谷里的傈僳族。</p></div>
+      </div>
+      <p style="font-size:var(--fs-xs);color:var(--text-soft);font-weight:300;margin-top:.7rem;">管家实名与照片将在上线前公示；当前展示为岗位画像，培训记录与年度考核可向客户出示。</p>
+      <div class="belt"><h3>医疗边界 · 书面负面清单</h3><span class="sub">把边界写清楚，是对您负责</span></div>
+      <div class="guards">
+        <ul>
+          <li>${checkIcon("earthen")}管家不做任何问诊、给药、治疗或医疗建议（依法，医疗行为需执业资格）。</li>
+          <li>${checkIcon("earthen")}就医陪诊只负责陪同、预约、取药与传达，诊疗决策一律由医生作出。</li>
+          <li>${checkIcon("earthen")}管家不参与任何购物返佣、回扣（写入合同）。</li>
+          <li>${checkIcon("earthen")}涉及您的健康等敏感信息，仅用于保障服务，单独征求同意后使用。</li>
+        </ul>
+        <p class="guard-note">一句话边界：就医陪诊只负责陪同、预约、取药与传达，诊疗决策一律由执业医师作出——依法，医疗行为需执业资格。</p>
+      </div>
+    </div>
+  </section>
+  `;
+},
+
+living(){
+  return `
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">生活方式 · REVIVE / SETTLE / WORK</p>
+        <h2 class="h2">换一种过法，<em>住进日子</em></h2>
+        <p class="lede">同样在云南住进日子，换一种过法：给日子透口气、退休安顿下来、或以工换住边养边做。</p>
+      </div>
+
+      <article class="live-block">
+        <div class="media"><img src="${IMG.pagoda}" alt="丽江古城雪后的白塔与屋顶" loading="lazy"></div>
+        <div class="body">
+          <span class="kicker">REVIVE · 焕新居</span>
+          <h3>给自己的日子，透一口气</h3>
+          <p class="en">1 – 3 个月 · 数字游民 · 间隔年 · 创作者</p>
+          <p>生活卡在同一条轨道上太久了——固定的班、固定的街、固定的自己。焕新居是给自己的生活开一扇透气窗：来到云南，住进一间安顿好的院子，网络稳定、社群在侧，日子从菜市场和晨光开始。不用辞职，也能换一口气。</p>
+          <div class="live-meta">
+            <div class="m"><div class="k">居住时长</div><div class="v">1 – 3 个月</div></div>
+            <div class="m"><div class="k">排期</div><div class="v">弹性</div></div>
+            <div class="m"><div class="k">邻里</div><div class="v">轻邻里</div></div>
+            <div class="m"><div class="k">网络与工位</div><div class="v">已备好</div></div>
+          </div>
+          <a class="btn btn--earthen btn--sm" href="#/contact" data-nav>聊聊想换的活法</a>
+        </div>
+      </article>
+
+      <article class="live-block">
+        <div class="media"><img src="${IMG.terraces}" alt="元阳哈尼梯田的晨雾与水面" loading="lazy"></div>
+        <div class="body">
+          <span class="kicker">SETTLE · 安居</span>
+          <h3>退休了，换个暖和、干净的地方住</h3>
+          <p class="en">15 天 – 数年 · 16 州自由组合</p>
+          <p>退休不是生活的结束，是终于可以把日子安排得舒服点。家乡冬天太冷、空气欠佳、一个人在家没着落？来云南，把日子搬进春天里。选中一处，安顿下来——不赶路、不搬来搬去，住多久自己说了算。邻里替你接住买菜做饭、看病取药，家属安心群让儿女每天看得见。</p>
+          <div class="live-meta">
+            <div class="m"><div class="k">养老小院</div><div class="v">3 间<small>1 自住 · 2 待客</small></div></div>
+            <div class="m"><div class="k">试点地州</div><div class="v">多地<small>版纳·普洱·临沧·保山·红河</small></div></div>
+            <div class="m"><div class="k">院落</div><div class="v">可租可买<small>现成院子收拾就能住</small></div></div>
+            <div class="m"><div class="k">配套</div><div class="v">每周监测<small>乡镇卫生院血压血糖 · 超市配送</small></div></div>
+          </div>
+          <a class="btn btn--ink btn--sm" href="#/contact" data-nav>聊聊长辈的云南日子</a>
+        </div>
+      </article>
+
+      <article class="live-block">
+        <div class="media"><img src="${IMG.cormorants}" alt="洱海湖滨的鸬鹚与水面" loading="lazy"></div>
+        <div class="body">
+          <span class="kicker">WORK · 旅居工作 · 康养工作网络</span>
+          <h3>想康养，却还没有工作？</h3>
+          <p class="en">以工换住 · 以工换三餐 · 以工换康养</p>
+          <p>想来云南康养长住、却还没有稳定收入的，云暖用全云南的康养点位串成一张网——让你入手一份力所能及的事（照护协助 / 运营服务 / 管家助理），以工作换来住、三餐和康养，边做，边把自己养回来。具体岗位与换住方式，由管家按你的情况、所在点位和季节安排。</p>
+          <div class="stats">
+            <div class="stat"><div class="n">89</div><div class="l">家合作康养点位</div></div>
+            <div class="stat"><div class="n">21</div><div class="l">个覆盖地区</div></div>
+            <div class="stat"><div class="n">三餐</div><div class="l">全包 · 4/6/8 菜</div></div>
+            <div class="stat"><div class="n">1388m</div><div class="l">弥勒东风韵海拔</div></div>
+          </div>
+          <a class="btn btn--earthen btn--sm" href="#/contact" data-nav>入手一份康养事</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  `;
+},
+
+food(){
+  let html = `
+  <section class="hero" style="min-height:50vh;">
+    <img class="hero-media" src="${IMG.food}" alt="云南美食桌面的暖色食物">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content wrap">
+      <p class="hero-kicker">云南美食 · 16 州味觉版图</p>
+      <h1 class="hero-title"><span class="hl">住进日子的味道</span></h1>
+      <p class="hero-sub">从一顿早点开始，到一顿宵夜结束。</p>
+      <p class="hero-foot">十六个州市，各有各的味觉。不标「必吃」，只告诉你——住进一个地方，可以吃到什么。</p>
+    </div>
+  </section>
+  <svg class="mountain-divider" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ridge-far" d="M0 86 L220 38 L420 74 L660 20 L900 72 L1140 32 L1440 68 V120 H0 Z"/>
+    <path class="ridge-near" d="M0 104 L300 66 L560 92 L860 56 L1140 90 L1440 64 V120 H0 Z"/>
+    <path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/>
+  </svg>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">味觉版图 · 十六州</p>
+        <h2 class="h2">住进一个地方，<em>可以吃到什么</em></h2>
+        <p class="lede">我们把当地人家常吃的味道记下来——不是菜单，是日子本身。从一顿早点开始、到一顿宵夜结束。</p>
+      </div>
+      <div class="food-grid">`;
+  STATES.forEach(s=>{
+    html += `
+      <article class="food-card">
+        <div class="top">
+          <div class="name"><span class="cn">${s.cn}</span><span class="en">${s.en}</span></div>
+          <p class="intro">${s.foodIntro || ""}</p>
+        </div>
+        <div class="grid">
+          <div class="cell"><div class="k">代表菜</div><div class="v">${s.food.dish}</div></div>
+          <div class="cell"><div class="k">早点</div><div class="v">${s.food.bf}</div></div>
+          <div class="cell"><div class="k">时鲜</div><div class="v">${s.food.season}</div></div>
+          <div class="cell"><div class="k">一杯</div><div class="v">${s.food.drink}</div></div>
+          <div class="cell"><div class="k">街头</div><div class="v">${s.food.street}</div></div>
+        </div>
+      </article>`;
+  });
+  html += `</div></div></section>`;
+  return html;
+},
+
+trust(){
+  return `
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">信任中心 · 2012 年起</p>
+        <h2 class="h2">承诺写进合同，<em>证据公开可查</em></h2>
+        <p class="lede">我们不是靠承诺做生意，是靠写进合同与可核验的证据。</p>
+      </div>
+      <div class="belt"><h3>服务清单与承诺，写入合同</h3><span class="sub">不是一句口号，是逐条可主张的条款</span></div>
+      <div class="pledges">
+        <div class="pledge"><span class="no">壹</span><div><h3>服务清单制合同</h3><p>住宿地点、房型、天数、管家服务范围、用车、餐食与接送站逐项列明，总价包含所列全部服务项目及税费，除明示自选项目外不另行收取任何费用。</p></div></div>
+        <div class="pledge"><span class="no">贰</span><div><h3>不安排任何购物场所</h3><p>旅居生活不安排购物场所，不指定、不诱导、不强迫购买——购物需求完全由您自行决定。</p></div></div>
+        <div class="pledge"><span class="no">叁</span><div><h3>无另行付费项目</h3><p>不安排任何另行付费项目；您主动要求增加的项目，另行签订书面确认单并单独结算。</p></div></div>
+        <div class="pledge"><span class="no">肆</span><div><h3>管家零回扣</h3><p>管家及工作人员不从任何餐饮、交通、住宿推荐中获取回扣或返利，违者按合同约定双倍退还相应费用。</p></div></div>
+        <div class="pledge"><span class="no">伍</span><div><h3>违约可主张</h3><p>违反上述承诺的，您有权要求退还相应费用（参照《旅游法》第 35 条精神，行程结束后 30 日内主张）。以上为乙方经营承诺条款，非免责条款。</p></div></div>
+      </div>
+      <div class="belt"><h3>保险三件套，随合同交付</h3><span class="sub">出行、居停、用人，三个环节都有保障</span></div>
+      <div class="insures">
+        <div class="insure"><div class="no">壹</div><h3>旅游意外伤害险（含医疗）</h3><p>随产品赠送 / 代购，覆盖全程。</p></div>
+        <div class="insure"><div class="no">贰</div><h3>公众责任险 / 场所责任险</h3><p>覆盖住宿场所内人身财产损失。</p></div>
+        <div class="insure"><div class="no">叁</div><h3>管家雇主责任险 / 工伤保险</h3><p>每位管家在册在保。</p></div>
+      </div>
+      <p style="font-size:var(--fs-xs);color:var(--text-soft);font-weight:300;margin-top:.8rem;">保险方案与条款随合同一并交付；保额与保障范围以承保方案为准。</p>
+      <div class="belt"><h3>医疗边界 · 书面负面清单</h3><span class="sub">加粗提示 · 单独签字</span></div>
+      <div class="guards">
+        <ul>
+          <li>${checkIcon("earthen")}管家不做任何问诊、给药、治疗或医疗建议（依法，医疗行为需执业资格）。</li>
+          <li>${checkIcon("earthen")}就医陪诊只负责陪同、预约、取药与传达，诊疗决策一律由医生作出。</li>
+          <li>${checkIcon("earthen")}管家不参与任何购物返佣、回扣（写入合同）。</li>
+          <li>${checkIcon("earthen")}涉及您的健康等敏感信息，仅用于保障服务，单独征求同意后使用。</li>
+        </ul>
+      </div>
+      <div class="belt"><h3>可核验路径</h3><span class="sub">每一项承诺，都有对应的证据可以查</span></div>
+      <div class="words-grid" style="grid-template-columns:repeat(2,1fr);">
+        <div class="word-cell"><h3 style="font-size:1.02rem;">资质证照</h3><p style="font-size:var(--fs-xs);">公司资质证照公示（统一社会信用代码 / 旅行社业务经营许可证号，上线前公示）。</p></div>
+        <div class="word-cell"><h3 style="font-size:1.02rem;">住宿证照</h3><p style="font-size:var(--fs-xs);">逐州住宿合作方证照可查（酒店 / 民宿特种行业许可证）。</p></div>
+        <div class="word-cell"><h3 style="font-size:1.02rem;">管家档案</h3><p style="font-size:var(--fs-xs);">管家实名、培训记录与年度考核可向客户出示；上岗前先考核，考核不过不上岗。</p></div>
+        <div class="word-cell"><h3 style="font-size:1.02rem;">产权合规</h3><p style="font-size:var(--fs-xs);">优先可合法交易的国有公房（村公所 / 供销社 / 粮站），不碰农村宅基地买卖；房源一律真实实拍。</p></div>
+      </div>
+      <div class="belt"><h3>个人信息，怎么用、怎么管</h3><span class="sub">仅用于定制行程与管家联系</span></div>
+      <div class="steps" style="grid-template-columns:repeat(4,1fr);">
+        <div class="step"><h3>告知</h3><p>用途先说明。</p></div>
+        <div class="step"><h3>同意</h3><p>取得后再使用。</p></div>
+        <div class="step"><h3>单独同意</h3><p>健康等敏感信息单独征求。</p></div>
+        <div class="step"><h3>删除</h3><p>可随时要求删除。</p></div>
+      </div>
+    </div>
+  </section>
+  ${ctaBand("签约前，逐项过目", "合同、保险、证照、管家档案——每一份方案都配合同文本，签约前逐项过目。")}
+  `;
+},
+
+contact(){
+  return `
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">联系管家 · CONTACT</p>
+        <h2 class="h2">没有标准问卷，<em>发一句「我想去云南」</em></h2>
+        <p class="lede">我们认真听你说。谁住、住多久、在意什么——聊清楚再出方案与合同。</p>
+      </div>
+      <div class="contacts">
+        <article class="contact-card">
+          <span class="who">云南在地 15 年</span>
+          <h3>王先生</h3>
+          <p class="bio">在云南住了十五年，我把每座城都走成了熟人——翠湖边哪棵树下风最轻，沙溪哪家的豆花最好。我带你去的，从来不是景点，是这片土地本来就在过的日子。</p>
+          <div class="tel-line"><span class="num">132 0888 8618</span><a class="btn btn--earthen btn--sm" href="tel:13208888618">一键拨打</a></div>
+        </article>
+        <article class="contact-card">
+          <span class="who">旅欧高定 11 年 · 云南高定 6 年</span>
+          <h3>白先生</h3>
+          <p class="bio">在罗马定居的十一年里，我陪过许多人走近那座永恒之城——知道哪扇门后藏着最好的画室，哪家小馆会为常客留一扇靠窗的位置。回到云南的六年，我把那套不慌不忙的分寸，带回了高原。</p>
+          <div class="tel-line"><span class="num">177 8728 8800</span><a class="btn btn--earthen btn--sm" href="tel:17787288800">一键拨打</a></div>
+        </article>
+      </div>
+      <form class="form" id="contact-form">
+        <div class="form-row">
+          <div class="field"><label for="f-name">称呼 <span class="req">*</span></label><input id="f-name" name="name" type="text" required placeholder="怎么称呼您"></div>
+          <div class="field"><label for="f-contact">联系方式（电话 / 微信）<span class="req">*</span></label><input id="f-contact" name="contact" type="text" required placeholder="手机号或微信号"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="f-kind">意向住法</label>
+            <select id="f-kind" name="kind">
+              <option value="">请选择（可留空）</option>
+              <option>亲老家庭</option>
+              <option>活力银发</option>
+              <option>长住</option>
+              <option>焕新居 · 数字游民 / 间隔年</option>
+              <option>旅居工作 · 康养以工换住</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-count">出行人数</label><input id="f-count" name="count" type="text" placeholder="如：2 人"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="f-date">意向出行日期</label><input id="f-date" name="date" type="text" placeholder="如：2026 年 11 月"></div>
+          <div class="field"><label for="f-need">特殊需求</label><input id="f-need" name="need" type="text" placeholder="如：需要无障碍、慢病提醒等"></div>
+        </div>
+        <div class="field"><label for="f-more">想过的日子（选填）</label><textarea id="f-more" name="more" placeholder="说说谁住、住多久、在意什么——比如「想给爸妈安排一段云南日子」"></textarea></div>
+        <button class="btn btn--earthen" type="submit">提交给管家</button>
+        <p class="form-note">信息仅用于定制行程与管家联系，不会对外披露或用于营销推送。提交后管家会在 10 分钟内联系您。</p>
+        <div class="form-sent" id="form-sent" role="status">已收到您的留言，管家会在 10 分钟内与您联系。也可以直接拨打：王先生 132 0888 8618 / 白先生 177 8728 8800。</div>
+      </form>
+      <div class="belt"><h3>从一个电话，到一段日子</h3><span class="sub">六步之后，拿到的不是行程表，是安顿下来的生活</span></div>
+      <div class="steps" style="grid-template-columns:repeat(3,1fr);">
+        <div class="step"><h3>一对一需求访谈</h3><p>聊清是谁住、住多久、在意什么。</p></div>
+        <div class="step"><h3>定制生活方案</h3><p>板块、站点节奏、管家匹配。</p></div>
+        <div class="step"><h3>方案沟通</h3><p>把「一天怎么过」逐日聊透。</p></div>
+        <div class="step"><h3>合同与保险确认</h3><p>服务清单与承诺写入合同。</p></div>
+        <div class="step"><h3>出发前建群</h3><p>管家、云管家与家人都在。</p></div>
+        <div class="step"><h3>入住后管家相伴</h3><p>安顿日接入，家属安心群。</p></div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+};
+
+/* ============ 通用组件 ============ */
+function checkIcon(color){
+  return `<svg viewBox="0 0 24 24" aria-hidden="true" ${color==="earthen"?'style="color:var(--earthen-deep);"':""}><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+function ctaBand(title, sub){
+  return `
+  <section class="cta-band">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--on-dark">云暖・旅居 · 2012 年起</p>
+        <h2 class="h2">${title}</h2>
+        <p class="lede">${sub}</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn--earthen" href="#/contact" data-nav>聊聊你的云南日子</a>
+        <a class="btn btn--ghost" href="#/experience" data-nav>先看旅居体验包</a>
+      </div>
+      <div class="cta-tels">
+        <div><div class="t">王先生</div><div class="num">132 0888 8618</div></div>
+        <div><div class="t">白先生</div><div class="num">177 8728 8800</div></div>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ============================================================
+   组合器（体验包 · 16 州勾选 + 时长）
+   ============================================================ */
+const state = { picks: new Set(), dur: "7" };
+function composer(){
+  return `
+  <div class="belt"><h3>自选组合</h3><span class="sub">点选地州，定下停留时长</span></div>
+  <div class="composer">
+    <div class="composer-head">
+      <h3>我的组合清单</h3>
+      <p>16 个地州自由选，串成你自己的线路。提交后 10 分钟内回复 · 长途大交通不安排 · 价格私人定制。</p>
+    </div>
+    <div class="composer-body">
+      <div class="choose-tags" id="pick-tags">
+        ${STATES.map(s=>`<button type="button" class="tag-btn" data-id="${s.id}" aria-pressed="false">${s.cn}</button>`).join("")}
+      </div>
+      <div class="choose-tags" id="dur-tags" role="group" aria-label="停留时长">
+        ${DUR.map(d=>`<button type="button" class="tag-btn ${d.n===state.dur?"is-on":""}" data-dur="${d.n}">${d.name} · ${d.n} 天</button>`).join("")}
+      </div>
+      <div class="composer-actions">
+        <a class="btn btn--earthen" href="#/contact" data-nav id="composer-submit">生成组合清单，发给管家</a>
+        <button class="btn btn--ink btn--sm" type="button" id="composer-clear">清空</button>
+      </div>
+      <div class="composer-result" id="composer-result"></div>
+      <p class="composer-note">结合板块、季节、房型与管家服务浓度定价，价格为私人定制；长途大交通不安排，板块内短程转场由管家衔接。</p>
+    </div>
+  </div>`;
+}
+function renderResult(){
+  const box = $("#composer-result");
+  if(!box) return;
+  if(state.picks.size === 0){
+    box.classList.remove("is-show");
+    return;
+  }
+  const list = STATES.filter(s=>state.picks.has(s.id));
+  const days = state.dur==="7" ? list.length*7 : state.dur==="15" ? list.length*15 : list.length*30;
+  box.classList.add("is-show");
+  box.innerHTML = `
+    <p class="sum">已选 <b>${list.length}</b> 个地州 · 合计 <b>${days}</b> 天 · ${state.dur==="7"?"一周节奏":state.dur==="15"?"半月节奏":"深度节奏"}</p>
+    <ul class="result-list">
+      ${list.map(s=>`<li><span>${s.cn} · ${s.desc}</span><b>${state.dur} 天</b></li>`).join("")}
+    </ul>
+    <p class="composer-note">把这份清单发给管家，我们会结合板块、季节与房型给出私人定制的方案与合同。</p>`;
+}
+
+/* ============================================================
+   路由
+   ============================================================ */
+function render(){
+  const app = $("#app");
+  const hash = location.hash || "#/";
+  const parts = hash.replace(/^#\//,"").split("/");
+  const root = parts[0] || "";
+  let html = "";
+  let title = "云暖・旅居 · 在云南，住进日子";
+
+  if(root === "" || root === "home"){
+    html = views.home();
+  } else if(root === "destination"){
+    html = views.destination(); title = "目的地 · 16 州生活版图｜云暖・旅居";
+  } else if(root === "place"){
+    html = views.place(parts[1]); const s = stateOf(parts[1]); if(s) title = `${s.cn} · ${s.desc}｜云暖・旅居`;
+  } else if(root === "experience"){
+    html = views.experience(); title = "旅居体验包 · 一地一周起 · 自由组合｜云暖・旅居";
+  } else if(root === "concierge"){
+    html = views.concierge(); title = "旅居总管 · 一地一管家｜云暖・旅居";
+  } else if(root === "living"){
+    html = views.living(); title = "焕新居 · 安居 · 旅居工作｜云暖・旅居";
+  } else if(root === "food"){
+    html = views.food(); title = "云南美食 · 16 州味觉版图｜云暖・旅居";
+  } else if(root === "trust"){
+    html = views.trust(); title = "信任中心 · 服务清单与医疗边界｜云暖・旅居";
+  } else if(root === "contact"){
+    html = views.contact(); title = "联系管家 · 云南旅居咨询｜云暖・旅居";
+  } else {
+    html = views.home();
+  }
+  document.title = title;
+  app.innerHTML = html;
+
+  /* 导航高亮 */
+  document.querySelectorAll(".site-nav a[data-nav]").forEach(a=>{
+    const target = (a.getAttribute("href")||"").replace(/^#/,"");
+    const current = "#"+"/"+(root==="home"?"":root);
+    const active = target === "#/"+root || (root==="place" && target==="#/destination");
+    a.classList.toggle("is-active", active);
+  });
+
+  /* 组合器事件 */
+  if(root === "experience"){
+    const tags = $("#pick-tags");
+    if(tags){
+      tags.addEventListener("click", e=>{
+        const btn = e.target.closest(".tag-btn");
+        if(!btn) return;
+        const id = btn.dataset.id;
+        if(state.picks.has(id)){ state.picks.delete(id); btn.classList.remove("is-on"); btn.setAttribute("aria-pressed","false"); }
+        else { state.picks.add(id); btn.classList.add("is-on"); btn.setAttribute("aria-pressed","true"); }
+        renderResult();
+      });
+    }
+    const durBox = $("#dur-tags");
+    if(durBox){
+      durBox.addEventListener("click", e=>{
+        const btn = e.target.closest(".tag-btn");
+        if(!btn || !btn.dataset.dur) return;
+        state.dur = btn.dataset.dur;
+        durBox.querySelectorAll(".tag-btn").forEach(b=>b.classList.toggle("is-on", b===btn));
+        renderResult();
+      });
+    }
+    const clear = $("#composer-clear");
+    if(clear){
+      clear.addEventListener("click", ()=>{
+        state.picks.clear();
+        $("#pick-tags").querySelectorAll(".tag-btn").forEach(b=>{b.classList.remove("is-on");b.setAttribute("aria-pressed","false");});
+        renderResult();
+      });
+    }
+  }
+
+  /* 联系表单 */
+  if(root === "contact"){
+    const form = $("#contact-form");
+    if(form){
+      form.addEventListener("submit", e=>{
+        e.preventDefault();
+        const name = ($("#f-name")||{}).value || "";
+        const contact = ($("#f-contact")||{}).value || "";
+        if(!name.trim() || !contact.trim()) return;
+        $("#form-sent").classList.add("is-show");
+        form.querySelector("button[type=submit]").disabled = true;
+        form.querySelector("button[type=submit]").textContent = "已提交";
+        try{ form.reset(); }catch(_){}
+      });
+    }
+  }
+
+  /* 回到顶部 */
+  window.scrollTo(0,0);
+}
+
+/* 移动菜单 */
+function initNav(){
+  const toggle = $(".nav-toggle");
+  const nav = $("#site-nav");
+  const close = $(".nav-close");
+  const openNav = ()=>{ nav.classList.add("is-open"); toggle.setAttribute("aria-expanded","true"); };
+  const closeNav = ()=>{ nav.classList.remove("is-open"); toggle.setAttribute("aria-expanded","false"); };
+  if(toggle) toggle.addEventListener("click", ()=> nav.classList.contains("is-open") ? closeNav() : openNav());
+  if(close) close.addEventListener("click", closeNav);
+  document.addEventListener("click", e=>{
+    if(nav && nav.classList.contains("is-open") && !e.target.closest(".site-nav") && !e.target.closest(".nav-toggle")) closeNav();
+  });
+  document.querySelectorAll("[data-nav]").forEach(a=>a.addEventListener("click", closeNav));
+}
+
+window.addEventListener("hashchange", render);
+initNav();
+render();
+</script>
+</body>
+</html>
