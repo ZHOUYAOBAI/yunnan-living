@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/index.html</loc></url>
+  <url><loc>https://example.com/destination.html</loc></url>
+  <url><loc>https://example.com/experience.html</loc></url>
+  <url><loc>https://example.com/concierge.html</loc></url>
+  <url><loc>https://example.com/living.html</loc></url>
+  <url><loc>https://example.com/food.html</loc></url>
+  <url><loc>https://example.com/trust.html</loc></url>
+  <url><loc>https://example.com/contact.html</loc></url>
+  <url><loc>https://example.com/stories.html</loc></url>
+  <url><loc>https://example.com/faq.html</loc></url>
+  <url><loc>https://example.com/privacy.html</loc></url>
+  <url><loc>https://example.com/terms.html</loc></url>
+  <url><loc>https://example.com/places/diqing.html</loc></url>
+  <url><loc>https://example.com/places/nujiang.html</loc></url>
+  <url><loc>https://example.com/places/lijiang.html</loc></url>
+  <url><loc>https://example.com/places/dali.html</loc></url>
+  <url><loc>https://example.com/places/baoshan.html</loc></url>
+  <url><loc>https://example.com/places/dehong.html</loc></url>
+  <url><loc>https://example.com/places/lincang.html</loc></url>
+  <url><loc>https://example.com/places/puer.html</loc></url>
+  <url><loc>https://example.com/places/xishuangbanna.html</loc></url>
+  <url><loc>https://example.com/places/chuxiong.html</loc></url>
+  <url><loc>https://example.com/places/kunming.html</loc></url>
+  <url><loc>https://example.com/places/yuxi.html</loc></url>
+  <url><loc>https://example.com/places/qujing.html</loc></url>
+  <url><loc>https://example.com/places/zhaotong.html</loc></url>
+  <url><loc>https://example.com/places/honghe.html</loc></url>
+  <url><loc>https://example.com/places/wenshan.html</loc></url>
+</urlset>

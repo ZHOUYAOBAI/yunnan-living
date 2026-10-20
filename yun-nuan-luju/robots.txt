@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /places/qujing.html
+
+Sitemap: https://example.com/sitemap.xml
