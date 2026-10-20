@@ -98,6 +98,7 @@
 
 <!-- 城市同行地图 -->
 <div class="belt"><h3>城市同行地图</h3><span class="sub">绿点=已有伙伴城市 · 灰点=可申请 · 点击任意城市申请成为当地伙伴</span></div>
+<div id="map-breadcrumb" style="font-size:.9rem;color:var(--muted);margin:.5rem 0;"></div>
 <div id="partner-map" style="width:100%;height:520px;margin:1.2rem 0;background:#FAF8F3;border-radius:12px;"></div>
 <div id="map-tip" style="display:none;padding:1rem;background:#fff;border:1px solid #B5C9A8;border-radius:10px;margin-top:.8rem;font-size:.92rem;line-height:1.7;">
 <strong id="tip-city"></strong><span id="tip-status" style="margin-left:.5rem;color:var(--earthen-deep);"></span>
@@ -158,8 +159,8 @@
 <script src="./assets/js/search.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
-// 已入驻城市
-var SETTLED = {
+// 已入驻城市（省级下钻后用于高亮）
+var SETTLED_CITY = {
   "北京":[116.40,39.90],"天津":[117.20,39.13],"石家庄":[114.50,38.03],
   "沈阳":[123.43,41.80],"大连":[121.62,38.91],"长春":[125.32,43.82],"哈尔滨":[126.53,45.80],
   "上海":[121.47,31.23],"南京":[118.78,32.04],"杭州":[120.15,30.28],"苏州":[120.62,31.30],
@@ -172,53 +173,91 @@ var SETTLED = {
   "西双版纳":[100.80,22.01],"腾冲":[98.49,25.02],"楚雄":[101.55,25.04],
   "曲靖":[103.80,25.49],"玉溪":[102.55,24.35],"保山":[99.16,25.11]
 };
-var settledData = Object.keys(SETTLED).map(function(k){
-  return {name:k, value:SETTLED[k].concat([1])};
+var SETTLED_PROV = ["北京","天津","上海","重庆","河北","辽宁","吉林","黑龙江","江苏","浙江","安徽","福建","江西","山东","河南","湖北","湖南","广东","广西","海南","四川","贵州","云南","西藏","陕西","甘肃","青海","宁夏","新疆","山西","内蒙古","云南"];
+
+var chart = echarts.init(document.getElementById("partner-map"));
+var breadcrumb = document.getElementById("map-breadcrumb");
+
+function renderMap(geoJson, name, adcode){
+  echarts.registerMap(name, geoJson);
+  var scatterData = Object.keys(SETTLED_CITY).map(function(k){
+    return {name:k, value:SETTLED_CITY[k].concat([1])};
+  });
+  chart.setOption({
+    backgroundColor:"transparent",
+    tooltip:{trigger:"item", formatter:function(p){
+      if(p.seriesType==="scatter") return "★ "+p.name;
+      return p.name;
+    }},
+    geo:{
+      map:name, roam:true, zoom: adcode==="100000"?1.1:1.15,
+      label:{show: adcode!=="100000", fontSize:10, color:"#3a5a3a"},
+      itemStyle:{areaColor:"#E8EFD8", borderColor:"#fff", borderWidth:1},
+      emphasis:{itemStyle:{areaColor:"#C6D9B8"}, label:{show:true, color:"#333"}}
+    },
+    series:[{
+      name:"已入驻", type:"scatter", coordinateSystem:"geo",
+      data:scatterData, symbolSize:9,
+      itemStyle:{color:"#C66B3D", shadowBlur:8, shadowColor:"rgba(198,107,61,.6)"},
+      label:{show:true, position:"right", formatter:"{b}", fontSize:10, color:"#3a5a3a"}
+    }]
+  }, true);
+}
+
+function showTip(regionName){
+  var tip = document.getElementById("map-tip");
+  document.getElementById("tip-city").textContent = regionName;
+  var isSettled = SETTLED_CITY[regionName] || SETTLED_PROV.indexOf(regionName)>=0;
+  document.getElementById("tip-status").textContent = isSettled ? "✓ 已有伙伴" : "○ 可申请";
+  document.getElementById("tip-desc").textContent = isSettled
+    ? "这里/这里已经有同行伙伴。你可以直接联系管家了解，也可以申请成为当地伙伴。"
+    : "这里还没有同行伙伴。提交申请后，云暖运营会在 3 个工作日内联系你。";
+  tip.style.display = "block";
+  document.querySelector('input[name="city"]').value = regionName;
+}
+
+function loadLevel(adcode, name, parentAdcode){
+  var url;
+  if(adcode==="100000") url = "./assets/data/china.json";
+  else url = "https://geo.datav.aliyun.com/areas_v3/bound/"+adcode+"_full.json";
+  fetch(url).then(function(r){return r.json();})
+    .then(function(geo){
+      renderMap(geo, name, adcode);
+      // 面包屑
+      var crumbs = ['<a href="javascript:;" onclick="goNational()" style="color:var(--earthen-deep);">全国</a>'];
+      if(parentAdcode){
+        crumbs.push(" › "+parentAdcode.parentName);
+      }
+      crumbs.push(" › "+name);
+      breadcrumb.innerHTML = crumbs.join("");
+    });
+}
+
+window.goNational = function(){ loadLevel("100000","china",null); };
+
+chart.on("click", function(p){
+  if(!p.name) return;
+  // 散点：已入驻城市
+  if(p.seriesType==="scatter"){ showTip(p.name); return; }
+  // 地图区域
+  var adcode = p.adcode;
+  if(!adcode){ showTip(p.name); return; }
+  // 全国视图：点省份下钻
+  if(String(adcode).endsWith("0000") && adcode!==100000){
+    loadLevel(String(adcode), p.name, {parentName:"全国"});
+  } else if(String(adcode).endsWith("00") && !String(adcode).endsWith("0000")){
+    // 市级视图：点城市
+    loadLevel(String(adcode), p.name, {parentName:p.name.replace(/市|省|自治区|壮族|回族|维吾尔|特别行政区/g,"")});
+  } else {
+    // 区县级：只显示tip
+    showTip(p.name);
+  }
 });
 
-fetch("./assets/data/china.json")
-  .then(function(r){return r.json();})
-  .then(function(geo){
-    echarts.registerMap("china", geo);
-    var chart = echarts.init(document.getElementById("partner-map"));
-    chart.setOption({
-      backgroundColor:"transparent",
-      tooltip:{trigger:"item", formatter:function(p){
-        if(p.seriesType==="scatter") return p.name;
-        return p.name + "（点击申请）";
-      }},
-      geo:{
-        map:"china", roam:true, zoom:1.1,
-        label:{show:false},
-        itemStyle:{areaColor:"#E8EFD8", borderColor:"#fff", borderWidth:1},
-        emphasis:{itemStyle:{areaColor:"#C6D9B8"}, label:{show:true, color:"#333"}}
-      },
-      series:[{
-        name:"已入驻", type:"scatter", coordinateSystem:"geo",
-        data:settledData,
-        symbolSize:function(v){return 8;},
-        itemStyle:{color:"#C66B3D", shadowBlur:8, shadowColor:"rgba(198,107,61,.5)"},
-        label:{show:true, position:"right", formatter:"{b}", fontSize:10, color:"#3a5a3a"}
-      }]
-    });
-    // 点击事件：地图区域 or 散点
-    chart.on("click", function(p){
-      var city = p.name;
-      var tip = document.getElementById("map-tip");
-      document.getElementById("tip-city").textContent = city;
-      var isSettled = SETTLED[city];
-      document.getElementById("tip-status").textContent = isSettled ? "✓ 已有伙伴" : "○ 可申请";
-      document.getElementById("tip-desc").textContent = isSettled
-        ? "这里已经有一位同行伙伴。你可以直接联系管家了解，也可以申请成为这个城市的第二位伙伴。"
-        : "这座城市还没有同行伙伴。提交申请后，云暖运营会在 3 个工作日内联系你。";
-      tip.style.display = "block";
-      // 自动填表单
-      setTimeout(function(){
-        document.querySelector('input[name="city"]').value = city;
-      }, 100);
-    });
-    window.addEventListener("resize", function(){chart.resize();});
-  });
+// 初始加载全国
+loadLevel("100000","china",null);
+window.addEventListener("resize", function(){chart.resize();});
 </script>
+
 </body>
 </html>
