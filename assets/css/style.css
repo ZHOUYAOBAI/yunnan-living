@@ -687,3 +687,19 @@ button{font-family:inherit;cursor:pointer;}
 .way-carousel .car-track img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;}
 .way-carousel .car-track img.is-active{opacity:1;}
 .way-card:hover .way-media img{transform:none;}
+
+/* AI示意图水印（合规） */
+.way-card::after {
+  content: "示意图 · AI 生成";
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 10px;
+  color: rgba(255,255,255,.85);
+  background: rgba(0,0,0,.35);
+  padding: 2px 8px;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 2;
+}
+.way-card { position: relative; overflow: hidden; }
