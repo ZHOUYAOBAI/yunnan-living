@@ -88,13 +88,14 @@
       ["非遗工坊日","白族扎染、纳西东巴、藏地手作——学一样带回家。"],
       ["自由日","晨光与风都是你的，管家不安排，随时能找到人。"]
     ];
-    var picks = {}, dur = "7", stay = "民宿（一室一厅一厨一卫）", exps = {}, svcs = {};
+    var picks = {}, xianPicks = {}, dur = "7", stay = "民宿（一室一厅一厨一卫）", exps = {}, svcs = {};
     var resultBox = $("#composer-result");
     var durTags = $("#dur-tags");
     var generateBtn = $("#composer-generate");
     var paxSel = $("#inp-pax");
     var startInp = $("#inp-start");
     var stayTags = $("#stay-tags"), expTags = $("#exp-tags"), svcTags = $("#svc-tags");
+    var xianPanel = $("#xian-panel");
     function chosen(obj){ return Object.keys(obj).filter(function(k){return obj[k];}); }
     function addDays(s, n){ if(!s) return "待定"; var d=new Date(s+"T00:00:00"); d.setDate(d.getDate()+n); var y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),dd=String(d.getDate()).padStart(2,"0"); return y+"-"+m+"-"+dd; }
     function renderPlan(){
@@ -188,10 +189,46 @@
     pickTags.addEventListener("click", function(e){
       var btn = e.target.closest(".tag-btn"); if(!btn) return;
       var id = btn.getAttribute("data-id");
-      if(picks[id]){ delete picks[id]; btn.classList.remove("is-on"); btn.setAttribute("aria-pressed","false"); }
-      else { picks[id] = true; btn.classList.add("is-on"); btn.setAttribute("aria-pressed","true"); }
+      if(picks[id]){
+        delete picks[id]; btn.classList.remove("is-on"); btn.setAttribute("aria-pressed","false");
+        delete xianPicks[id];
+      } else {
+        picks[id] = true; btn.classList.add("is-on"); btn.setAttribute("aria-pressed","true");
+      }
+      renderXianPanel();
       updateLive();
     });
+    // 区县面板：点击chips选/取消区县
+    if(xianPanel){
+      xianPanel.addEventListener("click", function(e){
+        var chip = e.target.closest(".xian-chip"); if(!chip) return;
+        var sid = chip.getAttribute("data-sid"), xn = chip.getAttribute("data-xian");
+        if(!xianPicks[sid]) xianPicks[sid] = {};
+        if(xianPicks[sid][xn]){ delete xianPicks[sid][xn]; chip.classList.remove("is-on"); }
+        else { xianPicks[sid][xn] = true; chip.classList.add("is-on"); }
+        updateLive();
+      });
+    }
+    function renderXianPanel(){
+      if(!xianPanel) return;
+      var ids = Object.keys(picks);
+      if(!ids.length){ xianPanel.style.display="none"; xianPanel.innerHTML=""; return; }
+      // 合并所有选中州的区县
+      var html = '<p style="margin:.2rem 0 .6rem;font-size:var(--fs-xs);color:var(--moss);">选了州，可以再点具体区县（不选就是整个州）：</p>';
+      ids.forEach(function(sid){
+        var sname = STATE_META[sid][0];
+        var xians = (typeof XIAN_DATA!=="undefined" && XIAN_DATA[sname]) || [];
+        if(!xians.length) return;
+        html += '<div style="margin-bottom:.5rem;"><b style="color:var(--moss-deep);font-size:var(--fs-sm);">'+sname+'：</b> ';
+        xians.forEach(function(x){
+          var on = (xianPicks[sid] && xianPicks[sid][x.name]) ? " is-on" : "";
+          html += '<button type="button" class="tag-btn xian-chip'+on+'" data-sid="'+sid+'" data-xian="'+x.name+'" style="padding:.25rem .6rem;font-size:var(--fs-xs);margin:.15rem;" title="'+x.full+'">'+x.name+'</button>';
+        });
+        html += '</div>';
+      });
+      xianPanel.innerHTML = html;
+      xianPanel.style.display = "block";
+    }
     var liveBox = $("#composer-live");
     function updateLive(){
       if(!liveBox) return;
@@ -201,7 +238,11 @@
         return;
       }
       var per = parseInt(dur,10), total = ids.length*per;
-      var names = ids.map(function(id){ return STATE_META[id][0]; }).join("、");
+      var names = ids.map(function(id){
+        var sname = STATE_META[id][0];
+        var xs = xianPicks[id] ? Object.keys(xianPicks[id]) : [];
+        return xs.length ? sname+"（"+xs.join("、")+"）" : sname;
+      }).join("、");
       liveBox.innerHTML = '已选 <b style="color:var(--earthen-deep);">'+ids.length+'</b> 个地方（'+names+'）· 每地 <b style="color:var(--earthen-deep);">'+per+'</b> 天 · 全程约 <b style="color:var(--earthen-deep);">'+total+'</b> 天';
     }
     if(durTags){
@@ -234,10 +275,11 @@
     var clearBtn = $("#composer-clear");
     if(clearBtn){
       clearBtn.addEventListener("click", function(){
-        picks = {}; exps = {}; svcs = {}; stay = "民宿（一室一厅一厨一卫）";
+        picks = {}; xianPicks = {}; exps = {}; svcs = {}; stay = "民宿（一室一厅一厨一卫）";
         $$(".tag-btn", pickTags).forEach(function(b){ b.classList.remove("is-on"); b.setAttribute("aria-pressed","false"); });
         $$(".tag-btn", expTags).forEach(function(b){ b.classList.remove("is-on"); b.setAttribute("aria-pressed","false"); });
         $$(".tag-btn", svcTags).forEach(function(b){ b.classList.remove("is-on"); b.setAttribute("aria-pressed","false"); });
+        if(xianPanel){ xianPanel.style.display="none"; xianPanel.innerHTML=""; }
         updateLive();
         renderPlan();
       });
