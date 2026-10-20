@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>春天版</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#2a2a2a;font-family:"Noto Serif SC","Songti SC",serif;padding:30px}
+  h1{color:#fff;font:600 20px sans-serif;margin-bottom:4px}
+  .sub{color:#bbb;font:13px sans-serif;margin-bottom:24px}
+  .wrap{max-width:1200px}
+
+  /* 导航：极浅春绿底 */
+  .nav{background:#EAF3E6;padding:18px 36px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(45,74,53,.1)}
+  .brand{color:#3D7A4F;font:700 18px sans-serif}
+  .nav-links{display:flex;gap:24px;font:14px sans-serif}
+  .nav-links a{color:#5A7A62;text-decoration:none}
+  .nav-links a.on{color:#3D7A4F;font-weight:600}
+
+  /* Hero：浅绿底 + 嫩芽绿渐变 */
+  .hero{background:linear-gradient(160deg,#EAF3E6 0%,#D4E8CC 100%);padding:72px 48px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .kicker{color:#5A9A6A;font:600 13px sans-serif;letter-spacing:2px;margin-bottom:16px}
+  .hero h2{font-size:56px;line-height:1.1;letter-spacing:-.02em;color:#2D4A35;margin-bottom:18px}
+  .hero p{font-size:16px;color:#4A6A52;line-height:1.8;margin-bottom:32px;max-width:420px}
+  .btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .btn{padding:14px 26px;border-radius:30px;font:600 14px sans-serif}
+  .btn-primary{background:#5A9A6A;color:#fff;border:0}
+  .btn-primary:hover{background:#4A8A5A}
+  .btn-ghost{background:transparent;color:#3D7A4F;border:1.5px solid #5A9A6A}
+  .hero-img{height:320px;border-radius:20px;background:linear-gradient(135deg,#8FC0A0,#5A9A6A);position:relative;overflow:hidden}
+  .hero-img::after{content="茶山新绿 · 真实摄影占位";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font:13px sans-serif}
+
+  /* 分区 */
+  .section{background:#F5FAF2;padding:56px 48px}
+  .section-kicker{color:#5A9A6A;font:600 13px sans-serif;letter-spacing:2px;margin-bottom:8px}
+  .section-title{color:#2D4A35;font-size:32px;margin-bottom:28px}
+
+  /* 卡片 */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:#fff;border:1px solid rgba(45,74,53,.08);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(90,154,106,.08)}
+  .card-img{height:130px;background:linear-gradient(135deg,#A8D0B0,#7CB389);position:relative}
+  .tag{position:absolute;top:12px;left:12px;background:#3D7A4F;color:#fff;font:11px sans-serif;padding:4px 12px;border-radius:20px}
+  .card-body{padding:18px}
+  .card-body h3{color:#2D4A35;font-size:18px;margin-bottom:4px}
+  .card-body .en{color:#7CB389;font:12px sans-serif;margin-bottom:8px}
+  .card-body .temp{color:#E8923C;font:600 14px sans-serif}
+
+  /* 页脚：深绿 */
+  .footer{background:#2D4A35;color:rgba(234,243,230,.75);padding:36px 48px;font:13px sans-serif}
+  .footer strong{color:#EAF3E6}
+
+  /* 色板 */
+  .palette{background:#fff;padding:28px 48px;display:flex;gap:24px;align-items:center}
+  .sw{text-align:center}
+  .chip{width:64px;height:64px;border-radius:12px;border:1px solid rgba(0,0,0,.1);margin-bottom:6px}
+  .sw .n{font:600 12px sans-serif;color:#2D4A35}
+  .sw .h{font:10px monospace;color:#999}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>春天版 · 万物复苏</h1>
+  <div class="sub">浅绿底 + 新芽绿主色 + 阳光橙 CTA，圆角柔和、像春天透过树叶的光</div>
+
+  <div class="nav">
+    <div class="brand">△ 云暖 · 旅居</div>
+    <div class="nav-links">
+      <a class="on">首页</a><a>目的地</a><a>体验包</a><a>旅居总管</a><a>美食</a><a>信任</a><a>联系</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进春天里</h2>
+      <p>不是来看云南，是住进云南的日子。茶山新绿、山花初开，有人替你接住每一个想住下来的人。</p>
+      <div class="btns">
+        <div class="btn btn-primary">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost">焕新居</div>
+      </div>
+    </div>
+    <div class="hero-img"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-kicker">—— 16 州，说清旅居</div>
+    <div class="section-title">选一个你想住一阵的地方</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-img"><span class="tag">滇西</span></div>
+        <div class="card-body">
+          <h3>大理</h3>
+          <div class="en">Dali · Between Cangshan</div>
+          <div class="temp">年均 15.1℃ · 最热 20.1℃</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="tag">滇南</span></div>
+        <div class="card-body">
+          <h3>普洱</h3>
+          <div class="en">Puer · Forest Tea</div>
+          <div class="temp">年均 19.3℃ · 最热 23.0℃</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="tag">滇西</span></div>
+        <div class="card-body">
+          <h3>腾冲</h3>
+          <div class="en">Tengchong · Hot Springs</div>
+          <div class="temp">年均 15.9℃ · 最热 21.3℃</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette">
+    <div class="sw"><div class="chip" style="background:#EAF3E6"></div><div class="n">春雾绿</div><div class="h">#EAF3E6</div></div>
+    <div class="sw"><div class="chip" style="background:#8FC0A0"></div><div class="n">新芽绿</div><div class="h">#8FC0A0</div></div>
+    <div class="sw"><div class="chip" style="background:#5A9A6A"></div><div class="n">茶山绿</div><div class="h">#5A9A6A</div></div>
+    <div class="sw"><div class="chip" style="background:#2D4A35"></div><div class="n">深叶绿</div><div class="h">#2D4A35</div></div>
+    <div class="sw"><div class="chip" style="background:#E8923C"></div><div class="n">春花橙</div><div class="h">#E8923C</div></div>
+    <div class="sw"><div class="chip" style="background:#fff;border:1px solid #ccc"></div><div class="n">卡片白</div><div class="h">#FFFFFF</div></div>
+  </div>
+
+  <div class="footer">
+    <strong>云暖·旅居</strong> · 在云南，住进日子 · 132 0888 8618 · 老昆明人替你接住每一个想住下来的人
+  </div>
+</div>
+</body>
+</html>

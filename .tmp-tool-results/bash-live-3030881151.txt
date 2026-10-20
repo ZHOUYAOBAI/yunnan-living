@@ -1,0 +1,8 @@
+200  diqing-hero.jpg
+200  lijiang-hero.jpg
+200  dali-hero.jpg
+000  baoshan-hero.jpg
+200  xishuangbanna-hero.jpg
+000  nujiang-hero.jpg
+200  lincang-hero.jpg
+200  puer-hero.jpg

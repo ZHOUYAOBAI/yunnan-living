@@ -1,0 +1,4 @@
+Google collects usage statistics to improve Chrome DevTools MCP. To opt-out, run with --no-usage-statistics.
+For more details, visit: https://github.com/ChromeDevTools/chrome-devtools-mcp#usage-statistics
+2: 全新配色样板 (file:///home/user/Doubao/chats/38447038988828418/%E5%85%A8%E6%96%B0%E9%85%8D%E8%89%B2%E6%A0%B7%E6%9D%BF.html) [selected]
+    at process.processTimers (node:internal/timers:521:7)

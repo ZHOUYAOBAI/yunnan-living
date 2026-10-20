@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>配色对比</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#1a1a1a; font-family:"Noto Serif SC", "Songti SC", serif; padding:30px; }
+  h1 { color:#fff; font-size:20px; margin-bottom:6px; font-family:sans-serif; }
+  .sub { color:#aaa; font-size:13px; margin-bottom:24px; font-family:sans-serif; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .scheme { border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,.4); }
+  .hero { padding:48px 36px; min-height:360px; position:relative; }
+  .hero .kicker { font-size:12px; letter-spacing:3px; opacity:.8; margin-bottom:18px; }
+  .hero h2 { font-size:44px; line-height:1.15; margin-bottom:14px; font-weight:700; }
+  .hero p { font-size:15px; opacity:.9; margin-bottom:28px; max-width:380px; line-height:1.7; }
+  .btns { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .btn { padding:13px 24px; border-radius:8px; font-size:13px; font-family:sans-serif; font-weight:600; }
+  .btn-primary { color:#fff; }
+  .btn-ghost { background:rgba(255,255,255,.12); color:inherit; border:1px solid rgba(255,255,255,.35); }
+  .btn-phone { background:transparent; border:1px solid rgba(255,255,255,.4); color:inherit; }
+  .footer { padding:20px 28px; font-family:sans-serif; }
+  .label { font-size:16px; font-weight:700; margin-bottom:4px; }
+  .desc { font-size:12px; opacity:.7; margin-bottom:14px; }
+  .dots { display:flex; gap:8px; align-items:center; }
+  .dot { width:22px; height:22px; border-radius:50%; border:1px solid rgba(0,0,0,.1); }
+  .dot-label { font-size:11px; color:#666; }
+</style>
+</head>
+<body>
+<h1>云暖·旅居 配色对比</h1>
+<div class="sub">左：现在线上版（松烟青 + 暗陶土）　｜　右：晨光茶园（提亮 + 阳光橙）</div>
+
+<div class="grid">
+
+  <!-- 现在 -->
+  <div class="scheme">
+    <div class="hero" style="background:#40594C; color:#F6F1E6;">
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进日子</h2>
+      <p>不是来看云南，是住进云南的日子。<br>旅居体验包——买茶、就医、水电、瑞碎，有人替你接住。</p>
+      <div class="btns">
+        <div class="btn btn-primary" style="background:#B4603A;">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost">焕新居</div>
+        <div class="btn btn-phone">立即咨询 · 132 0888 8618</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#EDE6D8; color:#2F4A3E;">
+      <div class="label">现在 · 沉稳但偏暗</div>
+      <div class="desc">hero #40594C（灰沉） ｜ CTA #B4603A（暗陶土）</div>
+      <div class="dots">
+        <span class="dot" style="background:#40594C"></span>
+        <span class="dot" style="background:#2F4A3E"></span>
+        <span class="dot" style="background:#B4603A"></span>
+        <span class="dot" style="background:#EDE6D8"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 晨光茶园 -->
+  <div class="scheme">
+    <div class="hero" style="background:#4E7A5E; color:#FDFBF5;">
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进日子</h2>
+      <p>不是来看云南，是住进云南的日子。<br>旅居体验包——买茶、就医、水电、瑞碎，有人替你接住。</p>
+      <div class="btns">
+        <div class="btn btn-primary" style="background:#D07A3E;">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost">焕新居</div>
+        <div class="btn btn-phone">立即咨询 · 132 0888 8618</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#F0E8D8; color:#2C4A3A;">
+      <div class="label">晨光茶园 · 有光但克制</div>
+      <div class="desc">hero #4E7A5E（茶山新绿） ｜ CTA #D07A3E（阳光橙）</div>
+      <div class="dots">
+        <span class="dot" style="background:#4E7A5E"></span>
+        <span class="dot" style="background:#2C4A3A"></span>
+        <span class="dot" style="background:#D07A3E"></span>
+        <span class="dot" style="background:#F0E8D8"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

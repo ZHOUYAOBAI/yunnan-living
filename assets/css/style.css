@@ -232,10 +232,12 @@ button{font-family:inherit;cursor:pointer;}
 }
 .state-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(45,74,53,.14);}
 .state-card .ph{position:relative;height:148px;overflow:hidden;}
-.state-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-.state-card:hover .ph img{transform:scale(1.05);}
+.state-card .ph img{width:100%;height:100%;object-fit:cover;transition:opacity 1s ease,transform .5s;position:absolute;inset:0;opacity:0;}
+.state-card .ph img.is-active{opacity:1;}
+.state-card .ph img.is-first{opacity:1;}
+.state-card:hover .ph img.is-active{transform:scale(1.05);}
 .state-card .region-tag{
-  position:absolute;left:.55rem;top:.55rem;z-index:2;
+  position:absolute;left:.55rem;top:.55rem;z-index:3;
   background:rgba(45,74,53,.85);color:#F5FAF2;
   font-size:.68rem;letter-spacing:.12em;padding:.22rem .55rem;border-radius:20px;
 }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>配色方案预览</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#222; font-family:"Noto Serif SC", serif; padding:30px; }
+  h1 { color:#fff; font-size:20px; margin-bottom:20px; font-family:sans-serif; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .scheme { border-radius:14px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,.3); }
+  .hero { padding:40px 32px; min-height:280px; position:relative; }
+  .hero .kicker { font-size:12px; letter-spacing:2px; opacity:.8; margin-bottom:14px; }
+  .hero h2 { font-size:34px; line-height:1.2; margin-bottom:10px; }
+  .hero p { font-size:14px; opacity:.85; margin-bottom:22px; max-width:340px; line-height:1.6; }
+  .btns { display:flex; gap:10px; flex-wrap:wrap; }
+  .btn { padding:11px 20px; border-radius:8px; font-size:13px; font-family:sans-serif; font-weight:600; }
+  .btn-primary { color:#fff; }
+  .btn-ghost { background:rgba(255,255,255,.15); color:inherit; border:1px solid rgba(255,255,255,.3); }
+  .footer { background:#F2EBDD; padding:18px 24px; font-family:sans-serif; font-size:12px; color:#555; display:flex; justify-content:space-between; align-items:center;}
+  .dots { display:flex; gap:6px; }
+  .dot { width:16px; height:16px; border-radius:50%; border:1px solid rgba(0,0,0,.1); }
+  .name { font-size:15px; font-weight:700; }
+</style>
+</head>
+<body>
+<h1>云暖·旅居 — 4 个生机配色方案（按首页 hero 真实比例渲）</h1>
+<div class="grid">
+
+  <!-- A 茶山晨绿 -->
+  <div class="scheme">
+    <div class="hero" style="background:#5A8A6A; color:#FDFBF5;">
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进日子</h2>
+      <p>不是来看云南，是住进云南的日子。</p>
+      <div class="btns">
+        <div class="btn btn-primary" style="background:#E08A3C;">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost">焕新居</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span class="name">A · 茶山晨绿</span>
+      <div class="dots">
+        <span class="dot" style="background:#5A8A6A"></span>
+        <span class="dot" style="background:#3A6B4F"></span>
+        <span class="dot" style="background:#E08A3C"></span>
+        <span class="dot" style="background:#F2EBDD"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- B 洱海天光 -->
+  <div class="scheme">
+    <div class="hero" style="background:#3E7A75; color:#FDFBF5;">
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进日子</h2>
+      <p>不是来看云南，是住进云南的日子。</p>
+      <div class="btns">
+        <div class="btn btn-primary" style="background:#D9553F;">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost">焕新居</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#E8EFEA;">
+      <span class="name">B · 洱海天光</span>
+      <div class="dots">
+        <span class="dot" style="background:#3E7A75"></span>
+        <span class="dot" style="background:#1F4A45"></span>
+        <span class="dot" style="background:#D9553F"></span>
+        <span class="dot" style="background:#E8EFEA"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- C 花园花色 -->
+  <div class="scheme">
+    <div class="hero" style="background:#2E8B6F; color:#FDFBF5;">
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进日子</h2>
+      <p>不是来看云南，是住进云南的日子。</p>
+      <div class="btns">
+        <div class="btn btn-primary" style="background:#E8A33D; color:#3A2A10;">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost" style="border-color:#7A5C9E; color:#E8D8F0;">焕新居</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#F5EFE0;">
+      <span class="name">C · 花园花色</span>
+      <div class="dots">
+        <span class="dot" style="background:#2E8B6F"></span>
+        <span class="dot" style="background:#1F5A48"></span>
+        <span class="dot" style="background:#E8A33D"></span>
+        <span class="dot" style="background:#7A5C9E"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- D 暖阳午后 -->
+  <div class="scheme">
+    <div class="hero" style="background:#4A7A5C; color:#FDFBF5;">
+      <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+      <h2>在云南，<br>住进日子</h2>
+      <p>不是来看云南，是住进云南的日子。</p>
+      <div class="btns">
+        <div class="btn btn-primary" style="background:#C95A2E;">旅居体验包 · 一周起</div>
+        <div class="btn btn-ghost">焕新居</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#F5EBD8;">
+      <span class="name">D · 暖阳午后</span>
+      <div class="dots">
+        <span class="dot" style="background:#4A7A5C"></span>
+        <span class="dot" style="background:#2F5A44"></span>
+        <span class="dot" style="background:#C95A2E"></span>
+        <span class="dot" style="background:#F5EBD8"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

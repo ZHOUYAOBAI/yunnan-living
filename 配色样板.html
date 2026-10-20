@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>晨光云南 配色样板</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#1a1a1a;font-family:"Noto Serif SC","Songti SC",serif;padding:30px}
+  h1{color:#fff;font:600 20px sans-serif;margin-bottom:4px}
+  .sub{color:#aaa;font:13px sans-serif;margin-bottom:24px}
+  .wrap{max-width:1200px}
+
+  /* 导航 */
+  .nav{background:#F3EBDD;padding:18px 36px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(46,38,32,.14)}
+  .brand{color:#2C5240;font:700 18px sans-serif}
+  .nav-links{display:flex;gap:24px;font:14px sans-serif}
+  .nav-links a{color:#5A4E3E;text-decoration:none}
+  .nav-links a.on{color:#D06A20;font-weight:600}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,#4A7C5E 0%,#2C5240 100%);padding:64px 48px;color:#FDFBF5}
+  .kicker{font:12px sans-serif;letter-spacing:3px;opacity:.75;margin-bottom:18px}
+  .hero h2{font-size:52px;line-height:1.12;letter-spacing:-.02em;margin-bottom:16px}
+  .hero p{font-size:16px;opacity:.88;max-width:480px;line-height:1.7;margin-bottom:32px}
+  .btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .btn{padding:14px 26px;border-radius:8px;font:600 14px sans-serif;cursor:pointer}
+  .btn-primary{background:#D06A20;color:#fff;border:0}
+  .btn-ghost{background:rgba(255,255,255,.14);color:#FDFBF5;border:1px solid rgba(255,255,255,.3)}
+  .btn-phone{background:transparent;color:#FDFBF5;border:1px solid rgba(255,255,255,.4)}
+
+  /* 分区 */
+  .section{background:#F3EBDD;padding:48px}
+  .section-kicker{color:#D06A20;font:600 13px sans-serif;letter-spacing:2px;margin-bottom:8px}
+  .section-title{color:#2E2620;font-size:32px;margin-bottom:28px}
+
+  /* 卡片 */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:#fff;border:1px solid rgba(46,38,32,.14);border-radius:6px;overflow:hidden}
+  .card-img{height:140px;background:linear-gradient(135deg,#4A7C5E,#2C5240);position:relative}
+  .tag{position:absolute;top:12px;left:12px;background:#2C5240;color:#fff;font:11px sans-serif;padding:4px 10px;border-radius:4px}
+  .card-body{padding:18px}
+  .card-body h3{color:#2E2620;font-size:18px;margin-bottom:6px}
+  .card-body .en{color:#D06A20;font:12px sans-serif;margin-bottom:8px}
+  .card-body .temp{color:#D06A20;font:600 14px sans-serif}
+
+  /* 页脚 */
+  .footer{background:#2C5240;color:rgba(253,251,245,.75);padding:32px 48px;font:13px sans-serif}
+
+  /* 色板 */
+  .palette{background:#fff;padding:32px 48px;display:flex;gap:24px;align-items:center}
+  .sw{text-align:center}
+  .sw .chip{width:72px;height:72px;border-radius:8px;border:1px solid rgba(0,0,0,.1);margin-bottom:8px}
+  .sw .name{font:600 12px sans-serif;color:#2E2620}
+  .sw .hex{font:11px monospace;color:#888}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>晨光云南 · 配色样板</h1>
+  <div class="sub">导航 / Hero / 按钮 / 卡片 / 页脚 全组件真实渲染</div>
+
+  <div class="nav">
+    <div class="brand">△ 云暖 · 旅居</div>
+    <div class="nav-links">
+      <a class="on">首页</a><a>目的地</a><a>体验包</a><a>旅居总管</a><a>美食</a><a>信任</a><a>联系</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">△ 云暖·旅居 · 2012 年起</div>
+    <h2>在云南，<br>住进日子</h2>
+    <p>不是来看云南，是住进云南的日子。旅居体验包——买茶、就医、水电、瑞碎，有人替你接住。</p>
+    <div class="btns">
+      <div class="btn btn-primary">旅居体验包 · 一周起</div>
+      <div class="btn btn-ghost">焕新居</div>
+      <div class="btn btn-phone">立即咨询 · 132 0888 8618</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-kicker">—— 16 州，说清旅居</div>
+    <div class="section-title">选一个你想住一阵的地方</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-img"><span class="tag">滇西</span></div>
+        <div class="card-body">
+          <h3>大理</h3>
+          <div class="en">Dali · Between Cangshan</div>
+          <div class="temp">年均 15.1℃ · 最热 20.1℃</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="tag">滇南</span></div>
+        <div class="card-body">
+          <h3>普洱</h3>
+          <div class="en">Puer · Forest Tea</div>
+          <div class="temp">年均 19.3℃ · 最热 23.0℃</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><span class="tag">滇西</span></div>
+        <div class="card-body">
+          <h3>腾冲</h3>
+          <div class="en">Tengchong · Hot Springs</div>
+          <div class="temp">年均 15.9℃ · 最热 21.3℃</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette">
+    <div class="sw"><div class="chip" style="background:#F3EBDD"></div><div class="name">纸底</div><div class="hex">#F3EBDD</div></div>
+    <div class="sw"><div class="chip" style="background:#4A7C5E"></div><div class="name">晨光茶园</div><div class="hex">#4A7C5E</div></div>
+    <div class="sw"><div class="chip" style="background:#2C5240"></div><div class="name">深茶园</div><div class="hex">#2C5240</div></div>
+    <div class="sw"><div class="chip" style="background:#D06A20"></div><div class="name">阳光橙</div><div class="hex">#D06A20</div></div>
+    <div class="sw"><div class="chip" style="background:#2E2620"></div><div class="name">墨褐</div><div class="hex">#2E2620</div></div>
+    <div class="sw"><div class="chip" style="background:#fff;border:1px solid #ccc"></div><div class="name">卡片白</div><div class="hex">#FFFFFF</div></div>
+  </div>
+
+  <div class="footer">
+    © 2026 云暖·旅居 · 在云南，住进日子 · 132 0888 8618
+  </div>
+</div>
+</body>
+</html>
