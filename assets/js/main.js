@@ -179,12 +179,26 @@
       var id = btn.getAttribute("data-id");
       if(picks[id]){ delete picks[id]; btn.classList.remove("is-on"); btn.setAttribute("aria-pressed","false"); }
       else { picks[id] = true; btn.classList.add("is-on"); btn.setAttribute("aria-pressed","true"); }
+      updateLive();
     });
+    var liveBox = $("#composer-live");
+    function updateLive(){
+      if(!liveBox) return;
+      var ids = Object.keys(picks);
+      if(!ids.length){
+        liveBox.innerHTML = '选几个想去的地方，每地住几天，实时算给你看。';
+        return;
+      }
+      var per = parseInt(dur,10), total = ids.length*per;
+      var names = ids.map(function(id){ return STATE_META[id][0]; }).join("、");
+      liveBox.innerHTML = '已选 <b style="color:var(--earthen-deep);">'+ids.length+'</b> 个地方（'+names+'）· 每地 <b style="color:var(--earthen-deep);">'+per+'</b> 天 · 全程约 <b style="color:var(--earthen-deep);">'+total+'</b> 天';
+    }
     if(durTags){
       durTags.addEventListener("click", function(e){
         var btn = e.target.closest(".tag-btn"); if(!btn || !btn.getAttribute("data-dur")) return;
         dur = btn.getAttribute("data-dur");
         $$(".tag-btn", durTags).forEach(function(b){ b.classList.toggle("is-on", b === btn); });
+        updateLive();
       });
     }
     if(stayTags){
@@ -213,6 +227,7 @@
         $$(".tag-btn", pickTags).forEach(function(b){ b.classList.remove("is-on"); b.setAttribute("aria-pressed","false"); });
         $$(".tag-btn", expTags).forEach(function(b){ b.classList.remove("is-on"); b.setAttribute("aria-pressed","false"); });
         $$(".tag-btn", svcTags).forEach(function(b){ b.classList.remove("is-on"); b.setAttribute("aria-pressed","false"); });
+        updateLive();
         renderPlan();
       });
     }
