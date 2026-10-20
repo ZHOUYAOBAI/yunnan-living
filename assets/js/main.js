@@ -249,3 +249,15 @@
     });
   }
 })();
+
+/* Hero 背景轮播 */
+(function(){
+  var slides = document.querySelectorAll('.hero-carousel .hero-media');
+  if(slides.length < 2) return;
+  var idx = 0;
+  setInterval(function(){
+    slides[idx].classList.remove('is-active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('is-active');
+  }, 4500);
+})();
