@@ -681,3 +681,9 @@ button{font-family:inherit;cursor:pointer;}
     border-width: 3px !important;
   }
 }
+
+/* way-card 图片轮播 */
+.way-carousel .car-track{position:absolute;inset:0;}
+.way-carousel .car-track img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;}
+.way-carousel .car-track img.is-active{opacity:1;}
+.way-card:hover .way-media img{transform:none;}

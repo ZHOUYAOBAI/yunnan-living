@@ -394,3 +394,18 @@
     slides[idx].classList.add('is-active');
   }, 4500);
 })();
+
+
+/* way-card 图片轮播（淡入淡出，每张4秒） */
+(function(){
+  $$('[data-carousel]').forEach(function(car){
+    var imgs = car.querySelectorAll('.car-track img');
+    if(imgs.length < 2) return;
+    var i = 0;
+    setInterval(function(){
+      imgs[i].classList.remove('is-active');
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add('is-active');
+    }, 4000);
+  });
+})();
