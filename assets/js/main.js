@@ -128,6 +128,20 @@
     var durTags = $("#dur-tags");
     var generateBtn = $("#composer-generate");
     var paxSel = $("#inp-pax");
+    var paxCustom = $("#inp-pax-custom");
+    if(paxSel && paxCustom){
+      paxSel.addEventListener("change", function(){
+        if(paxSel.value === "custom"){ paxCustom.style.display = "block"; paxCustom.focus(); }
+        else { paxCustom.style.display = "none"; }
+      });
+    }
+    function getPaxText(){
+      if(paxSel.value === "custom"){
+        var n = parseInt(paxCustom.value, 10);
+        return (n && n > 0) ? n + " 人（自定义）" : "自定义人数（未填）";
+      }
+      return paxSel.value;
+    }
     var startInp = $("#inp-start");
     var stayTags = $("#stay-tags"), expTags = $("#exp-tags"), svcTags = $("#svc-tags");
     var xianPanel = $("#xian-panel");
@@ -138,7 +152,7 @@
       if(!resultBox) return;
       if(!ids.length){ resultBox.classList.remove("is-show"); resultBox.innerHTML=""; return; }
       var per = parseInt(dur,10), total = ids.length*per;
-      var pax = paxSel ? paxSel.value : "2 人";
+      var pax = getPaxText();
       var start = startInp ? startInp.value : "";
       var rhythm = per===7?"一周节奏":per===15?"半月节奏":"深度节奏";
       var expList = chosen(exps), svcList = chosen(svcs);
