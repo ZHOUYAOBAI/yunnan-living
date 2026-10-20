@@ -176,7 +176,7 @@ var settledData = Object.keys(SETTLED).map(function(k){
   return {name:k, value:SETTLED[k].concat([1])};
 });
 
-fetch("https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json")
+fetch("./assets/data/china.json")
   .then(function(r){return r.json();})
   .then(function(geo){
     echarts.registerMap("china", geo);
