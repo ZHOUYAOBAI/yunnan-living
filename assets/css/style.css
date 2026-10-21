@@ -929,3 +929,30 @@ p, li {
 .site-footer a:hover { color: #fff !important; }
 .site-footer .tel { color: #E8B87D !important; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.12) !important; }
+
+/* ============ Section 背景交替 ============ */
+body { background: #E8F0E0; }
+.section { background: transparent; }
+/* 偶数个section换米白 */
+.section:nth-of-type(even) { background: #F5EFE6; }
+/* 深绿section保持 */
+.section--deep { background: #2D4A35 !important; color: #fff; }
+.section--deep .h2, .section--deep p { color: #fff; }
+.section--deep .eyebrow { color: #A8C4A0; }
+/* mist背景已经有了，统一 */
+.section--mist { background: #EDF3E5; }
+
+/* ============ 移动端优化 ============ */
+@media (max-width: 768px) {
+  body { font-size: 17px; }
+  .hero-title { font-size: 2.2rem !important; line-height: 1.2; }
+  .hero-sub { font-size: 1rem !important; }
+  .hero-actions .btn { width: 100%; justify-content: center; padding: 1rem; font-size: 1rem; }
+  .h2 { font-size: 1.8rem !important; }
+  .state-grid, .words-grid, .topics, .story-mini-grid { grid-template-columns: 1fr !important; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .stats-strip .num { font-size: 2rem; }
+  .site-nav ul { gap: 1.2rem !important; font-size: 1.1rem; }
+  .scroll-hint { display: none; }
+  .search-box, #site-search { width: 240px !important; }
+}
