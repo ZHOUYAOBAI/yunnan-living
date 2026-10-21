@@ -822,3 +822,47 @@ button{font-family:inherit;cursor:pointer;}
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-group > * { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ============ 杂志感标题 + 卡片hover + 数字滚动 ============ */
+
+/* 1. 标题换衬线宋体 */
+.h2, .hero-title, .section-head .h2 {
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  letter-spacing: .01em;
+}
+.section-head .h2 em {
+  font-style: normal;
+  color: var(--earthen-deep, #C66B3D);
+}
+
+/* 2. 16州卡片hover */
+.state-card {
+  transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease;
+}
+.state-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(45,74,53,.25);
+}
+.state-card .ph img {
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.state-card:hover .ph img {
+  transform: scale(1.06);
+}
+.state-card .ph { overflow: hidden; }
+
+/* 通用卡片hover微动效 */
+.word-cell, .topic, .step, .insure, .pledge, .story-mini, .food-card {
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.word-cell:hover, .topic:hover, .story-mini:hover, .food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -8px rgba(45,74,53,.18);
+}
+
+/* 3. 数字滚动动画容器 */
+.count-up {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}

@@ -424,3 +424,48 @@
     io.observe(el);
   });
 })();
+
+/* ============ 数字滚动（CountUp） ============ */
+(function(){
+  // 找到所有包含数字的.temp/.desc里的数字，或者[data-count]属性
+  // 简单实现：对.state-card里的温度数字做count-up
+  function countUp(el){
+    var text = el.textContent;
+    // 匹配数字（含小数）
+    var nums = text.match(/[\d.]+/g);
+    if(!nums) return;
+    var replacements = [];
+    var idx = 0;
+    var newText = text.replace(/[\d.]+/g, function(m){
+      replacements.push(parseFloat(m));
+      return '__' + (idx++) + '__';
+    });
+    var dur = 1200;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      var cur = newText.replace(/__(\d+)__/g, function(_, i){
+        var v = replacements[parseInt(i)];
+        return (v * eased).toFixed(v % 1 === 0 ? 0 : 1);
+      });
+      el.textContent = cur;
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = text;
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        countUp(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  // 对.state-card里的.temp做count-up
+  document.querySelectorAll('.state-card .temp, .food-card .v').forEach(function(el){
+    io.observe(el);
+  });
+})();
