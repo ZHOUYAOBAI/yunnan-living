@@ -794,3 +794,31 @@ button{font-family:inherit;cursor:pointer;}
     filter: none !important;
   }
 }
+
+/* ============ 全站滚动 Reveal ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 子元素依次浮现（用于网格/卡片） */
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.reveal-group.is-visible > *:nth-child(1) { transition-delay: .0s; }
+.reveal-group.is-visible > *:nth-child(2) { transition-delay: .1s; }
+.reveal-group.is-visible > *:nth-child(3) { transition-delay: .2s; }
+.reveal-group.is-visible > *:nth-child(4) { transition-delay: .3s; }
+.reveal-group.is-visible > *:nth-child(5) { transition-delay: .4s; }
+.reveal-group.is-visible > *:nth-child(6) { transition-delay: .5s; }
+.reveal-group.is-visible > * { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-group > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+}

@@ -683,14 +683,14 @@ home(){
     <path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/>
   </svg>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head section-head--center">
         <p class="eyebrow">四个词，说清旅居</p>
         <h2 class="h2">慢、住、吃、人</h2>
         <p class="lede">旅居不是换一个地方旅游，是换一种方式过日子。</p>
       </div>
-      <div class="words-grid">
+      <div class="words-grid reveal-group">
         <div class="word-cell"><span class="word-char">慢</span><h3>慢是设计出来的</h3><p>一天一件生活主题，剩下的时间还给晨光与风。</p></div>
         <div class="word-cell"><span class="word-char">住</span><h3>住是筛出来的</h3><p>精品院落，认得你的早点摊，住成这里的日常。</p></div>
         <div class="word-cell"><span class="word-char">吃</span><h3>吃是跟着本地人走的</h3><p>菜市场日、朋友家饭局日，不是菜单是生活。</p></div>
@@ -699,7 +699,7 @@ home(){
     </div>
   </section>
 
-  <section class="section section--deep">
+  <section class="section section--deep reveal">
     <div class="wrap">
       <div class="section-head section-head--center">
         <p class="eyebrow">两种生活方式</p>
@@ -735,20 +735,20 @@ home(){
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">旅居体验包 · 自选组合</p>
         <h2 class="h2">每个地方，<em>最少住一周</em></h2>
         <p class="lede">以生活模式，真实体验当地的生活与温度——用生活感，而不是行程表。16 个地州自由选，串成你自己的线路。</p>
       </div>
-      <div class="steps">
+      <div class="steps reveal-group">
         <div class="step"><h3>安顿日</h3><p>管家完成「生活接入」：接站入住、家电讲解、办生活卡、认菜市 / 医院 / 药店的路，见管家与邻居——当天不安排任何景点。</p></div>
         <div class="step"><h3>生活日</h3><p>每日 1 件生活主题（菜市场日 / 朋友家饭局日 / 温泉日 / 非遗工坊日），其余时间还给晨光与风；邻里把日常发进家属安心群。</p></div>
         <div class="step"><h3>转场日</h3><p>上午动车，下午安顿。转场本身是景观路；下一站管家已备好入住与生活地图，行李与就医档案随行交接。</p></div>
       </div>
       <div class="belt"><h3>每天一件生活主题</h3><span class="sub">日子自己长出来</span></div>
-      <div class="topics">
+      <div class="topics reveal-group">
         <div class="topic"><span class="num">壹</span><h3>菜市场日</h3><p>跟管家认摊、买当季菜，回来做一顿家常饭。</p></div>
         <div class="topic"><span class="num">贰</span><h3>朋友家饭局日</h3><p>去本地人家做客，吃一顿真正的家常饭。</p></div>
         <div class="topic"><span class="num">叁</span><h3>温泉日</h3><p>把高原的风泡进身体里，慢慢待一下午。</p></div>
@@ -757,14 +757,14 @@ home(){
     </div>
   </section>
 
-  <section class="section section--mist">
+  <section class="section section--mist reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">16 州 · 自由搭配</p>
         <h2 class="h2">16 片土地，<em>16 种日子</em></h2>
         <p class="lede">版图是身份，不是路线。它是连绵千里的群山，是分属不同季风的河谷与高原，是 16 片土地各自生长出来的呼吸与烟火。不必一次看完——先读懂它的每一面，再选择一处，安顿下来。</p>
       </div>
-      <div class="state-grid">${STATES.map(stateCard).join("")}</div>
+      <div class="state-grid reveal-group">${STATES.map(stateCard).join("")}</div>
       <div style="margin-top:1.8rem;">
         <a class="btn btn--earthen" href="#/experience" data-nav>生成我的组合，发给管家</a>
         <a class="btn btn--ink" href="#/destination" data-nav>看看 16 州版图</a>
@@ -792,7 +792,7 @@ destination(){
     <path class="ridge-near" d="M0 104 L300 66 L560 92 L860 56 L1140 90 L1440 64 V120 H0 Z"/>
     <path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/>
   </svg>
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">触摸山河</p>
@@ -801,7 +801,7 @@ destination(){
       </div>`;
   REGIONS.forEach(r=>{
     html += `<div class="belt"><h3>${r.name}</h3><span class="sub">${r.en} · ${r.note}</span></div>
-      <div class="state-grid">${r.states.map(id=>stateCard(stateOf(id))).join("")}</div>`;
+      <div class="state-grid reveal-group">${r.states.map(id=>stateCard(stateOf(id))).join("")}</div>`;
   });
   html += `
     </div>
@@ -825,7 +825,7 @@ place(id){
       <p class="en">${s.en}</p>
     </div>
   </section>
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="facts">
         <div class="fact"><div class="k">地区</div><div class="v">${r.name}</div></div>
@@ -869,7 +869,7 @@ place(id){
 
 experience(){
   return `
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">旅居体验包</p>
@@ -922,7 +922,7 @@ experience(){
 
 concierge(){
   return `
-  <section class="section section--mist">
+  <section class="section section--mist reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">旅居总管 · 在云南做慢生活服务多年</p>
@@ -966,7 +966,7 @@ concierge(){
 
 living(){
   return `
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">生活方式 · REVIVE / SETTLE / WORK</p>
@@ -1046,14 +1046,14 @@ food(){
     <path class="ridge-near" d="M0 104 L300 66 L560 92 L860 56 L1140 90 L1440 64 V120 H0 Z"/>
     <path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/>
   </svg>
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">味觉版图 · 十六州</p>
         <h2 class="h2">住进一个地方，<em>可以吃到什么</em></h2>
         <p class="lede">我们把当地人家常吃的味道记下来——不是菜单，是日子本身。从一顿早点开始、到一顿宵夜结束。</p>
       </div>
-      <div class="food-grid">`;
+      <div class="food-grid reveal-group">`;
   STATES.forEach(s=>{
     html += `
       <article class="food-card">
@@ -1076,7 +1076,7 @@ food(){
 
 trust(){
   return `
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">信任中心 · 在云南做慢生活服务多年</p>
@@ -1129,7 +1129,7 @@ trust(){
 
 contact(){
   return `
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">联系管家 · CONTACT</p>
