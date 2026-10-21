@@ -866,3 +866,66 @@ button{font-family:inherit;cursor:pointer;}
   font-variant-numeric: tabular-nums;
   font-weight: 700;
 }
+
+/* ============ 我自己判断要改的 ============ */
+
+/* header毛玻璃 */
+.site-header {
+  background: rgba(237,230,216,.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(45,74,53,.08);
+}
+
+/* 正文行高放大，更松弛 */
+body {
+  line-height: 1.8 !important;
+  font-size: 16px;
+}
+p, li {
+  line-height: 1.8;
+}
+
+/* Hero按钮层级：主按钮更大 */
+.hero-actions .btn--earthen {
+  padding: .9rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(198,107,61,.35);
+}
+.hero-actions .btn {
+  backdrop-filter: blur(6px);
+}
+
+/* 数字亮点区（加在hero下面） */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+.stats-strip .num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--earthen-deep, #C66B3D);
+  line-height: 1;
+}
+.stats-strip .label {
+  font-size: .88rem;
+  color: var(--text-soft);
+  margin-top: .4rem;
+  letter-spacing: .05em;
+}
+
+/* footer更有温度 */
+.site-footer {
+  background: #2D4A35 !important;
+  color: rgba(255,255,255,.75) !important;
+}
+.site-footer h3 { color: #fff !important; }
+.site-footer a { color: rgba(255,255,255,.75) !important; }
+.site-footer a:hover { color: #fff !important; }
+.site-footer .tel { color: #E8B87D !important; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12) !important; }

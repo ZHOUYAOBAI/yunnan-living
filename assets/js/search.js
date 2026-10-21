@@ -187,8 +187,8 @@
   var HIST_KEY = "yn_search_history";
 
   var box = document.createElement('div');
-  box.style.cssText = 'position:fixed;top:72px;right:20px;z-index:9999;width:340px;font-family:inherit;';
-  box.innerHTML = '<div style="position:relative;"><input id="site-search" type="text" placeholder="搜索（按 / 快速聚焦）" style="width:100%;padding:.6rem .9rem;padding-right:2.2rem;border:1px solid #B5C9A8;border-radius:20px;font-size:.9rem;background:#FFF7EC;outline:none;box-shadow:0 4px 16px rgba(0,0,0,.1);box-sizing:border-box;"><span id="site-clear" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;display:none;">×</span></div>'
+  box.style.cssText = 'position:fixed;top:80px;right:20px;z-index:9999;width:280px;font-family:inherit;opacity:.85;transition:opacity .3s;';
+  box.innerHTML = '<div style="position:relative;"><input id="site-search" type="text" placeholder="搜索（按 / 快速聚焦）" style="width:100%;padding:.6rem .9rem;padding-right:2.2rem;border:1px solid rgba(255,255,255,.3);border-radius:20px;font-size:.85rem;background:rgba(255,247,236,.9);backdrop-filter:blur(8px);outline:none;box-shadow:0 4px 16px rgba(0,0,0,.08);box-sizing:border-box;"><span id="site-clear" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;display:none;">×</span></div>'
     + '<div id="site-results" style="display:none;margin-top:.4rem;background:#fff;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);max-height:480px;overflow-y:auto;"></div>';
   document.body.appendChild(box);
 
