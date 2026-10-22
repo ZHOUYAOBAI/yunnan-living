@@ -738,10 +738,10 @@ button{font-family:inherit;cursor:pointer;}
 /* 深青绿遮罩增强电影感 */
 .hero-scrim {
   background: linear-gradient(180deg,
-    rgba(20,40,30,.85) 0%,
-    rgba(20,40,30,.55) 45%,
-    rgba(20,40,30,.30) 80%,
-    rgba(20,40,30,.55) 100%) !important;
+    rgba(20,40,30,.55) 0%,
+    rgba(20,40,30,.35) 45%,
+    rgba(20,40,30,.15) 80%,
+    rgba(20,40,30,.45) 100%) !important;
 }
 
 /* 向下滚动箭头 */
