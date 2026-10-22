@@ -956,3 +956,16 @@ body { background: #E8F0E0; }
   .scroll-hint { display: none; }
   .search-box, #site-search { width: 240px !important; }
 }
+
+/* Hero图调色：让云南的美透出来 */
+.hero-carousel .hero-media {
+  filter: saturate(1.15) contrast(1.05) brightness(1.05);
+}
+/* 遮罩再淡一点 */
+.hero-scrim {
+  background: linear-gradient(180deg,
+    rgba(20,40,30,.45) 0%,
+    rgba(20,40,30,.25) 45%,
+    rgba(20,40,30,.10) 80%,
+    rgba(20,40,30,.35) 100%) !important;
+}
