@@ -1,0 +1,7 @@
+HTTP/1.1 200 Connection Established
+HTTP/2 404 
+HTTP/1.1 200 Connection Established
+  var TRACKS = ['yunnan-morning.mp3', 'yunnan-dusk.mp3'];
+  var audio = new Audio(base + 'audio/' + TRACKS[0]);
+    idx = (idx + 1) % TRACKS.length;
+    audio.src = base + 'audio/' + TRACKS[idx];

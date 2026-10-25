@@ -1,0 +1,11 @@
+=== 2. 下载线上mp3检查是否真的有声音内容 ===
+-rw-r--r-- 1 user user 2000601 Oct 25 21:58 /tmp/check-dusk.mp3
+-rw-r--r-- 1 user user 2024192 Oct 25 21:57 /tmp/check-morning.mp3
+=== 3. 波形能量分析（确认非静音） ===
+[Parsed_ametadata_1 @ 0x55e1923d7640] lavfi.astats.Overall.RMS_level=-inf
+[Parsed_ametadata_1 @ 0x55e1923d7640] lavfi.astats.Overall.RMS_level=-inf
+[Parsed_ametadata_1 @ 0x55e1923d7640] lavfi.astats.Overall.RMS_level=-inf
+--- dusk ---
+[Parsed_ametadata_1 @ 0x55cb49e26840] lavfi.astats.Overall.RMS_level=-inf
+[Parsed_ametadata_1 @ 0x55cb49e26840] lavfi.astats.Overall.RMS_level=-inf
+[Parsed_ametadata_1 @ 0x55cb49e26840] lavfi.astats.Overall.RMS_level=-inf
