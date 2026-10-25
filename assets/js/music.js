@@ -11,7 +11,7 @@
   'use strict';
 
   var TRACKS = ['yunnan-morning.mp3', 'yunnan-dusk.mp3'];
-  var TARGET_VOLUME = 0.10;          /* 很轻微的背景音 */
+  var TARGET_VOLUME = 0.05;          /* 若有若无的背景音 */
 
   var script = document.currentScript;
   var base = script && script.src ? script.src.replace(/\/js\/music\.js.*$/, '') + '/' : './';
