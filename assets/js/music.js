@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  var TRACKS = ['rainforest.mp3', 'hulusi.mp3'];
+  var TRACKS = ['yunnan-morning.mp3', 'yunnan-dusk.mp3'];
 
   var script = document.currentScript;
   var base = script && script.src ? script.src.replace(/\/js\/music\.js.*$/, '') + '/' : './';
