@@ -1,5 +1,6 @@
-/* 云暖・旅居 —— 全站背景氛围音（舒缓版）
- * 无播放按钮，音量设为柔和可闻的背景音。
+/* 云暖・旅居 —— 全站背景氛围音（轻音渐强版）
+ * 无播放按钮，音量很轻微（0.10），且以 5 秒 easeIn 渐强进入，
+ * 换曲时 1.5 秒轻柔过渡，全程不突兀。
  * 加载后自动尝试播放；若被浏览器自动播放策略拦截，则在用户
  * 首次交互（点击 / 触摸 / 滚动 / 滚轮 / 按键）时自动启动。
  * 两首 120 秒云南民族纯音乐轮换。
@@ -10,32 +11,52 @@
   'use strict';
 
   var TRACKS = ['yunnan-morning.mp3', 'yunnan-dusk.mp3'];
+  var TARGET_VOLUME = 0.10;          /* 很轻微的背景音 */
 
   var script = document.currentScript;
   var base = script && script.src ? script.src.replace(/\/js\/music\.js.*$/, '') + '/' : './';
 
   var audio = new Audio(base + 'audio/' + TRACKS[0]);
   audio.loop = false;               /* 用 ended 轮换，不用 loop */
-  audio.volume = 0.14;              /* 轻微的背景音 */
+  audio.volume = 0;                 /* 从静音开始，由渐强进入 */
   audio.preload = 'auto';
 
   var idx = 0;
   var started = false;
+  var rafId = null;
+
+  /* 音量渐强：从当前音量缓动到 target，dur 毫秒 */
+  function fadeTo(target, dur) {
+    if (rafId) cancelAnimationFrame(rafId);
+    var startV = audio.volume;
+    var t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      /* easeInQuad：开头更轻，慢慢起来 */
+      audio.volume = startV + (target - startV) * p * p;
+      if (p < 1) rafId = requestAnimationFrame(step);
+      else audio.volume = target;
+    }
+    rafId = requestAnimationFrame(step);
+  }
 
   function start() {
     if (started) return;
     started = true;
     var p = audio.play();
     if (p && p.catch) p.catch(function () { started = false; });
+    fadeTo(TARGET_VOLUME, 5000);    /* 5 秒渐强进入 */
   }
 
-  /* 120 秒播完换下一首，循环轮换 */
+  /* 120 秒播完换下一首：轻柔过渡 */
   audio.addEventListener('ended', function () {
     idx = (idx + 1) % TRACKS.length;
     audio.src = base + 'audio/' + TRACKS[idx];
     if (started) {
       var p = audio.play();
       if (p && p.catch) p.catch(function () {});
+      fadeTo(TARGET_VOLUME, 1500);  /* 换曲 1.5 秒渐强 */
     }
   });
 
