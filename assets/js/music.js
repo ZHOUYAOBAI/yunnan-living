@@ -16,7 +16,7 @@
 
   var audio = new Audio(base + 'audio/' + TRACKS[0]);
   audio.loop = false;               /* 用 ended 轮换，不用 loop */
-  audio.volume = 0.2;               /* 柔和可闻的背景音 */
+  audio.volume = 0.14;              /* 轻微的背景音 */
   audio.preload = 'auto';
 
   var idx = 0;
