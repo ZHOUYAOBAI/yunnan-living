@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="./">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>云暖・旅居 · 在云南，住进日子｜旅居体验包 · 16 州自选 · 旅居总管</title>
+<meta name="description" content="云暖・旅居——在云南做慢生活服务多年的云南旅居（长住）品牌。不是来看云南，是住进云南的日子。旅居体验包一地一周起、16 州自由组合，一地一旅居总管。">
+<meta property="og:type" content="website"><meta property="og:site_name" content="云暖・旅居"><meta property="og:title" content="云暖・旅居 · 在云南，住进日子｜旅居体验包 · 16 州自选 · 旅居总管"><meta property="og:description" content="云暖・旅居——在云南做慢生活服务多年的云南旅居（长住）品牌。不是来看云南，是住进云南的日子。旅居体验包一地一周起、16 州自由组合，一地一旅居总管。"><meta property="og:url" content="https://example.com/index.html"><meta property="og:image" content="https://example.com/assets/img/yunnan-hero.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="云暖・旅居 · 在云南，住进日子｜旅居体验包 · 16 州自选 · 旅居总管"><meta name="twitter:description" content="云暖・旅居——在云南做慢生活服务多年的云南旅居（长住）品牌。不是来看云南，是住进云南的日子。旅居体验包一地一周起、16 州自由组合，一地一旅居总管。"><link rel="canonical" href="https://example.com/index.html">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="apple-touch-icon" href="https://example.com/assets/img/yunnan-hero.jpg">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+
+
+<link rel="stylesheet" href="./assets/css/style.css">
+<style>
+/* ============ 第二波：高级感精修 ============ */
+
+/* 0. 全站质感颗粒（极轻，2%透明度，去除AI干净感） */
+body::after{content:'';position:fixed;inset:0;z-index:2147482998;pointer-events:none;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");}
+
+/* 1. Hero 离场：滚动时标题区上浮淡出 */
+.yv-hero-leave{transition:opacity .5s ease,transform .6s ease;}
+.yv-hero-leave.is-leaving{opacity:0;transform:translateY(-46px);}
+
+/* 2. 鼠标暖光跟随 */
+#yv-glow{position:fixed;left:0;top:0;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:2147482999;
+  background:radial-gradient(circle,rgba(255,196,120,.16),rgba(255,196,120,.05) 45%,transparent 68%);
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .6s ease;mix-blend-mode:screen;will-change:left,top;}
+
+/* 3. 州卡片：图片放大+渐变遮罩+流光描边 */
+.yv-tilt .ph{overflow:hidden;}
+.yv-tilt .ph img{transition:transform .8s cubic-bezier(.2,.8,.25,1);}
+.yv-tilt:hover .ph img{transform:scale(1.06);}
+.yv-tilt .ph::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,50,35,.0),rgba(20,50,35,.28) 82%);opacity:0;transition:opacity .5s ease;}
+.yv-tilt:hover .ph::after{opacity:1;}
+.yv-tilt::before{content:'';position:absolute;inset:0;border-radius:inherit;z-index:3;pointer-events:none;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.32) 50%,transparent 62%);
+  background-size:260% 260%;background-position:120% 50%;opacity:0;transition:opacity .2s;}
+.yv-tilt:hover::before{opacity:1;animation:yvSheen 1.05s ease forwards;}
+@keyframes yvSheen{from{background-position:120% 50%;}to{background-position:-80% 50%;}}
+
+/* 4. 主按钮微光扫过 */
+a.button,.btn,[class*="btn"]{position:relative;overflow:hidden;}
+a.button::after,.btn::after,[class*="btn"]::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);
+  transition:left .7s ease;}
+a.button:hover::after,.btn:hover::after,[class*="btn"]:hover::after{left:160%;}
+
+/* 5. 滚动叙事：标题上浮+字距收拢（动画安全模式：无opacity:0默认） */
+.yv-reveal{opacity:0;transform:translateY(26px);letter-spacing:.06em;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.25,1),letter-spacing .9s ease;}
+.yv-reveal.in-view{opacity:1;transform:translateY(0);letter-spacing:0;}
+
+/* 6. 数字区光带 */
+.stats,.data-row,.hero-stats,.stat-row{position:relative;overflow:hidden;}
+.stats::before,.data-row::before,.hero-stats::before,.stat-row::before{content:'';position:absolute;left:0;right:0;top:0;height:1px;z-index:2;
+  background:linear-gradient(90deg,transparent,rgba(198,107,61,.5),transparent);background-size:200% 100%;background-position:-100% 0;
+  opacity:0;transition:opacity .3s;}
+.stats.in-view::before,.data-row.in-view::before,.hero-stats.in-view::before,.stat-row.in-view::before{opacity:1;animation:yvBand 1.4s ease .2s forwards;}
+@keyframes yvBand{from{background-position:-100% 0;}to{background-position:100% 0;}}
+
+@media (prefers-reduced-motion: reduce){
+  #yv-glow{display:none;}
+  .yv-reveal{opacity:1;transform:none;}
+}
+</style>
+<style>
+/* ============ 云南版高级感 · 预览效果 ============ */
+/* 1. 晨光光雾层：全站固定，柔和漂浮 */
+.yv-lightfield{position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:screen;opacity:.55;}
+.yv-lightfield::before,.yv-lightfield::after{content:'';position:absolute;border-radius:50%;filter:blur(60px);}
+.yv-lightfield::before{width:52vw;height:52vw;left:-12vw;top:-18vw;background:radial-gradient(circle,rgba(255,214,150,.38),transparent 62%);animation:yvDriftA 26s ease-in-out infinite alternate;}
+.yv-lightfield::after{width:44vw;height:44vw;right:-10vw;bottom:-14vw;background:radial-gradient(circle,rgba(160,214,180,.42),transparent 62%);animation:yvDriftB 32s ease-in-out infinite alternate;}
+@keyframes yvDriftA{from{transform:translate(0,0) scale(1);}to{transform:translate(9vw,6vh) scale(1.14);}}
+@keyframes yvDriftB{from{transform:translate(0,0) scale(1.08);}to{transform:translate(-8vw,-7vh) scale(.96);}}
+
+/* 2. 山雾横带：在 hero 下方与 section 交界处 */
+.yv-mistband{position:absolute;left:-8%;right:-8%;height:22vh;bottom:-9vh;pointer-events:none;z-index:2;
+  background:radial-gradient(60% 100% at 30% 50%,rgba(235,245,230,.5),transparent 70%),
+             radial-gradient(50% 90% at 70% 40%,rgba(255,255,255,.45),transparent 70%);
+  filter:blur(14px);animation:yvMist 18s ease-in-out infinite alternate;}
+@keyframes yvMist{from{transform:translateX(-2.5%);opacity:.7;}to{transform:translateX(2.5%);opacity:1;}}
+
+/* 3. Hero 视差：背景图随滚动慢速移动，形成前后景层次 */
+.hero{isolation:isolate;}
+.hero-media-wrap{will-change:transform;}
+.yv-hero-parallax{transform:translateY(var(--yv-py,0px)) scale(1.08);transition:transform .08s linear;}
+
+/* 4. 卡片 3D 微倾斜 + 光影 */
+.yv-tilt{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.8,.25,1),box-shadow .45s ease;}
+.yv-tilt:hover{transform:perspective(900px) rotateX(2.4deg) rotateY(-2.4deg) translateY(-6px);box-shadow:0 26px 50px rgba(30,60,40,.16);}
+.yv-tilt .ph{transform:translateZ(18px);}
+.yv-tilt .body{transform:translateZ(30px);}
+
+/* 5. 图片视差：滚动时各板块图片慢速上移 */
+.yv-img-parallax{will-change:transform;transform:translateY(var(--yv-ipy,0));}
+
+/* 6. 标题微光 */
+.section-head .eyebrow{background:linear-gradient(90deg,rgba(198,107,61,.14),rgba(198,107,61,.03));border:1px solid rgba(198,107,61,.18);}
+
+@media (prefers-reduced-motion: reduce){
+  .yv-lightfield,.yv-mistband{animation:none;}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "云暖·旅居", "description": "云南旅居（长住）品牌：旅居体验包、旅居总管、焕新居与安居。在云南做慢生活服务多年，在云南住进日子。", "telephone": "+86-132-0888-8618", "url": "https://example.com", "areaServed": "云南"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="./index.html" data-nav aria-label="云暖・旅居 · 返回首页"><svg class="brand-seal" viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="10" fill="currentColor"/><path d="M14 47 L27 24 L33 35 L39 26 L50 47 Z" fill="#EDE6D8"/><path d="M12 51 H52" stroke="#EDE6D8" stroke-width="3" stroke-linecap="round" opacity="0.9"/></svg><span class="brand-name">云暖・旅居</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开菜单"><svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><nav id="site-nav" class="site-nav" aria-label="全站导航"><button class="nav-close" type="button" aria-label="关闭菜单">×</button><ul><li><a href="./index.html" data-nav>首页</a></li><li><a href="./destination.html" data-nav>目的地</a></li><li><a href="./experience.html" data-nav>体验包</a></li><li><a href="./concierge.html" data-nav>旅居总管</a></li><li><a href="./living.html" data-nav>生活方式</a></li><li><a href="./food.html" data-nav>美食</a></li><li><a href="./partner.html" data-nav>同行伙伴</a></li><li><a href="./trust.html" data-nav>信任</a></li><li><a href="./contact.html" data-nav>联系</a></li></ul></nav></div></header><main id="main"><section class="hero"><div class="hero-media-wrap hero-carousel yv-hero-parallax">
+      <img src="./assets/img/hero-1.jpg" alt="元阳梯田日出云海：多依树晨光，水田镜面反射朝霞" width="1920" height="1080" loading="eager" fetchpriority="high" class="hero-media is-active">
+      <img src="./assets/img/hero-2.jpg" alt="梅里雪山日照金山：卡瓦格博峰金顶，云海翻涌" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-3.jpg" alt="大理洱海全景：苍山雪顶与碧海同框，湖面如镜" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-4.jpg" alt="大理双廊洱海：苍山脚下白族建筑临水，晨光柔光" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-5.jpg" alt="苍山俯瞰洱海坝子：航拍展现洱海形态与田园肌理" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-6.jpg" alt="玉龙雪山蓝月谷：蒂芙尼蓝湖水与冰川雪山同框" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-7.jpg" alt="泸沽湖里格半岛晨雾：猪槽船停靠湖岸，晨雾弥漫" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-8.jpg" alt="沙溪古镇茶马古道：青石板路与古戏台，暖色晨光" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-9.jpg" alt="东川红土地航拍：红土绿作蓝天交织，上帝调色盘" width="1920" height="1080" loading="lazy" class="hero-media">
+      <img src="./assets/img/hero-10.jpg" alt="虎跳峡金沙江：奔腾江水与峡谷峭壁，水雾飞溅" width="1920" height="1080" loading="lazy" class="hero-media">
+    </div><div class="hero-scrim" aria-hidden="true"></div><div class="hero-content wrap"><p class="hero-kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>云暖・旅居 · 在云南做慢生活服务多年</p><h1 class="hero-title"><span class="hl">云南，其实是上天赐给我们的</span><span class="hl">一颗糖</span></h1><p class="hero-sub">有人一口吞了，有人待了几天就走。停下来，留下来——不只是尝甜，是在慢下来的日子里，重新做回自己。<br>在云南，不用赶路，不用回消息，不用做谁的员工、谁的父母、谁的依靠。<br><em style="font-style:normal;opacity:.85;">有多久，没有这样过了？</em></p><p class="hero-foot hero-stamp" style="position:absolute;right:4rem;top:5rem;margin:0;font-family:'Noto Serif SC',serif;font-size:4.2rem;font-weight:900;letter-spacing:.08em;transform:rotate(-8deg);border:6px solid #FFF7EC;padding:1.2rem 2.4rem;border-radius:12px;line-height:1.25;color:#FFF7EC;text-shadow:0 4px 16px rgba(0,0,0,.6);opacity:0;">一人一定制<br>一地一管家</p><div class="hero-actions"><a class="btn btn--earthen" href="./experience.html" data-nav>旅居体验包 · 一周起</a><a class="btn btn--ghost" href="./revive.html" data-nav>焕新居 · 给日子透口气</a><a class="btn btn--ghost" href="./settle.html" data-nav>安居 · 退休换地方住</a><a class="btn btn--call" href="tel:13208888618"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.6 4-2 1.5a12 12 0 0 0 5.3 5.3l1.5-2 4 1.6v3A2 2 0 0 1 18 18 15 15 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>立即咨询 · 132 0888 8618</span></a></div></div><div class="scroll-hint" aria-hidden="true"><div class="mouse"></div><span>下滑看云南</span></div></section><svg class="mountain-divider"> viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path class="ridge-far" d="M0 86 L220 38 L420 74 L660 20 L900 72 L1140 32 L1440 68 V120 H0 Z"/><path class="ridge-near" d="M0 104 L300 66 L560 92 L860 56 L1140 90 L1440 64 V120 H0 Z"/><path class="mist-line" d="M0 76 C360 58 1080 56 1440 74"/></svg>
+<section class="section" style="padding:1rem 0 0;">
+<div class="wrap">
+<div class="stats-strip reveal">
+  <div><div class="num">16</div><div class="label">云南地州自由选</div></div>
+  <div><div class="num">7</div><div class="label">天起住</div></div>
+  <div><div class="num">1对1</div><div class="label">一地一管家</div></div>
+  <div><div class="num">24h</div><div class="label">应急电话在线</div></div>
+</div>
+</div>
+</section>
+<section class="section reveal"><div class="wrap"><div class="section-head section-head--center"><p class="eyebrow">四个词，说清旅居</p><h2 class="h2">人、慢、住、吃</h2><p class="lede">旅居不是换一个地方旅游，是换一种方式过日子。</p></div><div class="words-grid reveal-group"><div class="word-cell"><span class="word-char">人</span><h3>人是始终在的</h3><p>一地一管家，买菜就医琐碎全接住，家人每日看得见。</p></div><div class="word-cell"><span class="word-char">慢</span><h3>慢是设计出来的</h3><p>一天一件生活主题，剩下的时间还给晨光与风。</p></div><div class="word-cell"><span class="word-char">住</span><h3>住是筛出来的</h3><p>精品院落，认得你的早点摊，住成这里的日常。</p></div><div class="word-cell"><span class="word-char">吃</span><h3>吃是跟着本地人走的</h3><p>菜市场日、朋友家饭局日，不是菜单是生活。</p></div></div></div></section><section class="section section--deep reveal"><div class="wrap"><div class="section-head section-head--center"><p class="eyebrow">两种生活方式</p><h2 class="h2">为追寻而来，为安住而来</h2><p class="lede">同样在云南住进日子，换一种过法。</p></div><div class="ways"><article class="way-card"><div class="way-media way-carousel" data-carousel>
+<span class="way-tag">REVIVE · 窗边的日子</span>
+<div class="car-track">
+<img src="./assets/img/revive/a.jpg" alt="窗边书桌、笔记本与手冲咖啡" width="1920" height="864" loading="eager" class="is-active">
+<img src="./assets/img/revive/b.jpg" alt="山间露台与云海" width="1920" height="864" loading="lazy">
+<img src="./assets/img/revive/c.jpg" alt="老咖啡馆角落、胶片相机与手冲" width="1920" height="864" loading="lazy">
+<img src="./assets/img/revive/d.jpg" alt="小院木桌与四杯茶" width="1920" height="864" loading="lazy">
+<img src="./assets/img/revive/e.jpg" alt="屋檐下听雨" width="1920" height="864" loading="lazy">
+</div></div><div class="way-body"><p class="en">焕新居</p><h3>给日子透口气</h3><p>生活卡在同一条轨道上太久，来云南给日子透口气。网络、住处、社群都安顿好，剩下的交给自由——不用辞职，也能换一口气。</p><a class="btn btn--ink btn--sm" href="./revive.html" data-nav>了解焕新居</a></div></article><article class="way-card"><div class="way-media way-carousel" data-carousel>
+<span class="way-tag">SETTLE · 院子里的日子</span>
+<div class="car-track">
+<img src="./assets/img/settle/a.jpg" alt="白族小院廊下、藤椅与三角梅" width="1920" height="864" loading="eager" class="is-active">
+<img src="./assets/img/settle/b.jpg" alt="老厨房案板、番茄与炖锅" width="1920" height="864" loading="lazy">
+<img src="./assets/img/settle/c.jpg" alt="藤椅毛毯、远山与白族飞檐" width="1920" height="864" loading="lazy">
+<img src="./assets/img/settle/d.jpg" alt="两张竹椅对坐、茶与野花" width="1920" height="864" loading="lazy">
+<img src="./assets/img/settle/e.jpg" alt="窗台温茶、厚书与毛衣" width="1920" height="864" loading="lazy">
+</div></div><div class="way-body"><p class="en">安居</p><h3>退休换地方住</h3><p>家乡冬天冷、空气欠佳？退休了换个暖和、干净的地方住。16 个地州自由组合、不赶路，邻里接住买菜、就医，家属安心群让儿女每天看得见。</p><a class="btn btn--ink btn--sm" href="./settle.html" data-nav>了解安居</a></div></article></div>
+<p style="text-align:center;margin-top:1.2rem;font-size:var(--fs-sm);color:var(--moss);">
+  还有第三种过法：<a href="./living.html#work" data-nav style="color:var(--earthen-deep);text-decoration:underline;">以工换住 · 康养工作网络</a>——想康养却还没工作的，用力所能及的事换住、换三餐、换康养。
+</p>
+</div></section><section class="section reveal"><div class="wrap"><div class="section-head"><p class="eyebrow">旅居体验包 · 自选组合</p><h2 class="h2">每个地方，<em>最少住一周</em></h2><p class="lede">以生活模式，真实体验当地的生活与温度——用生活感，而不是行程表。16 个地州自由选，串成你自己的线路。</p></div><div class="steps reveal-group"><div class="step"><h3>安顿日</h3><p>管家完成「生活接入」：接站入住、家电讲解、办生活卡、认菜市 / 医院 / 药店的路，见管家与邻居——当天不安排任何景点。</p></div><div class="step"><h3>生活日</h3><p>每日 1 件生活主题（菜市场日 / 朋友家饭局日 / 温泉日 / 非遗工坊日），其余时间还给晨光与风；邻里把日常发进家属安心群。</p></div><div class="step"><h3>转场日</h3><p>上午动车，下午安顿。转场本身是景观路；下一站管家已备好入住与生活地图，行李与就医档案随行交接。</p></div></div><div class="belt"><h3>每天一件生活主题</h3><span class="sub">日子自己长出来</span></div><div class="topics reveal-group"><div class="topic"><span class="num">壹</span><h3>菜市场日</h3><p>跟管家认摊、买当季菜，回来做一顿家常饭。</p></div><div class="topic"><span class="num">贰</span><h3>朋友家饭局日</h3><p>去本地人家做客，吃一顿真正的家常饭。</p></div><div class="topic"><span class="num">叁</span><h3>温泉日</h3><p>把高原的风泡进身体里，慢慢待一下午。</p></div><div class="topic"><span class="num">肆</span><h3>非遗工坊日</h3><p>白族扎染、纳西东巴、藏地手作——学一样带回家。</p></div></div></div></section><section class="section section--mist reveal"><div class="wrap"><div class="section-head"><p class="eyebrow">16 州 · 自由搭配</p><h2 class="h2">16 片土地，<em>16 种日子</em></h2><p class="lede">版图是身份，不是路线。它是连绵千里的群山，是分属不同季风的河谷与高原，是 16 片土地各自生长出来的呼吸与烟火。不必一次看完——先读懂它的每一面，再选择一处，安顿下来。</p></div><div class="state-grid reveal-group"><a class="state-card yv-tilt" href="./places/diqing.html" data-nav><div class="ph"><span class="region-tag">滇西北</span><img src="./assets/img/diqing-hero.jpg" alt="迪庆风光：香格里拉的静谧高处" width="1600" height="803" loading="lazy"></div><div class="body"><span class="cn">迪庆</span><div class="side"><span class="en">Deqen · Land of Snow</span><p class="desc">香格里拉的静谧高处</p><p class="temp">夏白天 18-22℃ · 夜 8-10℃｜冬白天 6-10℃ · 夜 -8至-15℃</p></div></div></a><a class="state-card yv-tilt" href="./places/nujiang.html" data-nav><div class="ph"><span class="region-tag">滇西北</span><img src="./assets/img/nujiang-hero.jpg" alt="怒江风光：三江并流的峡谷人家" width="1600" height="900" loading="lazy"></div><div class="body"><span class="cn">怒江</span><div class="side"><span class="en">Nujiang · The Deep Valley</span><p class="desc">三江并流的峡谷人家</p><p class="temp">夏白天 28-32℃ · 夜 22℃｜冬白天 22-24℃ · 夜 10℃</p></div></div></a><a class="state-card yv-tilt" href="./places/lijiang.html" data-nav><div class="ph"><span class="region-tag">滇西北</span><img src="./assets/img/lijiang-hero.jpg" alt="丽江风光：古城与雪山的对望" width="1600" height="720" loading="lazy"></div><div class="body"><span class="cn">丽江</span><div class="side"><span class="en">Lijiang · Old Town & Snow</span><p class="desc">古城与雪山的对望</p><p class="temp">夏白天 22-25℃ · 夜 13℃｜冬白天 14-16℃ · 夜 0-3℃</p></div></div></a><a class="state-card yv-tilt" href="./places/dali.html" data-nav><div class="ph"><span class="region-tag">滇西北</span><img src="./assets/img/dali-hero.jpg" alt="大理风光：苍山洱海之间" width="1600" height="1200" loading="lazy"></div><div class="body"><span class="cn">大理</span><div class="side"><span class="en">Dali · Between Cangshan & Erhai</span><p class="desc">苍山洱海之间</p><p class="temp">夏白天 24-26℃ · 夜 15℃｜冬白天 15-18℃ · 夜 3-5℃</p></div></div></a><a class="state-card yv-tilt" href="./places/baoshan.html" data-nav><div class="ph"><span class="region-tag">滇西</span><img src="./assets/img/baoshan-hero.jpg" alt="保山风光：腾冲的温泉与古镇" width="1600" height="1200" loading="lazy"></div><div class="body"><span class="cn">保山</span><div class="side"><span class="en">Baoshan · Volcanic Warmth</span><p class="desc">腾冲的温泉与古镇</p><p class="temp">夏白天 24-26℃ · 夜 17℃｜冬白天 17-19℃ · 夜 5℃</p></div></div></a><a class="state-card yv-tilt" href="./places/dehong.html" data-nav><div class="ph"><span class="region-tag">滇西</span><img src="./assets/img/dehong-hero.jpg" alt="德宏风光：边境线上的傣乡" width="1600" height="1203" loading="lazy"></div><div class="body"><span class="cn">德宏</span><div class="side"><span class="en">Dehong · Border Banyan Land</span><p class="desc">边境线上的傣乡</p><p class="temp">夏白天 30-33℃ · 夜 22℃｜冬白天 23-25℃ · 夜 10℃</p></div></div></a><a class="state-card yv-tilt" href="./places/lincang.html" data-nav><div class="ph"><span class="region-tag">滇西南</span><img src="./assets/img/lincang-hero.jpg" alt="临沧风光：佤乡与茶山" width="1600" height="900" loading="lazy"></div><div class="body"><span class="cn">临沧</span><div class="side"><span class="en">Lincang · Tea & Wa Land</span><p class="desc">佤乡与茶山</p><p class="temp">夏白天 26-28℃ · 夜 18℃｜冬白天 21-23℃ · 夜 9℃</p></div></div></a><a class="state-card yv-tilt" href="./places/puer.html" data-nav><div class="ph"><span class="region-tag">滇西南</span><img src="./assets/img/puer-hero.jpg" alt="普洱风光：茶山雾里的栖居" width="1440" height="810" loading="lazy"></div><div class="body"><span class="cn">普洱</span><div class="side"><span class="en">Puer · Forest Tea Mountains</span><p class="desc">茶山雾里的栖居</p><p class="temp">夏白天 27-29℃ · 夜 19℃｜冬白天 21-23℃ · 夜 11℃</p></div></div></a><a class="state-card yv-tilt" href="./places/xishuangbanna.html" data-nav><div class="ph"><span class="region-tag">滇西南</span><img src="./assets/img/xishuangbanna-hero.jpg" alt="西双版纳风光：北回归线的雨林" width="1280" height="960" loading="lazy"></div><div class="body"><span class="cn">西双版纳</span><div class="side"><span class="en">Xishuangbanna · Rainforest</span><p class="desc">北回归线的雨林</p><p class="temp">夏白天 33-38℃ · 夜 22-24℃（4月极端可达40℃+）｜冬白天 24-26℃ · 夜 13-15℃</p></div></div></a><a class="state-card yv-tilt" href="./places/chuxiong.html" data-nav><div class="ph"><span class="region-tag">滇中</span><img src="./assets/img/chuxiong-hero.jpg" alt="楚雄风光：彝州的山川旧事" width="1400" height="1050" loading="lazy"></div><div class="body"><span class="cn">楚雄</span><div class="side"><span class="en">Chuxiong · Yi Heartland</span><p class="desc">彝州的山川旧事</p><p class="temp">夏白天 25-27℃ · 夜 17℃｜冬白天 16-18℃ · 夜 4℃</p></div></div></a><a class="state-card yv-tilt" href="./places/kunming.html" data-nav><div class="ph"><span class="region-tag">滇中</span><img src="./assets/img/kunming-hero.jpg" alt="昆明风光：春城的晨昏" width="1600" height="1066" loading="lazy"></div><div class="body"><span class="cn">昆明</span><div class="side"><span class="en">Kunming · City of Eternal Spring</span><p class="desc">春城的晨昏</p><p class="temp">夏白天 25-28℃ · 夜 17℃｜冬白天 15-18℃ · 夜 3-5℃</p></div></div></a><a class="state-card yv-tilt" href="./places/yuxi.html" data-nav><div class="ph"><span class="region-tag">滇中</span><img src="./assets/img/yuxi-hero.jpg" alt="玉溪风光：高原湖群的光" width="1600" height="1066" loading="lazy"></div><div class="body"><span class="cn">玉溪</span><div class="side"><span class="en">Yuxi · Lakes & Light</span><p class="desc">高原湖群的光</p><p class="temp">夏白天 26-28℃ · 夜 17℃｜冬白天 17-19℃ · 夜 5℃</p></div></div></a><a class="state-card yv-tilt" href="./places/qujing.html" data-nav><div class="ph"><span class="region-tag">滇东北</span><img src="./assets/img/qujing-hero.jpg" alt="曲靖风光：珠江源头的辽阔" width="1600" height="1060" loading="lazy"></div><div class="body"><span class="cn">曲靖</span><div class="side"><span class="en">Qujing · Gateway of the East</span><p class="desc">珠江源头的辽阔</p><p class="temp">夏白天 23-25℃ · 夜 15℃｜冬白天 14-16℃ · 夜 2℃</p></div></div></a><a class="state-card yv-tilt" href="./places/zhaotong.html" data-nav><div class="ph"><span class="region-tag">滇东北</span><img src="./assets/img/zhaotong-hero.jpg" alt="昭通风光：乌蒙山的云上人家" width="1600" height="1200" loading="lazy"></div><div class="body"><span class="cn">昭通</span><div class="side"><span class="en">Zhaotong · The Mighty Hills</span><p class="desc">乌蒙山的云上人家</p><p class="temp">夏白天 22-24℃ · 夜 15℃｜冬白天 10-12℃ · 夜 -3至0℃</p></div></div></a><a class="state-card yv-tilt" href="./places/honghe.html" data-nav><div class="ph"><span class="region-tag">滇东南</span><img src="./assets/img/honghe-hero.jpg" alt="红河风光：元阳梯田的晨雾" width="1600" height="1084" loading="lazy"></div><div class="body"><span class="cn">红河</span><div class="side"><span class="en">Honghe · Terraces of Light</span><p class="desc">元阳梯田的晨雾</p><p class="temp">夏白天 28-30℃ · 夜 20℃｜冬白天 20-22℃ · 夜 10℃</p></div></div></a><a class="state-card yv-tilt" href="./places/wenshan.html" data-nav><div class="ph"><span class="region-tag">滇东南</span><img src="./assets/img/wenshan-hero.jpg" alt="文山风光：喀斯特的山水" width="1600" height="1199" loading="lazy"></div><div class="body"><span class="cn">文山</span><div class="side"><span class="en">Wenshan · Karst & Rivers</span><p class="desc">喀斯特的山水</p><p class="temp">夏白天 27-29℃ · 夜 19℃｜冬白天 21-23℃ · 夜 9℃</p></div></div></a></div><div style="margin-top:1.8rem;"><a class="btn btn--earthen" href="./experience.html" data-nav>生成我的组合，发给管家</a><a class="btn btn--ink" href="./destination.html" data-nav>看看 16 州版图</a></div></div></section><section class="section reveal"><div class="wrap"><div class="section-head"><p class="eyebrow">被接住的日子</p><h2 class="h2">旅居故事 · <em>不是我们的，是住进来的人</em></h2><p class="lede">三种最常见的来法，三种被接住的样子。以下为典型客群旅程梳理（示意），不指向具体个人；真实个案以签约沟通为准。</p></div><div class="story-mini-grid reveal-group"><a class="story-mini" href="./stories.html" data-nav><span class="who">退休的父母在北方老家，冬天冷、空气差。做儿女的想让他们换个暖和干净的地方住一段，又怕没人照应。</span><h3>给爸妈的一段云南日子</h3><p>异地陪伴 · 就医安心 · 家属安心群</p></a><a class="story-mini" href="./stories.html" data-nav><span class="who">在上海做设计，工位格子间坐久了，想给日子透口气，又不愿彻底辞职。</span><h3>把三年没休的假，过成三个月</h3><p>弹性排期 · 稳定网络 · 轻邻里</p></a><a class="story-mini" href="./stories.html" data-nav><span class="who">老两口退休第一年，想去暖和的地方长住，又怕人生地不熟、看病麻烦。</span><h3>退休后的第一个春天</h3><p>16 州组合 · 医养配套 · 长住无压力</p></a></div><div style="margin-top:1.4rem;"><a class="btn btn--earthen" href="./stories.html" data-nav>读完整故事</a></div></div></section><section class="section section--mist reveal"><div class="wrap"><div class="section-head"><p class="eyebrow">常见问题</p><h2 class="h2">签约前，<em>先把想问的问了</em></h2></div><div class="faq-list"><div class="faq-item"><h3><button type="button" aria-expanded="false">怎么收费？</button></h3><div class="faq-a"><p>价格私人定制，因人、因季、因房型与管家服务浓度而定。总价包含所列全部服务项目及税费，除明示自选项目外不另行收取任何费用；签约前出具书面合同，逐项可勾选、可验收。</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false">最少能住多久？</button></h3><div class="faq-a"><p>体验包一地一周起，16 州自由组合、天数自填（一周 / 半个月 / 一个月随选随叠）。想住更久也完全可以——安居模式支持 15 天到数年。</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false">能安排接机 / 接站吗？</button></h3><div class="faq-a"><p>可以。入住当天是「安顿日」，管家完成生活接入：接站、入住办理、家电讲解、认菜市 / 医院 / 药店的路、建家属安心群——当天不安排任何景点。</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false">一个人来安全吗？</button></h3><div class="faq-a"><p>我们最看重这条。一地一管家、家属安心群让家人每天看得见、24 小时应急电话在线、随方案赠送或代购旅游意外险（含医疗）。医疗边界也写进合同：管家不做任何诊疗建议。</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false">无障碍 / 特殊需求怎么提？</button></h3><div class="faq-a"><p>表单里的「特殊需求」或直接跟管家说明：无障碍、慢病提醒、饮食禁忌、过敏等，都会在方案中评估并落实。</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false">买日常用品方便吗？</button></h3><div class="faq-a"><p>就近就有生活超市，可配送上门；也可以在我们生活商城下单等待配送上门；管家代购也可以。</p></div></div><div class="faq-item"><h3><button type="button" aria-expanded="false">跨州转场方便吗？</button></h3><div class="faq-a"><p>转场日安排上午动车、下午安顿，转场本身是景观路。下一站管家已备好入住与生活地图，行李与就医档案随行交接。</p></div></div></div><div style="margin-top:1.4rem;"><a class="btn btn--ink" href="./faq.html" data-nav>看全部 10 问</a></div></div></section><section class="cta-band"><div class="wrap"><div class="section-head"><p class="eyebrow eyebrow--on-dark">云暖・旅居 · 在云南做慢生活服务多年</p><h2 class="h2">先选一块地，住下来</h2><p class="lede">聊聊你想住的地方、住多久——剩下的，交给云南的院子。</p></div><div class="cta-actions"><a class="btn btn--earthen" href="./contact.html" data-nav>聊聊你的云南日子</a><a class="btn btn--ghost" href="./experience.html" data-nav>先看旅居体验包</a></div><div class="cta-tels"><div><div class="t">王先生</div><div class="num">132 0888 8618</div></div><div><div class="t">白先生</div><div class="num">177 8728 8800</div></div></div></div></section></main>
+<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="brand-col"><a class="brand" href="./index.html" data-nav><svg class="brand-seal" viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="10" fill="currentColor"/><path d="M14 47 L27 24 L33 35 L39 26 L50 47 Z" fill="#EDE6D8"/><path d="M12 51 H52" stroke="#EDE6D8" stroke-width="3" stroke-linecap="round" opacity="0.9"/></svg><span class="brand-name">云暖・旅居</span></a><p>旅居（长住）品牌 · 在云南做慢生活服务多年。不是来看云南，是住进云南的日子。服务清单与医疗边界写进合同。</p></div><div><h3>站点</h3><ul><li><a href="./destination.html" data-nav>目的地 · 16 州版图</a></li><li><a href="./experience.html" data-nav>旅居体验包</a></li><li><a href="./stories.html" data-nav>旅居故事</a></li><li><a href="./food.html" data-nav>味觉版图</a></li><li><a href="./trust.html" data-nav>信任中心</a></li></ul></div><div><h3>了解</h3><ul><li><a href="./concierge.html" data-nav>旅居总管</a></li><li><a href="<li><a href="./living.html" data-nav>生活方式</a></li><li><a href="./food.html" data-nav>美食</a></li>living.html" data-nav>生活方式</a></li><li><a href="./food.html" data-nav>美食</a><li><a href="./faq.html" data-nav>常见问题</a></li><li><a href="./contact.html" data-nav>联系管家</a></li></ul></div><div><h3>合规</h3><ul><li><a href="./privacy.html" data-nav>隐私政策</a></li><li><a href="./terms.html" data-nav>服务条款</a></li><li><a href="./mianze.html" data-nav>免责声明</a></li><li class="tel">王先生 · 132 0888 8618</li><li class="tel">白先生 · 177 8728 8800</li></ul></div></div><div class="footer-bottom"><span>© 2026 云暖・旅居 · 在云南，住进日子</span><span class="credit">主视觉摄影：云南各地风光 · 已获使用授权</span><span class="legal">ICP 备案号：沪</span></div></div></footer><div class="sticky-cta" id="sticky-cta" role="region" aria-label="快捷咨询"><button class="back-top" id="back-top" type="button" aria-label="返回顶部"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button><a class="cta-chip cta-call" href="tel:13208888618" aria-label="拨打王先生"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.6 4-2 1.5a12 12 0 0 0 5.3 5.3l1.5-2 4 1.6v3A2 2 0 0 1 18 18 15 15 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span class="lbl">132 0888 8618</span></a><button class="cta-chip cta-lead" id="cta-lead" type="button" aria-haspopup="dialog" aria-label="在线留言"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v10H7l-3 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="lbl">在线留言</span></button></div><div class="lead-modal" id="lead-modal" hidden><div class="lead-card" role="dialog" aria-modal="true" aria-labelledby="lead-title"><button class="lead-close" id="lead-close" type="button" aria-label="关闭">×</button><h3 id="lead-title">发一句「我想去云南」</h3><p class="lead-sub">10 分钟内回复 · 也可以直接拨打王先生 132 0888 8618</p><form id="lead-form"><label>称呼 <span class="req">*</span><input name="lead-name" type="text" required maxlength="30" placeholder="怎么称呼您"></label><label>联系方式（电话 / 微信）<span class="req">*</span><input name="lead-contact" type="text" required maxlength="40" placeholder="手机号或微信号"></label><label>想住哪 / 住多久（选填）<textarea name="lead-idea" maxlength="200" placeholder="如：给爸妈安排一段云南日子"></textarea></label><label style="display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;color:var(--muted);margin:.5rem 0;">
+<input type="checkbox" name="consent" required style="margin-top:.2rem;">
+<span>我已阅读并同意<a href="./privacy.html" target="_blank" style="color:var(--earthen-deep);">《隐私政策》</a>，同意云暖・旅居为定制行程与管家联系收集使用我的信息。</span>
+</label>
+<button type="submit" class="btn btn--earthen">提交给管家</button><p class="lead-note">提交即表示同意<strong>隐私政策</strong>：信息仅用于定制行程与管家联系，不会对外披露或用于营销推送。</p><div class="lead-ok" id="lead-ok" role="status" hidden>已收到，管家会在 10 分钟内与您联系。</div></form></div></div>
+<script src="./assets/js/main.js"></script>
+<script src="./assets/js/carousel.js"></script>
+
+<script src="./assets/js/search.js"></script>
+<script>
+/* ============ 云南版高级感 · 预览交互 ============ */
+(function(){
+  'use strict';
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  /* Hero 背景视差：滚动时背景慢速移动 */
+  var heroMedia = document.querySelector('.yv-hero-parallax');
+  var hero = document.querySelector('.hero');
+  if (heroMedia && hero) {
+    var ticking = false;
+    function onScroll(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset;
+        if (y < window.innerHeight * 1.2) {
+          heroMedia.style.setProperty('--yv-py', (y * 0.28) + 'px');
+        }
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+
+  /* 各板块图片视差：图片在容器内慢速上移 */
+  var targets = document.querySelectorAll('.ph img, .media img, .way-media img, .story-mini img, .live-block .media img');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var img = en.target;
+      img.classList.add('yv-img-parallax');
+      var p = (img.getBoundingClientRect().top - window.innerHeight) * 0.06;
+      img.style.setProperty('--yv-ipy', p + 'px');
+    });
+  }, {threshold: 0.01});
+  targets.forEach(function(t){ io.observe(t); });
+
+  /* 滚动过程中持续微调图片位移 */
+  var allImgs = Array.prototype.slice.call(targets);
+  var lastY = window.pageYOffset;
+  window.addEventListener('scroll', function(){
+    var dy = window.pageYOffset - lastY;
+    lastY = window.pageYOffset;
+    allImgs.forEach(function(img){
+      if (!img.classList.contains('yv-img-parallax')) return;
+      var cur = parseFloat(img.style.getPropertyValue('--yv-ipy')) || 0;
+      img.style.setProperty('--yv-ipy', (cur + dy * 0.05) + 'px');
+    });
+  }, {passive:true});
+})();
+</script>
+<script>
+/* ============ 第二波：高级感交互 ============ */
+(function(){
+  'use strict';
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 2. 鼠标暖光跟随 */
+  if (!reduced && window.matchMedia('(pointer: fine)').matches) {
+    var glow = document.createElement('div');
+    glow.id = 'yv-glow';
+    document.body.appendChild(glow);
+    var gx = window.innerWidth/2, gy = 200, tx = gx, ty = gy, shown = false;
+    document.addEventListener('mousemove', function(e){
+      tx = e.clientX; ty = e.clientY;
+      if (!shown){ glow.style.opacity = '1'; shown = true; }
+    }, {passive:true});
+    (function loop(){
+      gx += (tx-gx)*0.12; gy += (ty-gy)*0.12;
+      glow.style.left = gx+'px'; glow.style.top = gy+'px';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* 1. Hero 离场淡出 */
+  var heroContent = document.querySelector('.hero .container, .hero .hero-content, .hero-inner, .hero > .wrap');
+  var hero = document.querySelector('.hero');
+  if (hero && (heroContent || document.querySelector('.hero-title, .hero h1'))) {
+    var leaveTarget = heroContent || document.querySelector('.hero-title, .hero h1').parentElement;
+    leaveTarget.classList.add('yv-hero-leave');
+    var hTick = false;
+    window.addEventListener('scroll', function(){
+      if (hTick) return; hTick = true;
+      requestAnimationFrame(function(){
+        var y = window.pageYOffset;
+        leaveTarget.classList.toggle('is-leaving', y > 120);
+        hTick = false;
+      });
+    }, {passive:true});
+  }
+
+  /* 5. 滚动叙事 reveal */
+  var revealEls = document.querySelectorAll('.section-head, .section-title, .eyebrow, .ph .body h3, .state-card h3, .way h3, .story-mini h4, .live h4');
+  var rIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ en.target.classList.add('in-view'); rIo.unobserve(en.target); }
+    });
+  }, {threshold:.18});
+  revealEls.forEach(function(el){
+    el.classList.add('yv-reveal');
+    rIo.observe(el);
+  });
+
+  /* 6. 数字区光带 */
+  var statsEls = document.querySelectorAll('.stats, .data-row, .hero-stats, .stat-row');
+  var sIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ en.target.classList.add('in-view'); sIo.unobserve(en.target); }
+    });
+  }, {threshold:.3});
+  statsEls.forEach(function(el){ sIo.observe(el); });
+})();
+/* ============ 演示模式（仅本地预览用，正式上线不含） ============ */
+(function(){
+  var p = new URLSearchParams(location.search).get('demo');
+  if (!p) return;
+  if (p === 'glow') {
+    var g = document.getElementById('yv-glow');
+    if (g) { g.style.opacity = '1'; g.style.left = '55vw'; g.style.top = '46vh'; g.style.transition = 'none'; }
+  }
+  if (p === 'hover') {
+    var card = document.querySelector('.state-card');
+    if (card) {
+      card.classList.add('yv-tilt');
+      var st = document.createElement('style');
+      st.textContent = '.state-card{transform:perspective(900px) rotateX(2.4deg) rotateY(-2.4deg) translateY(-6px) !important;box-shadow:0 26px 50px rgba(30,60,40,.16) !important;}'
+        + '.state-card .ph img{transform:scale(1.06) !important;}'
+        + '.state-card .ph::after{opacity:1 !important;}'
+        + '.state-card::before{opacity:1 !important;animation:none !important;background-position:-80% 50% !important;}';
+      document.head.appendChild(st);
+      window.scrollTo(0, 1750);
+    }
+  }
+  if (p === 'leave') {
+    var l = document.querySelector('.yv-hero-leave');
+    if (l) l.classList.add('is-leaving');
+  }
+  if (p === 'band') {
+    var s = document.querySelector('.stats, .data-row, .hero-stats, .stat-row');
+    if (s) s.classList.add('in-view');
+    setTimeout(function(){window.scrollTo(0, 620);}, 1200);
+  }
+  if (p === 'reveal') {
+    document.querySelectorAll('.yv-reveal').forEach(function(el){ el.classList.add('in-view'); });
+    setTimeout(function(){window.scrollTo(0, 1300);}, 1500);
+  }
+})();
+
+</script>
+<script src="./assets/js/music.js"></script>
+</body>
+</html>
